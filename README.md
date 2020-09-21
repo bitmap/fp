@@ -14,6 +14,8 @@ npm install @bitmap/fp
 - [map](#map)
 - [filter](#filter)
 - [concat](#concat)
+- [slice](#slice)
+- [splice](#splice)
 - [pipe](#pipe)
 - [compose](#compose)
 - [curryPipe](#curryPipe)
