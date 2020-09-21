@@ -95,6 +95,42 @@ const b = [4, 5, 6]
 concat(a, b) // -> [1, 2, 3, 4, 5, 6]
 ```
 
+## slice
+
+Return a sliced list. `slice` args are curried.
+
+```js
+slice(start, end, list)
+```
+
+### Example
+
+```js
+import { slice } from '@bitmap/fp'
+
+const a = [1, 2, 3, 4, 5, 6]
+
+slice(2, 5, a) // -> [3, 4, 5]
+```
+
+## splice
+
+Splice items into a list. Unlike `Array.prototype.splice`, return a new list.
+
+```js
+splice(list, start, deleteCount, ...items)
+```
+
+### Example
+
+```js
+import { splice } from '@bitmap/fp'
+
+const a = [1, 4]
+
+splice(a, 1, 1, 2, 3) // -> [1, 2, 3]
+```
+
 ## pipe
 
 Compose functions from left to right.
