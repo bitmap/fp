@@ -21,7 +21,9 @@ npm install @bitmap/fp
 - [any](#any)
 - [all](#all)
 - [find](#find)
+- [findLast](#findLast)
 - [findIndex](#findIndex)
+- [findLastIndex](#findLastIndex)
 - [includes](#includes)
 - [indexOf](#indexOf)
 - [pipe](#pipe)
@@ -239,6 +241,26 @@ findGreaterThanTen([3, 5, 7, 9]) // -> undefined
 findGreaterThanTen([5, 20, 100]) // -> 20
 ```
 
+## findLast
+
+Returns last item from list that meets predicate. `findLast` args are curried.
+
+```js
+findLast(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { findLast } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const findLastGreaterThanTen = findLast(greaterThanTen)
+
+findLastGreaterThanTen([3, 5, 7, 9]) // -> undefined
+findLastGreaterThanTen([5, 20, 100]) // -> 100
+```
+
 ## findIndex
 
 Returns index of first item from list that meets predicate. `findIndex` args are curried.
@@ -257,6 +279,26 @@ const findIndexGreaterThanTen = findIndex(greaterThanTen)
 
 findIndexGreaterThanTen([3, 5, 7, 9]) // -> -1
 findIndexGreaterThanTen([5, 20, 100]) // -> 1
+```
+
+## findLastIndex
+
+Returns index of last item from list that meets predicate. `findLastIndex` args are curried.
+
+```js
+findLastIndex(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { findLastIndex } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const findLastIndexGreaterThanTen = findLastIndex(greaterThanTen)
+
+findLastIndexGreaterThanTen([3, 5, 7, 9]) // -> -1
+findLastIndexGreaterThanTen([5, 20, 100]) // -> 2
 ```
 
 ## includes
