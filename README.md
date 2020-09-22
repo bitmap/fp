@@ -39,7 +39,7 @@ Reduce values in a list according to a reducer function. `reduce` args are curri
 reduce(reducer, initialValue, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { reduce } from '@bitmap/fp'
@@ -58,7 +58,7 @@ Reduce values in a list according to a reducer function in reverse order. `reduc
 reduceRight(reducer, initialValue, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { reduceRight } from '@bitmap/fp'
@@ -77,7 +77,7 @@ Apply function to each items in a list, and return a new list. `map` args are cu
 map(mapFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { map } from '@bitmap/fp'
@@ -96,7 +96,7 @@ Filter items from a list, and return a new list. `filter` args are curried.
 filter(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { filter } from '@bitmap/fp'
@@ -115,7 +115,7 @@ Concat `n` lists into one list.
 concat(...lists)
 ```
 
-### Example
+#### Example
 
 ```js
 import { concat } from '@bitmap/fp'
@@ -134,7 +134,7 @@ Return a sliced list. `slice` args are curried.
 slice(start, end, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { slice } from '@bitmap/fp'
@@ -152,7 +152,7 @@ Splice items into a list. Unlike `Array.prototype.splice`, doesn't mutate target
 splice(list, start, deleteCount, ...items)
 ```
 
-### Example
+#### Example
 
 ```js
 import { splice } from '@bitmap/fp'
@@ -170,7 +170,7 @@ Reverse items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target
 reverse(list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { reverse } from '@bitmap/fp'
@@ -188,7 +188,7 @@ Returns true if any item in list meet the condition. `any` args are curried.
 any(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { any } from '@bitmap/fp'
@@ -208,7 +208,7 @@ Returns true if all item in list meet the condition. `all` args are curried.
 all(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { all } from '@bitmap/fp'
@@ -229,7 +229,7 @@ Returns first item from list that meets predicate. `find` args are curried.
 find(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { find } from '@bitmap/fp'
@@ -249,7 +249,7 @@ Returns last item from list that meets predicate. `findLast` args are curried.
 findLast(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { findLast } from '@bitmap/fp'
@@ -269,7 +269,7 @@ Returns index of first item from list that meets predicate. `findIndex` args are
 findIndex(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { findIndex } from '@bitmap/fp'
@@ -289,7 +289,7 @@ Returns index of last item from list that meets predicate. `findLastIndex` args 
 findLastIndex(conditionFunction, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { findLastIndex } from '@bitmap/fp'
@@ -309,7 +309,7 @@ Returns true if item is in the list. `includes` args are curried.
 includes(value, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { includes } from '@bitmap/fp'
@@ -328,7 +328,7 @@ Returns index if item in the list. `indexOf` args are curried.
 indexOf(value, list)
 ```
 
-### Example
+#### Example
 
 ```js
 import { indexOf } from '@bitmap/fp'
@@ -347,7 +347,7 @@ Compose functions from left to right.
 pipe(...functions)(value)
 ```
 
-### Example
+#### Example
 
 ```js
 import { pipe } from '@bitmap/fp'
@@ -368,7 +368,7 @@ Compose functions from right to left.
 compose(...functions)(value)
 ```
 
-### Example
+#### Example
 
 ```js
 import { compose } from '@bitmap/fp'
@@ -389,7 +389,7 @@ Curry a function to allow it to be called partially.
 curry(function)
 ```
 
-### Example
+#### Example
 
 ```js
 import { curry } from '@bitmap/fp'
@@ -407,7 +407,7 @@ Compose functions until last argument is not a function, from left to right.
 curryPipe(...functions)(...)(value)
 ```
 
-### Example
+#### Example
 
 ```js
 import { curryPipe } from '@bitmap/fp'
@@ -427,7 +427,7 @@ Compose functions until last argument is not a function, from right to left.
 curryPipe(...functions)(...)(value)
 ```
 
-### Example
+#### Example
 
 ```js
 import { curryCompose } from '@bitmap/fp'
