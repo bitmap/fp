@@ -16,6 +16,12 @@ npm install @bitmap/fp
 - [concat](#concat)
 - [slice](#slice)
 - [splice](#splice)
+- [any](#any)
+- [all](#all)
+- [find](#find)
+- [findIndex](#findIndex)
+- [includes](#includes)
+- [indexOf](#indexOf)
 - [pipe](#pipe)
 - [compose](#compose)
 - [curryPipe](#curryPipe)
@@ -64,7 +70,7 @@ doubleAll([1, 2, 3]) // -> [2, 4, 6]
 Filter items from a list, and return a new list. `filter` args are curried.
 
 ```js
-filter(expression, list)
+filter(conditionFunction, list)
 ```
 
 ### Example
@@ -131,6 +137,125 @@ import { splice } from '@bitmap/fp'
 const a = [1, 4]
 
 splice(a, 1, 1, 2, 3) // -> [1, 2, 3]
+```
+
+## any
+
+Returns true if any item in list meet the condition. `any` args are curried.
+
+```js
+any(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { any } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const anyGreaterThanTen = any(greaterThanTen)
+
+anyGreaterThanTen([3, 5, 7, 9]) // -> false
+anyGreaterThanTen([5, 20, 100]) // -> true
+```
+
+## all
+
+Returns true if all item in list meet the condition. `all` args are curried.
+
+```js
+all(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { all } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const allGreaterThanTen = all(greaterThanTen)
+
+allGreaterThanTen([3, 5, 7, 9]) // -> false
+allGreaterThanTen([5, 20, 100]) // -> false
+allGreaterThanTen([50, 15, 99]) // -> true
+```
+
+## find
+
+Returns first item from list that meets predicate. `find` args are curried.
+
+```js
+find(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { find } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const findGreaterThanTen = find(greaterThanTen)
+
+findGreaterThanTen([3, 5, 7, 9]) // -> undefined
+findGreaterThanTen([5, 20, 100]) // -> 20
+```
+
+## findIndex
+
+Returns index of first item from list that meets predicate. `findIndex` args are curried.
+
+```js
+findIndex(conditionFunction, list)
+```
+
+### Example
+
+```js
+import { findIndex } from '@bitmap/fp'
+
+const greaterThanTen = x => x > 10
+const findIndexGreaterThanTen = findIndex(greaterThanTen)
+
+findIndexGreaterThanTen([3, 5, 7, 9]) // -> -1
+findIndexGreaterThanTen([5, 20, 100]) // -> 1
+```
+
+## includes
+
+Returns true if item is in the list. `includes` args are curried.
+
+```js
+includes(value, list)
+```
+
+### Example
+
+```js
+import { includes } from '@bitmap/fp'
+
+const hasApple = includes('apple')
+
+hasApple(['orange', 'banana', 'pear']) // -> false
+hasApple(['kiwi', 'apple', 'coconut']) // -> true
+```
+
+## indexOf
+
+Returns index if item in the list. `indexOf` args are curried.
+
+```js
+indexOf(value, list)
+```
+
+### Example
+
+```js
+import { indexOf } from '@bitmap/fp'
+
+const hasApple = indexOf('apple')
+
+hasApple(['orange', 'banana', 'pear']) // -> -1
+hasApple(['kiwi', 'apple', 'coconut']) // -> 1
 ```
 
 ## pipe
