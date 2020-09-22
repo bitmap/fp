@@ -11,11 +11,13 @@ npm install @bitmap/fp
 ## Utilities
 
 - [reduce](#reduce)
+- [reduceRight](#reduceRight)
 - [map](#map)
 - [filter](#filter)
 - [concat](#concat)
 - [slice](#slice)
 - [splice](#splice)
+- [reverse](#reverse)
 - [any](#any)
 - [all](#all)
 - [find](#find)
@@ -44,6 +46,25 @@ const sum = (a, b) => a + b
 const items = [1, 2, 3, 4]
 
 reduce(sum, 0, items) // -> 10
+```
+
+## reduceRight
+
+Reduce values in a list according to a reducer function in reverse order. `reduceRight` args are curried.
+
+```js
+reduceRight(reducer, initialValue, list)
+```
+
+### Example
+
+```js
+import { reduceRight } from '@bitmap/fp'
+
+const sum = (a, b) => a + b
+const items = [1, 2, 3, 4]
+
+reduceRight(sum, 0, items) // -> 10
 ```
 
 ## map
@@ -116,14 +137,14 @@ slice(start, end, list)
 ```js
 import { slice } from '@bitmap/fp'
 
-const a = [1, 2, 3, 4, 5, 6]
+const list = [1, 2, 3, 4, 5, 6]
 
-slice(2, 5, a) // -> [3, 4, 5]
+slice(2, 5, list) // -> [3, 4, 5]
 ```
 
 ## splice
 
-Splice items into a list. Unlike `Array.prototype.splice`, return a new list.
+Splice items into a list. Unlike `Array.prototype.splice`, doesn't mutate target.
 
 ```js
 splice(list, start, deleteCount, ...items)
@@ -134,9 +155,27 @@ splice(list, start, deleteCount, ...items)
 ```js
 import { splice } from '@bitmap/fp'
 
-const a = [1, 4]
+const list = [1, 4]
 
-splice(a, 1, 1, 2, 3) // -> [1, 2, 3]
+splice(list, 1, 1, 2, 3) // -> [1, 2, 3]
+```
+
+## reverse
+
+Reverse items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
+
+```js
+reverse(list)
+```
+
+### Example
+
+```js
+import { reverse } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+reverse(list) // -> [4, 3, 2, 1]
 ```
 
 ## any
