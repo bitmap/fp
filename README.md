@@ -14,11 +14,17 @@ npm install @bitmap/fp
 - [reduceRight](#reduceRight)
 - [map](#map)
 - [filter](#filter)
+- [reject](#reject)
 - [concat](#concat)
+- [copy](#slice)
 - [slice](#slice)
+- [append](#append)
+- [prepend](#prepend)
 - [insert](#insert)
 - [insertAll](#insertAll)
 - [reverse](#reverse)
+- [first](#first)
+- [last](#last)
 - [any](#any)
 - [all](#all)
 - [find](#find)
@@ -29,6 +35,7 @@ npm install @bitmap/fp
 - [indexOf](#indexOf)
 - [pipe](#pipe)
 - [compose](#compose)
+- [pluck](#pluck)
 
 ## reduce
 
@@ -106,6 +113,25 @@ const filterOdds = filter(isOdd)
 const odds = filterOdds([1, 2, 3, 4]) // -> [1, 3]
 ```
 
+## reject
+
+Reject items from a list, and return a new list. The opposite of [filter](#filter). `reject` args are curried.
+
+```js
+reject(conditionFunction, list)
+```
+
+#### Example
+
+```js
+import { reject } from '@bitmap/fp'
+
+const isOdd = (n) => n % 2 !== 0
+const rejectOdds = reject(isOdd)
+
+const odds = rejectOdds([1, 2, 3, 4]) // -> [2, 4]
+```
+
 ## concat
 
 Concat `n` lists into one list.
@@ -125,6 +151,24 @@ const b = [4, 5, 6]
 concat(a, b) // -> [1, 2, 3, 4, 5, 6]
 ```
 
+## copy
+
+Returns a new copy of the list
+
+```js
+copy(list)
+```
+
+#### Example
+
+```js
+import { copy } from '@bitmap/fp'
+
+const list = [1, 2, 3]
+
+copy(list) // -> [1, 2, 3]
+```
+
 ## slice
 
 Return a sliced list. `slice` args are curried.
@@ -141,6 +185,42 @@ import { slice } from '@bitmap/fp'
 const list = [1, 2, 3, 4, 5, 6]
 
 slice(2, 5, list) // -> [3, 4, 5]
+```
+
+## append
+
+Appends item to the end of a list. Unlike `Array.prototype.push`, doesn't mutate target. `append` args are curried.
+
+```js
+append(item, list)
+```
+
+#### Example
+
+```js
+import { append } from '@bitmap/fp'
+
+const list = [1, 2]
+
+append(3, list) // -> [1, 2, 3]
+```
+
+## prepend
+
+Prepends item to the beginning of a list. Unlike `Array.prototype.unshift`, doesn't mutate target. `prepend` args are curried.
+
+```js
+prepend(item, list)
+```
+
+#### Example
+
+```js
+import { prepend } from '@bitmap/fp'
+
+const list = [1, 2]
+
+prepend(0, list) // -> [0, 1, 2]
 ```
 
 ## insert
@@ -195,6 +275,42 @@ import { reverse } from '@bitmap/fp'
 const list = [1, 2, 3, 4]
 
 reverse(list) // -> [4, 3, 2, 1]
+```
+
+## first
+
+Returns first item in a list.
+
+```js
+first(list)
+```
+
+#### Example
+
+```js
+import { first } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+first(list) // -> 1
+```
+
+## last
+
+Returns last item in a list.
+
+```js
+last(list)
+```
+
+#### Example
+
+```js
+import { last } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+last(list) // -> 4
 ```
 
 ## any
@@ -414,4 +530,26 @@ import { curry } from '@bitmap/fp'
 const sum = curry((a, b, c) => a + b + c)
 
 sum(1)(2)(3) // -> 6
+```
+
+## pluck
+
+Returns the value of `key` in object. `pluck` args are curried.
+
+```js
+pluck(key, object)
+```
+
+#### Example
+
+```js
+import { pluck } from '@bitmap/fp'
+
+const data = {
+  name: 'Cabe',
+  username: 'bitmap',
+  title: 'Developer',
+}
+
+pluck('user', data) // -> 'bitmap'
 ```
