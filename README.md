@@ -39,6 +39,7 @@ npm install @bitmap/fp
 - [findLastIndex](#findLastIndex)
 - [includes](#includes)
 - [indexOf](#indexOf)
+- [indexOfLast](#indexOfLast)
 - [pipe](#pipe)
 - [compose](#compose)
 - [pluck](#pluck)
@@ -569,7 +570,7 @@ hasApple(['kiwi', 'apple', 'coconut']) // -> true
 
 ## indexOf
 
-Returns index if item in the list. `indexOf` args are curried.
+Returns first index of item in the list. `indexOf` args are curried.
 
 ```js
 indexOf(value, list)
@@ -580,10 +581,29 @@ indexOf(value, list)
 ```js
 import { indexOf } from '@bitmap/fp'
 
-const hasApple = indexOf('apple')
+const firstAppleIndex = indexOf('apple')
 
-hasApple(['orange', 'banana', 'pear']) // -> -1
-hasApple(['kiwi', 'apple', 'coconut']) // -> 1
+firstAppleIndex(['orange', 'banana', 'pear', 'lemon']) // -> -1
+firstAppleIndex(['kiwi', 'apple', 'coconut', 'apple']) // -> 1
+```
+
+## indexOfLast
+
+Returns last index of item in the list. `indexOfLast` args are curried.
+
+```js
+indexOfLast(value, list)
+```
+
+#### Example
+
+```js
+import { indexOfLast } from '@bitmap/fp'
+
+const lastAppleIndex = indexOfLast('apple')
+
+lastAppleIndex(['orange', 'banana', 'pear', 'lemon']) // -> -1
+lastAppleIndex(['kiwi', 'apple', 'coconut', 'apple']) // -> 3
 ```
 
 ## pipe
