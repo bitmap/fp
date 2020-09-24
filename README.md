@@ -16,7 +16,8 @@ npm install @bitmap/fp
 - [filter](#filter)
 - [concat](#concat)
 - [slice](#slice)
-- [splice](#splice)
+- [insert](#insert)
+- [insertAll](#insertAll)
 - [reverse](#reverse)
 - [any](#any)
 - [all](#all)
@@ -28,8 +29,6 @@ npm install @bitmap/fp
 - [indexOf](#indexOf)
 - [pipe](#pipe)
 - [compose](#compose)
-- [curryPipe](#curryPipe)
-- [curryCompose](#curryCompose)
 
 ## reduce
 
@@ -144,22 +143,40 @@ const list = [1, 2, 3, 4, 5, 6]
 slice(2, 5, list) // -> [3, 4, 5]
 ```
 
-## splice
+## insert
 
-Splice items into a list. Unlike `Array.prototype.splice`, doesn't mutate target.
+Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insert` args are curried.
 
 ```js
-splice(list, start, deleteCount, ...items)
+insert(start, item, list)
 ```
 
 #### Example
 
 ```js
-import { splice } from '@bitmap/fp'
+import { insert } from '@bitmap/fp'
+
+const list = [1, 3]
+
+insert(1, 2, list) // -> [1, 2, 3]
+```
+
+## insertAll
+
+Insert itemm into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insertAll` args are curried.
+
+```js
+insertAll(start, items, list)
+```
+
+#### Example
+
+```js
+import { insertAll } from '@bitmap/fp'
 
 const list = [1, 4]
 
-splice(list, 1, 1, 2, 3) // -> [1, 2, 3]
+insertAll(1, [2, 3], list) // -> [1, 2, 3, 4]
 ```
 
 ## reverse
@@ -397,44 +414,4 @@ import { curry } from '@bitmap/fp'
 const sum = curry((a, b, c) => a + b + c)
 
 sum(1)(2)(3) // -> 6
-```
-
-## curryPipe
-
-Compose functions until last argument is not a function, from left to right.
-
-```js
-curryPipe(...functions)(...)(value)
-```
-
-#### Example
-
-```js
-import { curryPipe } from '@bitmap/fp'
-
-const getFirstName = curryPipe(pickFirstWord, capitalize)
-const greetPerson = getFirstName(greet, exclaim)
-
-getFirstName('john smith') // -> John
-greetPerson('john smith') // -> Hello, John!
-```
-
-## curryCompose
-
-Compose functions until last argument is not a function, from right to left.
-
-```js
-curryPipe(...functions)(...)(value)
-```
-
-#### Example
-
-```js
-import { curryCompose } from '@bitmap/fp'
-
-const greetPerson = curryCompose(greet, exclaim)
-const fixGreeting = greetPerson(capitalize, pickFirstWord)
-
-greetPerson('john smith') // -> Hello, john smith!
-fixGreeting('john smith') // -> Hello, John!
 ```

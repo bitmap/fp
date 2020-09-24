@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- insert
+- insertAll
 - any
 - all
 - find
@@ -19,6 +21,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - indexOf
 - reverse
 - reduceRight
+
+### Changed
+
+Refactored for performance:
+- map
+- filter
+- pipe
+- comose
+- concat
+
+### Removed
+- splice
+- curryPipe
+- curryCompose
 
 ## [0.2.0] - 2020-09-21
 
