@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - last
 - pluck
 - reject
+- drop
+- dropRight
+- dropFirst
+- dropLast
+- take
+- takeRight
 
 ## [0.3.0]
 
