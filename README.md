@@ -25,6 +25,12 @@ npm install @bitmap/fp
 - [reverse](#reverse)
 - [first](#first)
 - [last](#last)
+- [drop](#drop)
+- [dropRight](#dropRight)
+- [dropFirst](#dropFirst)
+- [dropLast](#dropLast)
+- [take](#take)
+- [takeFirst](#takeFirst)
 - [any](#any)
 - [all](#all)
 - [find](#find)
@@ -311,6 +317,114 @@ import { last } from '@bitmap/fp'
 const list = [1, 2, 3, 4]
 
 last(list) // -> 4
+```
+
+## drop
+
+Drops `n` items from left. `drop` args are curried.
+
+```js
+drop(n, list)
+```
+
+#### Example
+
+```js
+import { drop } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+drop(2, list) // -> [3, 4]
+```
+
+## dropRight
+
+Drops `n` items from right. `dropRight` args are curried.
+
+```js
+dropRight(n, list)
+```
+
+#### Example
+
+```js
+import { dropRight } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+dropRight(2, list) // -> [1, 2]
+```
+
+## dropFirst
+
+Drops first item from list.
+
+```js
+dropFirst(list)
+```
+
+#### Example
+
+```js
+import { dropFirst } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+dropFirst(2, list) // -> [2, 3, 4]
+```
+
+## dropLast
+
+Drops last item from list.
+
+```js
+dropLast(list)
+```
+
+#### Example
+
+```js
+import { dropLast } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+dropLast(2, list) // -> [1, 2, 3]
+```
+
+## take
+
+Takes `n` items from left. `take` args are curried.
+
+```js
+take(n, list)
+```
+
+#### Example
+
+```js
+import { take } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+take(2, list) // -> [1, 2]
+```
+
+## takeRight
+
+Takes `n` items from right. `takeRight` args are curried.
+
+```js
+takeRight(n, list)
+```
+
+#### Example
+
+```js
+import { takeRight } from '@bitmap/fp'
+
+const list = [1, 2, 3, 4]
+
+takeRight(2, list) // -> [3, 4]
 ```
 
 ## any
