@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - copy
 - first
 - last
-- pluck
+- prop (pluck)
 - reject
 - drop
 - dropRight
@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - dropLast
 - take
 - takeRight
+- sort
 
 ## [0.3.0]
 
