@@ -23,6 +23,7 @@ npm install @bitmap/fp
 - [insert](#insert)
 - [insertAll](#insertAll)
 - [reverse](#reverse)
+- [sort](#sort)
 - [first](#first)
 - [last](#last)
 - [drop](#drop)
@@ -42,6 +43,7 @@ npm install @bitmap/fp
 - [indexOfLast](#indexOfLast)
 - [pipe](#pipe)
 - [compose](#compose)
+- [prop](#prop)
 - [pluck](#pluck)
 
 ## reduce
@@ -282,6 +284,25 @@ import { reverse } from '@bitmap/fp'
 const list = [1, 2, 3, 4]
 
 reverse(list) // -> [4, 3, 2, 1]
+```
+
+## sort
+
+Sorts items in a list according to comparator function. Unlike `Array.prototype.sort`, doesn't mutate target.
+
+```js
+sort(compareFunction, list)
+```
+
+#### Example
+
+```js
+import { sort } from '@bitmap/fp'
+
+const sortAscending = (a, b) => a - b
+const list = [40, 21, 32, 17]
+
+sort(sortAscending, list) // -> [17, 21, 32, 40]
 ```
 
 ## first
@@ -666,18 +687,18 @@ const sum = curry((a, b, c) => a + b + c)
 sum(1)(2)(3) // -> 6
 ```
 
-## pluck
+## prop
 
-Returns the value of `key` in object. `pluck` args are curried.
+Returns the value of `key` in object. `prop` args are curried.
 
 ```js
-pluck(key, object)
+prop(key, object)
 ```
 
 #### Example
 
 ```js
-import { pluck } from '@bitmap/fp'
+import { prop } from '@bitmap/fp'
 
 const data = {
   name: 'Cabe',
@@ -685,5 +706,9 @@ const data = {
   title: 'Developer',
 }
 
-pluck('user', data) // -> 'bitmap'
+prop('user', data) // -> 'bitmap'
 ```
+
+## pluck
+
+Alias of [prop](#prop)
