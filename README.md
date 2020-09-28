@@ -706,7 +706,7 @@ const data = {
   title: 'Developer',
 }
 
-prop('user', data) // -> 'bitmap'
+prop('username', data) // -> 'bitmap'
 ```
 
 ## pluck
