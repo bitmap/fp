@@ -711,4 +711,31 @@ prop('username', data) // -> 'bitmap'
 
 ## pluck
 
-Alias of [prop](#prop)
+Returns [map](#map) of `key` values from a list of objects. `pluck` args are curried.
+
+```js
+pluck(key, list)
+```
+
+#### Example
+
+```js
+import { pluck } from '@bitmap/fp'
+
+const data = [
+  {
+    city: 'New York',
+    state: 'NY',
+  },
+  {
+    city: 'San Francisco',
+    state: 'CA',
+  },
+   {
+    city: 'Portland',
+    state: 'OR',
+  }
+]
+
+pluck('state', data) // -> ['NY', 'CA', 'OR']
+```
