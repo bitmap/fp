@@ -45,6 +45,7 @@ npm install @bitmap/fp
 - [compose](#compose)
 - [prop](#prop)
 - [pluck](#pluck)
+- [pick](#pick)
 
 ## reduce
 
@@ -738,4 +739,28 @@ const data = [
 ]
 
 pluck('state', data) // -> ['NY', 'CA', 'OR']
+```
+
+## pick
+
+Returns new object with supplied `keys` and all other properties omitted. `pick` args are curried.
+
+```js
+pick(keys, object)
+```
+
+#### Example
+
+```js
+import { pick } from '@bitmap/fp'
+
+const data = {
+  name: 'Cabe',
+  age: 32,
+  position: 'Developer',
+  state: 'NY',
+  city: 'New York',
+}
+
+pick(['name', 'position'], data) // -> { name: 'Cabe', position: 'Developer' }
 ```
