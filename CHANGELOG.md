@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - pluck (maps prop, no longer alias)
+- pick
 
 ## [0.4.0]
 
