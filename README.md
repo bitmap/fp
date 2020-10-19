@@ -46,6 +46,7 @@ npm install @bitmap/fp
 - [prop](#prop)
 - [pluck](#pluck)
 - [pick](#pick)
+- [omit](#omit)
 
 ## reduce
 
@@ -743,7 +744,7 @@ pluck('state', data) // -> ['NY', 'CA', 'OR']
 
 ## pick
 
-Returns new object with supplied `keys` and all other properties omitted. `pick` args are curried.
+Returns copy of object with supplied `keys` and all other properties omitted. `pick` args are curried.
 
 ```js
 pick(keys, object)
@@ -763,4 +764,28 @@ const data = {
 }
 
 pick(['name', 'position'], data) // -> { name: 'Cabe', position: 'Developer' }
+```
+
+## omit
+
+Returns copy of object with supplied `keys` omitted. opposite of [pick](#pick). `omit` args are curried.
+
+```js
+omit(keys, object)
+```
+
+#### Example
+
+```js
+import { omit } from '@bitmap/fp'
+
+const data = {
+  name: 'Cabe',
+  age: 32,
+  position: 'Developer',
+  state: 'NY',
+  city: 'New York',
+}
+
+omit(['age', 'state', 'city'], data) // -> { name: 'Cabe', position: 'Developer' }
 ```
