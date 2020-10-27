@@ -13,8 +13,12 @@ npm install @bitmap/fp
 - [reduce](#reduce)
 - [reduceRight](#reduceRight)
 - [map](#map)
+- [flat](#flat)
+- [flatMap](#flatMap)
 - [filter](#filter)
+- [filterMap](#filterMap)
 - [reject](#reject)
+- [rejectMap](#rejectMap)
 - [concat](#concat)
 - [copy](#copy)
 - [slice](#slice)
@@ -106,6 +110,42 @@ const doubleAll = map(double)
 doubleAll([1, 2, 3]) // -> [2, 4, 6]
 ```
 
+## flat
+
+Return a flattened list.
+
+```js
+flat(list, depth)
+```
+
+#### Example
+
+```js
+import { flat } from '@bitmap/fp'
+
+flat([0, [1, 2], [3, 4], [5]]) // -> [0, 1, 2, 3, 4, 5]
+flat([0, [1, 2, [3, 4, [5]]]], 3) // -> [0, 1, 2, 3, 4, 5]
+```
+
+## flatMap
+
+Apply function to each items in a list, and return a flattened list. `flatMap` args are curried.
+
+```js
+flatMap(flatMapFunction, list)
+```
+
+#### Example
+
+```js
+import { flatMap } from '@bitmap/fp'
+
+const users = ['@cabe', '@bitmap']
+const indexUsers = flatMap((user, index) => [index, user])
+
+indexUsers(users) // -> [0, '@cabe', 1, '@bitmap']
+```
+
 ## filter
 
 Filter items from a list, and return a new list. `filter` args are curried.
@@ -122,7 +162,27 @@ import { filter } from '@bitmap/fp'
 const isOdd = (n) => n % 2 !== 0
 const filterOdds = filter(isOdd)
 
-const odds = filterOdds([1, 2, 3, 4]) // -> [1, 3]
+filterOdds([1, 2, 3, 4]) // -> [1, 3]
+```
+
+## filterMap
+
+Apply filter and map to a list, and return a new list. `filterMap` args are curried.
+
+```js
+filterMap(conditionFunction, mapFunction, list)
+```
+
+#### Example
+
+```js
+import { filterMap } from '@bitmap/fp'
+
+const isOdd = (n) => n % 2 !== 0
+const double = (n) => n * 2
+const doubleOdds = filterMap(isOdd, double)
+
+doubleOdds([1, 2, 3, 4]) // -> [3, 6]
 ```
 
 ## reject
@@ -141,7 +201,27 @@ import { reject } from '@bitmap/fp'
 const isOdd = (n) => n % 2 !== 0
 const rejectOdds = reject(isOdd)
 
-const odds = rejectOdds([1, 2, 3, 4]) // -> [2, 4]
+rejectOdds([1, 2, 3, 4]) // -> [2, 4]
+```
+
+## rejectMap
+
+Apply reject and map to a list, and return a new list. `rejectMap` args are curried.
+
+```js
+rejectMap(conditionFunction, mapFunction, list)
+```
+
+#### Example
+
+```js
+import { rejectMap } from '@bitmap/fp'
+
+const isOdd = (n) => n % 2 !== 0
+const double = (n) => n * 2
+const doubleEvens = rejectMap(isOdd, double)
+
+doubleEvens([1, 2, 3, 4]) // -> [4, 8]
 ```
 
 ## concat
