@@ -1,6 +1,6 @@
 {
   "name": "@bitmap/fp",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Function programming utilities",
   "license": "ISC",
   "author": "Cabe Branson <cabe@bitmap.dev> (https://bitmap.dev)",
