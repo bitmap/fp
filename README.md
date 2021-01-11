@@ -52,6 +52,8 @@ npm install @bitmap/fp
 - [pluck](#pluck)
 - [pick](#pick)
 - [omit](#omit)
+- [split](#split)
+- [join](#join)
 
 ## reduce
 
@@ -353,7 +355,7 @@ insertAll(1, [2, 3], list) // -> [1, 2, 3, 4]
 
 ## reverse
 
-Reverse items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
+Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
 
 ```js
 reverse(list)
@@ -367,6 +369,10 @@ import { reverse } from '@bitmap/fp'
 const list = [1, 2, 3, 4]
 
 reverse(list) // -> [4, 3, 2, 1]
+
+const string = 'functional'
+
+reverse(string) // -> 'lanoitcnuf'
 ```
 
 ## sort
@@ -869,4 +875,37 @@ const data = {
 }
 
 omit(['age', 'state', 'city'], data) // -> { name: 'Cabe', position: 'Developer' }
+```
+
+
+## split
+
+Splits a string by delimiter into a list. `split` args are curried.
+
+```js
+split(delimiter, string)
+```
+
+#### Example
+
+```js
+import { split } from '@bitmap/fp'
+
+split(':', 'name:Cabe') // -> ['name', 'Cabe']
+```
+
+## join
+
+Joins a list into a string, seperating each item by specified delimiter. `join` args are curried.
+
+```js
+join(delimiter, list)
+```
+
+#### Example
+
+```js
+import { join } from '@bitmap/fp'
+
+join('|', [1, 2, 3, 4]) // -> '1|2|3|4'
 ```
