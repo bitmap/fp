@@ -53,7 +53,8 @@
     },
     "extends": [
       "@cabe",
-      "plugin:jest/all"
+      "plugin:jest/recommended",
+      "plugin:jest/style"
     ],
     "plugins": [
       "jest"
