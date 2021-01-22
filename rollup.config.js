@@ -3,7 +3,7 @@ export default [
   {
     input: 'lib/index.js',
     output: {
-      file: 'dist/esm/index.js',
+      file: 'dist/index.js',
       format: 'es',
     },
   },
@@ -12,7 +12,7 @@ export default [
   {
     input: 'lib/index.js',
     output: {
-      file: 'dist/cjs/index.js',
+      file: 'dist/index.cjs',
       format: 'cjs',
     },
   },

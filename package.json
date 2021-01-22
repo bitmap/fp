@@ -5,10 +5,10 @@
   "license": "ISC",
   "author": "Cabe Branson <cabe@bitmap.dev> (https://bitmap.dev)",
   "repository": "github:bitmap/fp",
-  "main": "dist/cjs/index.js",
+  "main": "dist/index.js",
   "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
   },
   "type": "module",
   "files": [
