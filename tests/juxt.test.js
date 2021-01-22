@@ -1,4 +1,4 @@
-import { reduce } from '..'
+import { reduce } from '../lib'
 
 const juxt = (...funcs) => (...args) => reduce(
   (acc, func) => acc.concat([func(args)]), [], funcs,

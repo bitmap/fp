@@ -1,4 +1,4 @@
-import { drop, dropRight, dropFirst, dropLast } from '..'
+import { drop, dropRight, dropFirst, dropLast } from '../lib'
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 

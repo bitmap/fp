@@ -1,4 +1,4 @@
-import { rejectMap } from '..'
+import { rejectMap } from '../lib'
 
 describe('rejectMap', () => {
   const isEven = n => n % 2 === 0

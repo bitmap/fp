@@ -1,4 +1,4 @@
-import { join } from '..'
+import { join } from '../lib'
 
 describe('join', () => {
   const arr = [1, 2, 3, 4]

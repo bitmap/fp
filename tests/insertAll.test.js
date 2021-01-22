@@ -1,4 +1,4 @@
-import { insertAll } from '..'
+import { insertAll } from '../lib'
 
 describe('insertAll', () => {
   const months = ['Jan', 'June']

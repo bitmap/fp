@@ -1,4 +1,4 @@
-import { compose } from '..'
+import { compose } from '../lib'
 
 const g = n => n + 1
 const f = n => n * 2

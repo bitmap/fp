@@ -1,4 +1,4 @@
-import { slice } from '..'
+import { slice } from '../lib'
 
 describe('slice', () => {
 

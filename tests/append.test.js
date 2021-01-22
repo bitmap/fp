@@ -1,4 +1,4 @@
-import { append } from '..'
+import { append } from '../lib'
 
 describe('append', () => {
   const arr = [1, 2, 3, 4]

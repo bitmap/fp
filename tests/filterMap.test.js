@@ -1,4 +1,4 @@
-import { filterMap } from '..'
+import { filterMap } from '../lib'
 
 describe('filterMap', () => {
   const isEven = n => n % 2 === 0

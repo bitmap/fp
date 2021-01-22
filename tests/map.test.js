@@ -1,4 +1,4 @@
-import { map } from '..'
+import { map } from '../lib'
 
 describe('map', () => {
   const arr = [1, 2, 3]

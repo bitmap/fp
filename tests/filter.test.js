@@ -1,4 +1,4 @@
-import { filter } from '..'
+import { filter } from '../lib'
 
 describe('filter', () => {
   const isEven = n => n % 2 === 0

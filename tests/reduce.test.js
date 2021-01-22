@@ -1,4 +1,4 @@
-import { reduce } from '..'
+import { reduce } from '../lib'
 
 const arr = [...Array(100).keys()]
 const reducer = (acc, n) => acc + n

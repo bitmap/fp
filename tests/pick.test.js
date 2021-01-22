@@ -1,4 +1,4 @@
-import { pick, map } from '..'
+import { pick, map } from '../lib'
 
 describe('pick', () => {
 

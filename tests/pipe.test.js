@@ -1,4 +1,4 @@
-import { pipe } from '..'
+import { pipe } from '../lib'
 
 const g = n => n + 1
 const f = n => n * 2

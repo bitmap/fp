@@ -1,4 +1,4 @@
-import { reject } from '..'
+import { reject } from '../lib'
 
 describe('reject', () => {
   const isEven = n => n % 2 === 0

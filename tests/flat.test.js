@@ -1,4 +1,4 @@
-import { flat } from '..'
+import { flat } from '../lib'
 
 describe('flat', () => {
 

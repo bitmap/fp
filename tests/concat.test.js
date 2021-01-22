@@ -1,4 +1,4 @@
-import { concat, curry } from '..'
+import { concat, curry } from '../lib'
 
 describe('concat', () => {
   const arr1 = [1, 2, 3, 4]

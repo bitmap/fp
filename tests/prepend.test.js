@@ -1,4 +1,4 @@
-import { prepend } from '..'
+import { prepend } from '../lib'
 
 describe('prepend', () => {
   const arr = [1, 2, 3, 4]

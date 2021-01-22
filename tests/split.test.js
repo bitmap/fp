@@ -1,4 +1,4 @@
-import { split } from '..'
+import { split } from '../lib'
 
 describe('split', () => {
   const string = 'I am a string'

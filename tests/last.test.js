@@ -1,4 +1,4 @@
-import { last } from '..'
+import { last } from '../lib'
 
 describe('last', () => {
   const arr = [1, 2, 3, 4]

@@ -1,4 +1,4 @@
-import { flatMap } from '..'
+import { flatMap } from '../lib'
 
 describe('flatMap', () => {
   const a = [1, 2, 3, 4]

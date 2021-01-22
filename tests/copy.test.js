@@ -1,4 +1,4 @@
-import { copy } from '..'
+import { copy } from '../lib'
 
 describe('copy', () => {
   const arr = [1, 2, 3, 4]

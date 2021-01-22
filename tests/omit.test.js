@@ -1,4 +1,4 @@
-import { omit, map } from '..'
+import { omit, map } from '../lib'
 
 describe('omit', () => {
 

@@ -1,4 +1,4 @@
-import { prop } from '..'
+import { prop } from '../lib'
 
 describe('prop', () => {
   const obj = {

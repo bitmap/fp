@@ -1,4 +1,4 @@
-import { first } from '..'
+import { first } from '../lib'
 
 describe('first', () => {
   const arr = [1, 2, 3, 4]

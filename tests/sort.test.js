@@ -1,4 +1,4 @@
-import { sort } from '..'
+import { sort } from '../lib'
 
 describe('sort', () => {
   const arr = [4, 2, 3, 1, 5]

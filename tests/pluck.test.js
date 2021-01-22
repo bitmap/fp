@@ -1,4 +1,4 @@
-import { pluck } from '..'
+import { pluck } from '../lib'
 
 describe('pluck', () => {
   const data = [

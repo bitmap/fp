@@ -1,4 +1,4 @@
-import { curry } from '..'
+import { curry } from '../lib'
 
 describe('curry', () => {
   const sum = curry((a, b, c) => a + b + c)

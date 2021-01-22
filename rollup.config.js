@@ -1,7 +1,7 @@
 export default [
   // ES Module
   {
-    input: 'index.js',
+    input: 'lib/index.js',
     output: {
       file: 'dist/esm/index.js',
       format: 'es',
@@ -10,7 +10,7 @@ export default [
 
   // Common.js
   {
-    input: 'index.js',
+    input: 'lib/index.js',
     output: {
       file: 'dist/cjs/index.js',
       format: 'cjs',
