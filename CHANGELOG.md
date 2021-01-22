@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - renamed findIndex -> findIndexOf
 - renamed findLastIndex -> findIndexOfLast
+- removed all default exports
 
 ## [0.7.0]
 
