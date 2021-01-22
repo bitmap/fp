@@ -40,8 +40,8 @@ npm install @bitmap/fp
 - [all](#all)
 - [find](#find)
 - [findLast](#findLast)
-- [findIndex](#findIndex)
-- [findLastIndex](#findLastIndex)
+- [findIndexOf](#findIndexOf)
+- [findIndexOfLast](#findIndexOfLast)
 - [includes](#includes)
 - [indexOf](#indexOf)
 - [indexOfLast](#indexOfLast)
@@ -619,44 +619,44 @@ findLastGreaterThanTen([3, 5, 7, 9]) // -> undefined
 findLastGreaterThanTen([5, 20, 100]) // -> 100
 ```
 
-## findIndex
+## findIndexOf
 
-Returns index of first item from list that meets predicate. `findIndex` args are curried.
+Returns index of first item from list that meets predicate. `findIndexOf` args are curried.
 
 ```js
-findIndex(conditionFunction, list)
+findIndexOf(conditionFunction, list)
 ```
 
 #### Example
 
 ```js
-import { findIndex } from '@bitmap/fp'
+import { findIndexOf } from '@bitmap/fp'
 
 const greaterThanTen = x => x > 10
-const findIndexGreaterThanTen = findIndex(greaterThanTen)
+const findIndexOfGreaterThanTen = findIndexOf(greaterThanTen)
 
-findIndexGreaterThanTen([3, 5, 7, 9]) // -> -1
-findIndexGreaterThanTen([5, 20, 100]) // -> 1
+findIndexOfGreaterThanTen([3, 5, 7, 9]) // -> -1
+findIndexOfGreaterThanTen([5, 20, 100]) // -> 1
 ```
 
-## findLastIndex
+## findIndexOfLast
 
-Returns index of last item from list that meets predicate. `findLastIndex` args are curried.
+Returns index of last item from list that meets predicate. `findIndexOfLast` args are curried.
 
 ```js
-findLastIndex(conditionFunction, list)
+findIndexOfLast(conditionFunction, list)
 ```
 
 #### Example
 
 ```js
-import { findLastIndex } from '@bitmap/fp'
+import { findIndexOfLast } from '@bitmap/fp'
 
 const greaterThanTen = x => x > 10
-const findLastIndexGreaterThanTen = findLastIndex(greaterThanTen)
+const findIndexOfLastGreaterThanTen = findIndexOfLast(greaterThanTen)
 
-findLastIndexGreaterThanTen([3, 5, 7, 9]) // -> -1
-findLastIndexGreaterThanTen([5, 20, 100]) // -> 2
+findIndexOfLastGreaterThanTen([3, 5, 7, 9]) // -> -1
+findIndexOfLastGreaterThanTen([5, 20, 100]) // -> 2
 ```
 
 ## includes
