@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - renamed findLastIndex -> findIndexOfLast
 - removed all default exports
 - moved ./lib/\_\_tests__ => ./test
-- removed commonjs support
+- fixed commonjs support
 
 ## [0.7.0]
 
