@@ -1,15 +1,16 @@
 import { curry } from './curry'
 
+/* eslint-disable no-multi-spaces */
 export enum TypeOf {
-  Null = 'object',
   Undefined = 'undefined',
-  Function = 'function',
-  Boolean = 'boolean',
-  String = 'string',
-  Number = 'number',
-  BigInt = 'bigint',
-  Symbol = 'symbol',
-  Object = 'object',
+  Function  = 'function',
+  Boolean   = 'boolean',
+  String    = 'string',
+  Number    = 'number',
+  BigInt    = 'bigint',
+  Symbol    = 'symbol',
+  Object    = 'object',
+  Null      = 'object',
 }
 
 /**
