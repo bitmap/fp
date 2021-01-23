@@ -16,9 +16,18 @@ describe('isTypeOf', () => {
     expect(isTypeOf(TypeOf.Number, '123')).toStrictEqual(false)
     expect(isTypeOf(TypeOf.Number, parseInt('123', 10))).toStrictEqual(true)
   })
+  test('is bigint', () => {
+    expect(isTypeOf(TypeOf.BigInt, 42)).toStrictEqual(false)
+    expect(isTypeOf(TypeOf.BigInt, BigInt(42))).toStrictEqual(true)
+    expect(isTypeOf(TypeOf.BigInt, BigInt('0x1fffffffffffff'))).toStrictEqual(true)
+  })
   test('is object', () => {
     expect(isTypeOf(TypeOf.Object, {})).toStrictEqual(true)
     expect(isTypeOf(TypeOf.Object, [])).toStrictEqual(true)
+  })
+  test('is symbol', () => {
+    expect(isTypeOf(TypeOf.Symbol, Symbol('symbol'))).toStrictEqual(true)
+    expect(isTypeOf(TypeOf.Symbol, 'symbol')).toStrictEqual(false)
   })
   test('is function', () => {
     expect(isTypeOf(TypeOf.Function, () => true)).toStrictEqual(true)
