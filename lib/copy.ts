@@ -3,7 +3,7 @@ import { isObject } from './isObject'
 import { reduce } from './reduce'
 
 /**
- * Returns a deep copy of an object or array.
+ * Returns a deep copy of an object or list.
  *
  * `copy :: {*} -> {*}`
  */
