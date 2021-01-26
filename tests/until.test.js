@@ -1,6 +1,4 @@
 import {
-  any,
-  all,
   find,
   findLast,
   findIndexOf,
@@ -18,8 +16,6 @@ describe('until', () => {
   const fruit2 = ['kiwi', 'lime', 'strawberry', 'apple', 'lemon', 'apple', 'blueberry']
 
   const greaterThanTen = x => x > 10
-  const anyGreaterThanTen = any(greaterThanTen)
-  const allGreaterThanTen = all(greaterThanTen)
   const findGreaterThanTen = find(greaterThanTen)
   const findLastGreaterThanTen = findLast(greaterThanTen)
   const findIndexOfGreaterThanTen = findIndexOf(greaterThanTen)
@@ -28,18 +24,6 @@ describe('until', () => {
   const hasApple = includes('apple')
   const indexOfApple = indexOf('apple')
   const indexOfLastApple = indexOfLast('apple')
-
-  test('any', () => {
-    expect(anyGreaterThanTen(arr1)).toStrictEqual(false)
-    expect(anyGreaterThanTen(arr2)).toStrictEqual(true)
-    expect(anyGreaterThanTen(arr3)).toStrictEqual(true)
-  })
-
-  test('all', () => {
-    expect(allGreaterThanTen(arr1)).toStrictEqual(false)
-    expect(allGreaterThanTen(arr2)).toStrictEqual(false)
-    expect(allGreaterThanTen(arr3)).toStrictEqual(true)
-  })
 
   test('find', () => {
     expect(findGreaterThanTen(arr1)).toBeUndefined()
