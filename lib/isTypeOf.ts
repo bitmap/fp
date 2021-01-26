@@ -1,17 +1,15 @@
 import { curry } from './curry'
 
-/* eslint-disable no-multi-spaces */
-export enum TypeOf {
-  Undefined = 'undefined',
-  Function  = 'function',
-  Boolean   = 'boolean',
-  String    = 'string',
-  Number    = 'number',
-  BigInt    = 'bigint',
-  Symbol    = 'symbol',
-  Object    = 'object',
-  Null      = 'object',
-}
+type Type =
+  | 'undefined'
+  | 'function'
+  | 'boolean'
+  | 'string'
+  | 'number'
+  | 'bigint'
+  | 'symbol'
+  | 'object'
+
 
 /**
  * Evaluate the returned string from an operand
@@ -19,5 +17,5 @@ export enum TypeOf {
  * `isTypeOf :: string -> a -> boolean`
  */
 export const isTypeOf = curry(
-  (type: TypeOf, operand: unknown): boolean => typeof operand === type,
+  (type: Type, operand: unknown): boolean => typeof operand === type,
 )

@@ -1,6 +1,6 @@
 /**
- * Returns true if value is an array
+ * Returns true if value is an array (list)
  *
  * `isArray :: a -> boolean`
  */
-export const isArray = (data: unknown): boolean => Array.isArray(data)
+export const isArray = (data: unknown): data is any[] => Array.isArray(data)

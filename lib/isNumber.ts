@@ -1,8 +1,6 @@
-import { isTypeOf, TypeOf } from './isTypeOf'
-
 /**
  * Returns true if value is a number
  *
  * `isNumber :: a -> boolean`
  */
-export const isNumber = isTypeOf(TypeOf.Number)
+export const isNumber = (data: unknown): data is number => typeof data === 'number'
