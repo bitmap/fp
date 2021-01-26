@@ -3,7 +3,6 @@ import {
   findLast,
   findIndexOf,
   findIndexOfLast,
-  includes,
   indexOf,
   indexOfLast,
 } from '../lib'
@@ -21,7 +20,6 @@ describe('until', () => {
   const findIndexOfGreaterThanTen = findIndexOf(greaterThanTen)
   const findIndexOfLastGreaterThanTen = findIndexOfLast(greaterThanTen)
 
-  const hasApple = includes('apple')
   const indexOfApple = indexOf('apple')
   const indexOfLastApple = indexOfLast('apple')
 
@@ -47,11 +45,6 @@ describe('until', () => {
     expect(findIndexOfLastGreaterThanTen(arr1)).toStrictEqual(-1)
     expect(findIndexOfLastGreaterThanTen(arr2)).toStrictEqual(3)
     expect(findIndexOfLastGreaterThanTen(arr3)).toStrictEqual(arr3.length - 1)
-  })
-
-  test('includes', () => {
-    expect(hasApple(fruit1)).toStrictEqual(false)
-    expect(hasApple(fruit2)).toStrictEqual(true)
   })
 
   test('indexOf', () => {
