@@ -1,11 +1,11 @@
 import { curry } from './curry'
 
 /**
- * Returns a new string by concatenating an array seperated by the
- * specified delimiter. `join` args are curried.
+ * Returns a new string by concatenating a list seperated by the
+ * specified separator. `join` args are curried.
  *
  * `join :: string -> [a] -> string`
  */
 export const join = curry(
-  <T>(delimiter: string, array: T[]): string => array.join(delimiter),
+  <T>(separator: string, list: T[]): string => list.join(separator),
 )

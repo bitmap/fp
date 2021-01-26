@@ -8,14 +8,13 @@ export type Curried<A extends any[], R> =
       : never;
 
 type SameLength<T extends any[]> = Extract<{ [K in keyof T]: any }, any[]>
-type Curry = <A extends any[], R>(fn: (...args: A) => R) => Curried<A, R>
 
 /**
  * Returns a curried version of a function to allow it to be called partially.
  *
  * `curry :: (* -> a) -> (* -> a)`
  */
-export const curry: Curry = fn => {
+export const curry = <A extends any[], R>(fn: (...args: A) => R): Curried<A, R> => {
   const partialFn = (...args: any[]): any =>
     args.length >= fn.length
       ? fn.call(null, ...args as any)

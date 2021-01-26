@@ -1,7 +1,7 @@
 import { copy } from '../lib'
 
 describe('copy', () => {
-  test('copies array', () => {
+  test('copies list', () => {
     expect(copy([1, 2, 3, 4])).toStrictEqual([1, 2, 3, 4])
   })
 
