@@ -1,6 +1,4 @@
-type SameLength<T extends any[]> = Extract<{ [K in keyof T]: any }, any[]>
-
-type Curried<A extends any[], R> =
+export type Curried<A extends any[], R> =
   <P extends Partial<A>>(...args: P) => P extends A
     ? R
     : A extends [...SameLength<P>, ...infer S]
@@ -9,6 +7,7 @@ type Curried<A extends any[], R> =
         : never
       : never;
 
+type SameLength<T extends any[]> = Extract<{ [K in keyof T]: any }, any[]>
 type Curry = <A extends any[], R>(fn: (...args: A) => R) => Curried<A, R>
 
 /**
