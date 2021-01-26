@@ -2,11 +2,20 @@
   "compilerOptions": {
     "rootDir": "lib",
     "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "target": "es6"
   },
-  "include": ["lib/**/*.ts"],
-  "exclude": ["tests", "dist", "node_modules"]
+  "include": [
+    "lib"
+  ],
+  "exclude": [
+    "tests",
+    "dist",
+    "node_modules"
+  ]
 }

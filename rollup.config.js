@@ -1,17 +1,22 @@
 import typescript from '@rollup/plugin-typescript'
+import cleanup from 'rollup-plugin-cleanup'
 
 export default [
   // ES Module
   {
     input: 'lib/index.ts',
     output: {
-      file: 'dist/index.js',
+      dir: 'dist',
       format: 'es',
     },
-    plugins: [typescript({
-      moduleResolution: 'node',
-      target: 'es6',
-    })],
+    plugins: [
+      typescript({
+        target: 'es6',
+        declaration: true,
+        declarationDir: 'dist/types',
+      }),
+      cleanup(),
+    ],
   },
 
   // Common.js
@@ -21,9 +26,11 @@ export default [
       file: 'dist/index.cjs',
       format: 'cjs',
     },
-    plugins: [typescript({
-      moduleResolution: 'classic',
-      target: 'es5',
-    })],
+    plugins: [
+      typescript({
+        target: 'es5',
+      }),
+      cleanup(),
+    ],
   },
 ]
