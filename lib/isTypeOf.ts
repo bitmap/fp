@@ -17,5 +17,5 @@ type Type =
  * `isTypeOf :: string -> a -> boolean`
  */
 export const isTypeOf = curry(
-  (type: Type, operand: unknown): boolean => typeof operand === type,
+  <T>(type: Type, operand: T): operand is T => typeof operand === type,
 )
