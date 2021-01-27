@@ -1,5 +1,4 @@
 import {
-  findLast,
   findIndexOf,
   findIndexOfLast,
   indexOf,
@@ -14,7 +13,6 @@ describe('until', () => {
   const fruit2 = ['kiwi', 'lime', 'strawberry', 'apple', 'lemon', 'apple', 'blueberry']
 
   const greaterThanTen = x => x > 10
-  const findLastGreaterThanTen = findLast(greaterThanTen)
   const findIndexOfGreaterThanTen = findIndexOf(greaterThanTen)
   const findIndexOfLastGreaterThanTen = findIndexOfLast(greaterThanTen)
 
@@ -25,12 +23,6 @@ describe('until', () => {
     expect(findIndexOfGreaterThanTen(arr1)).toStrictEqual(-1)
     expect(findIndexOfGreaterThanTen(arr2)).toStrictEqual(1)
     expect(findIndexOfGreaterThanTen(arr3)).toStrictEqual(0)
-  })
-
-  test('findLast', () => {
-    expect(findLastGreaterThanTen(arr1)).toBeUndefined()
-    expect(findLastGreaterThanTen(arr2)).toStrictEqual(138)
-    expect(findLastGreaterThanTen(arr3)).toStrictEqual(9999)
   })
 
   test('findIndexOfLast', () => {
