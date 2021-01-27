@@ -1,4 +1,5 @@
 import { indexOf } from './utils/indexOf'
+import { curry } from './curry'
 
 /**
  * Return index of last found item in list. If arg is a predicate function,
@@ -7,4 +8,4 @@ import { indexOf } from './utils/indexOf'
  *
  * `positionLast :: (a | (a -> boolean)) -> [a] -> number | undefined`s
  */
-export const positionLast = indexOf(true)
+export const positionLast = curry(indexOf(true))
