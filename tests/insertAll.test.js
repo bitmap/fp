@@ -7,10 +7,10 @@ describe('insertAll', () => {
   const allMonths = insertAll(1, others, months)
 
   test('inserts array', () => {
-    expect(allMonths).toStrictEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June'])
+    expect(allMonths).toEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June'])
   })
 
   test('no side-effects', () => {
-    expect(months).toStrictEqual(['Jan', 'June'])
+    expect(months).toEqual(['Jan', 'June'])
   })
 })

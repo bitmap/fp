@@ -1,8 +1,8 @@
-import { all } from '..'
+import { all } from '../lib'
 
 test('all', () => {
   const allGreaterThanTen = all(a => a > 10)
 
-  expect(allGreaterThanTen([-5, 20, 30])).toStrictEqual(false)
-  expect(allGreaterThanTen([20, 30, 40])).toStrictEqual(true)
+  expect(allGreaterThanTen([-5, 20, 30])).toEqual(false)
+  expect(allGreaterThanTen([20, 30, 40])).toEqual(true)
 })

@@ -11,7 +11,7 @@ describe('pick', () => {
       state: 'NY',
     }
 
-    expect(pick(['name', 'age'], data)).toStrictEqual({
+    expect(pick(['name', 'age'], data)).toEqual({
       name: 'Tom',
       age: 32,
     })
@@ -45,7 +45,7 @@ describe('pick', () => {
 
     const pickFrom = map(pick(['name', 'city']), data)
 
-    expect(pickFrom).toStrictEqual([
+    expect(pickFrom).toEqual([
       {
         name: 'Tom',
         city: 'New York',

@@ -8,8 +8,8 @@ describe('take', () => {
   const takeMost = take(arr.length - 1)
 
   test('takes n', () => {
-    expect(take4(arr)).toStrictEqual([1, 2, 3, 4])
-    expect(takeMost(arr)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8])
+    expect(take4(arr)).toEqual([1, 2, 3, 4])
+    expect(takeMost(arr)).toEqual([1, 2, 3, 4, 5, 6, 7, 8])
   })
 })
 
@@ -18,7 +18,7 @@ describe('takeRight', () => {
   const takeMost = takeRight(arr.length - 1)
 
   test('takes n from right', () => {
-    expect(take4(arr)).toStrictEqual([6, 7, 8, 9])
-    expect(takeMost(arr)).toStrictEqual([2, 3, 4, 5, 6, 7, 8, 9])
+    expect(take4(arr)).toEqual([6, 7, 8, 9])
+    expect(takeMost(arr)).toEqual([2, 3, 4, 5, 6, 7, 8, 9])
   })
 })

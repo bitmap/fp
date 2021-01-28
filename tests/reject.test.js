@@ -9,10 +9,10 @@ describe('reject', () => {
   const evens = rejectOdd([1, 2, 3, 4])
 
   test('rejects odd numbers', () => {
-    expect(odds).toStrictEqual([2, 4])
+    expect(odds).toEqual([2, 4])
   })
 
   test('rejects even numbers', () => {
-    expect(evens).toStrictEqual([1, 3])
+    expect(evens).toEqual([1, 3])
   })
 })

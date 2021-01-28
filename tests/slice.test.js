@@ -11,14 +11,14 @@ describe('slice', () => {
   const slicedC = slice(-2, arr.length)
 
   test('slices array', () => {
-    expect(slicedA(arr)).toStrictEqual([2, 3, 4, 5, 6, 7])
-    expect(slicedB(arr)).toStrictEqual([0, 1, 2, 3, 4])
-    expect(slicedC(arr)).toStrictEqual([8, 9])
+    expect(slicedA(arr)).toEqual([2, 3, 4, 5, 6, 7])
+    expect(slicedB(arr)).toEqual([0, 1, 2, 3, 4])
+    expect(slicedC(arr)).toEqual([8, 9])
   })
 
   test('equals Array.slice', () => {
-    expect(slicedA(arr)).toStrictEqual(arr.slice(2, 8))
-    expect(slicedB(arr)).toStrictEqual(arr.slice(0, -5))
-    expect(slicedC(arr)).toStrictEqual(arr.slice(-2, arr.length))
+    expect(slicedA(arr)).toEqual(arr.slice(2, 8))
+    expect(slicedB(arr)).toEqual(arr.slice(0, -5))
+    expect(slicedC(arr)).toEqual(arr.slice(-2, arr.length))
   })
 })

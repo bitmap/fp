@@ -5,10 +5,10 @@ describe('reverse', () => {
   const str = 'I am a string'
 
   test('reverses array', () => {
-    expect(reverse(arr)).toStrictEqual([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
+    expect(reverse(arr)).toEqual([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])
   })
 
   test('reverses string', () => {
-    expect(reverse(str)).toStrictEqual('gnirts a ma I')
+    expect(reverse(str)).toEqual('gnirts a ma I')
   })
 })

@@ -11,7 +11,7 @@ describe('omit', () => {
       state: 'NY',
     }
 
-    expect(omit(['name', 'age'], data)).toStrictEqual({
+    expect(omit(['name', 'age'], data)).toEqual({
       city: 'New York',
       state: 'NY',
     })
@@ -45,7 +45,7 @@ describe('omit', () => {
 
     const omitFrom = map(omit(['name', 'city']), data)
 
-    expect(omitFrom).toStrictEqual([
+    expect(omitFrom).toEqual([
       {
         age: 32,
         state: 'NY',
