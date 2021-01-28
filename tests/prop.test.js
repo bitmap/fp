@@ -7,7 +7,7 @@ describe('prop', () => {
   }
 
   test('returns prop', () => {
-    expect(prop('fruits', obj)).toStrictEqual(obj.fruits)
+    expect(prop('fruits', obj)).toEqual(obj.fruits)
   })
 
   const data = {
@@ -18,14 +18,14 @@ describe('prop', () => {
   const name = prop('name')
 
   test('returns prop value', () => {
-    expect(name(data)).toStrictEqual('Bob')
+    expect(name(data)).toEqual('Bob')
   })
 
   let rename = name(data)
   rename = 'Tom'
 
   test('no side-effects', () => {
-    expect(data.name).toStrictEqual('Bob')
-    expect(rename).toStrictEqual('Tom')
+    expect(data.name).toEqual('Bob')
+    expect(rename).toEqual('Tom')
   })
 })

@@ -17,6 +17,6 @@ describe('pluck', () => {
   ]
 
   test('returns pluck', () => {
-    expect(pluck('state', data)).toStrictEqual(['NY', 'CA', 'OR'])
+    expect(pluck('state', data)).toEqual(['NY', 'CA', 'OR'])
   })
 })

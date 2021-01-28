@@ -6,7 +6,7 @@ describe('pipe', () => {
     const f = (n: number): number => n * 2
     const h = pipe(f, g)
 
-    expect(h(20)).toStrictEqual(41)
+    expect(h(20)).toEqual(41)
   })
 
   test('pipes unary string arg', () => {
@@ -14,6 +14,6 @@ describe('pipe', () => {
     const f = (n: string): string => `${n}2`
     const h = pipe(f, g)
 
-    expect(h('0')).toStrictEqual('021')
+    expect(h('0')).toEqual('021')
   })
 })

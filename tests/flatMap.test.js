@@ -11,15 +11,15 @@ describe('flatMap', () => {
   const test3 = flatMap(n => (n < 0) ? [] : (n % 2 === 0) ? [n] : [n - 1, 1])
 
   test('flattens', () => {
-    expect(test1(a)).toStrictEqual([1, 2, 2, 4, 3, 6, 4, 8])
+    expect(test1(a)).toEqual([1, 2, 2, 4, 3, 6, 4, 8])
   })
 
   test('greater than 2 is doubled', () => {
-    expect(test2(b)).toStrictEqual(['it\'s', 'Sunny', 'in', '', 'California'])
+    expect(test2(b)).toEqual(['it\'s', 'Sunny', 'in', '', 'California'])
   })
 
   test('filter odd numbers and doubles', () => {
-    expect(test3(c)).toStrictEqual([4, 1, 4, 20, 16, 1, 18])
+    expect(test3(c)).toEqual([4, 1, 4, 20, 16, 1, 18])
   })
 
 })

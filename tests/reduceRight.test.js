@@ -7,6 +7,6 @@ const result = sum(arr)
 
 describe('reduceRight', () => {
   test('reduces array from right', () => {
-    expect(result).toStrictEqual(4950)
+    expect(result).toEqual(4950)
   })
 })

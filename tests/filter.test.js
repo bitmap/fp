@@ -9,10 +9,10 @@ describe('filter', () => {
   const evens = filterOdd([1, 2, 3, 4])
 
   test('filters even numbers', () => {
-    expect(odds).toStrictEqual([1, 3])
+    expect(odds).toEqual([1, 3])
   })
 
   test('filters odd numbers', () => {
-    expect(evens).toStrictEqual([2, 4])
+    expect(evens).toEqual([2, 4])
   })
 })

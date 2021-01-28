@@ -9,13 +9,13 @@ describe('insert', () => {
   const monthsD = insert(-3, 'Feb', months)
 
   test('inserts array', () => {
-    expect(monthsA).toStrictEqual(['Jan', 'Feb', 'March', 'April', 'June'])
-    expect(monthsB).toStrictEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June'])
-    expect(monthsC).toStrictEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June', 'Dec'])
-    expect(monthsD).toStrictEqual(['Jan', 'Feb', 'March', 'April', 'June'])
+    expect(monthsA).toEqual(['Jan', 'Feb', 'March', 'April', 'June'])
+    expect(monthsB).toEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June'])
+    expect(monthsC).toEqual(['Jan', 'Feb', 'March', 'April', 'May', 'June', 'Dec'])
+    expect(monthsD).toEqual(['Jan', 'Feb', 'March', 'April', 'June'])
   })
 
   test('no side-effects', () => {
-    expect(months).toStrictEqual(['Jan', 'March', 'April', 'June'])
+    expect(months).toEqual(['Jan', 'March', 'April', 'June'])
   })
 })

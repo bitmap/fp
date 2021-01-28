@@ -14,18 +14,18 @@ describe('filterMap', () => {
   const test4 = filterMap(isTwoOrLess, double)
 
   test('filter even numbers and doubles', () => {
-    expect(test1(a)).toStrictEqual([2, 6])
+    expect(test1(a)).toEqual([2, 6])
   })
 
   test('filter odd numbers and doubles', () => {
-    expect(test2(a)).toStrictEqual([4, 8])
+    expect(test2(a)).toEqual([4, 8])
   })
 
   test('greater than 2 is doubled', () => {
-    expect(test3(a)).toStrictEqual([6, 8])
+    expect(test3(a)).toEqual([6, 8])
   })
 
   test('less than 2 is doubled', () => {
-    expect(test4(a)).toStrictEqual([2, 4])
+    expect(test4(a)).toEqual([2, 4])
   })
 })

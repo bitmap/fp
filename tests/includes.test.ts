@@ -1,7 +1,7 @@
-import { includes } from '..'
+import { includes } from '../lib'
 
 test('includes', () => {
   const hasApple = includes('apple')
-  expect(hasApple(['kiwi', 'banana', 'apple'])).toStrictEqual(true)
-  expect(hasApple(['kiwi', 'banana', 'grape'])).toStrictEqual(false)
+  expect(hasApple(['kiwi', 'banana', 'apple'])).toEqual(true)
+  expect(hasApple(['kiwi', 'banana', 'grape'])).toEqual(false)
 })

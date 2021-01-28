@@ -8,8 +8,8 @@ describe('drop', () => {
   const dropMost = drop(arr.length - 1)
 
   test('drops n', () => {
-    expect(drop4(arr)).toStrictEqual([5, 6, 7, 8, 9])
-    expect(dropMost(arr)).toStrictEqual([9])
+    expect(drop4(arr)).toEqual([5, 6, 7, 8, 9])
+    expect(dropMost(arr)).toEqual([9])
   })
 })
 
@@ -18,19 +18,19 @@ describe('dropRight', () => {
   const dropMost = dropRight(arr.length - 1)
 
   test('drops n from right', () => {
-    expect(drop4(arr)).toStrictEqual([1, 2, 3, 4, 5])
-    expect(dropMost(arr)).toStrictEqual([1])
+    expect(drop4(arr)).toEqual([1, 2, 3, 4, 5])
+    expect(dropMost(arr)).toEqual([1])
   })
 })
 
 describe('dropFirst', () => {
   test('drops first', () => {
-    expect(dropFirst(arr)).toStrictEqual([2, 3, 4, 5, 6, 7, 8, 9])
+    expect(dropFirst(arr)).toEqual([2, 3, 4, 5, 6, 7, 8, 9])
   })
 })
 
 describe('dropLast', () => {
   test('drops last', () => {
-    expect(dropLast(arr)).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8])
+    expect(dropLast(arr)).toEqual([1, 2, 3, 4, 5, 6, 7, 8])
   })
 })

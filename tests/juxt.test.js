@@ -12,6 +12,6 @@ describe('juxt', () => {
   const getRange = juxt(min, max, avg)
 
   test('returns juxtaposition', () => {
-    expect(getRange(2, -3, 5, 9)).toStrictEqual([-3, 9, 3.25])
+    expect(getRange(2, -3, 5, 9)).toEqual([-3, 9, 3.25])
   })
 })

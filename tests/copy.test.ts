@@ -2,11 +2,11 @@ import { copy } from '../lib'
 
 describe('copy', () => {
   test('copies list', () => {
-    expect(copy([1, 2, 3, 4])).toStrictEqual([1, 2, 3, 4])
+    expect(copy([1, 2, 3, 4])).toEqual([1, 2, 3, 4])
   })
 
   test('copies object', () => {
-    expect(copy({ hello: 'world' })).toStrictEqual({ hello: 'world' })
+    expect(copy({ hello: 'world' })).toEqual({ hello: 'world' })
   })
 
   test('deep copies', () => {
