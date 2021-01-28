@@ -2,7 +2,7 @@ import { map } from '../lib'
 
 describe('map', () => {
   const arr = [1, 2, 3]
-  const double = n => n * 2
+  const double = (n: number): number => n * 2
   const doubleAll = map(double)
   const doubled = doubleAll(arr)
 
@@ -10,7 +10,7 @@ describe('map', () => {
     expect(doubled).toStrictEqual([2, 4, 6])
   })
 
-  test('has no side effects', () => {
-    expect(arr).toStrictEqual([1, 2, 3])
+  test('converts type', () => {
+    expect(map(x => `${x}!`)([1, 2, 3])).toStrictEqual(['1!', '2!', '3!'])
   })
 })
