@@ -6,5 +6,5 @@ import { curry } from './curry'
  * `any :: (a -> boolean) -> [a] -> boolean`
  */
 export const any = curry(
-  <T>(predicate: (value: T) => boolean, list: T[]): boolean => list.some(predicate),
+  (predicate: (value: any) => boolean, list: any[]): boolean => list.some(predicate),
 )

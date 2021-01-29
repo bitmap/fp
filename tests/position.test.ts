@@ -7,7 +7,7 @@ describe('position', () => {
   })
 
   test('finds index with predicate', () => {
-    expect(position(x => x > 10, [0, 1, 10, 2, 5, 4.5])).toBeUndefined()
-    expect(position(x => x > 10, [0, 5, 20, 5, 15, 45])).toEqual(2)
+    expect(position((x: number) => x > 10, [0, 1, 10, 2, 5, 4.5])).toBeUndefined()
+    expect(position((x: number) => x > 10, [0, 5, 20, 5, 15, 45])).toEqual(2)
   })
 })
