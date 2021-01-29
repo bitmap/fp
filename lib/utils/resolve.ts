@@ -1,10 +1,10 @@
-export const resolve = bool => (func, list) => {
+export const resolve = (bool: boolean) => (predicate: (value: any) => boolean, list: any[]): any[] => {
   const { length } = list
   const result = []
   let index = 0
 
   while (index < length) {
-    if (func(list[index]) === bool) {
+    if (predicate(list[index]) === bool) {
       result[result.length] = list[index]
     }
     index += 1

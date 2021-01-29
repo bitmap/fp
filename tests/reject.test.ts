@@ -1,8 +1,8 @@
 import { reject } from '../lib'
 
 describe('reject', () => {
-  const isEven = n => n % 2 === 0
-  const isOdd = n => n % 2 !== 0
+  const isEven = (n: number): boolean => n % 2 === 0
+  const isOdd = (n: number): boolean => n % 2 !== 0
   const rejectEven = reject(isOdd)
   const rejectOdd = reject(isEven)
   const odds = rejectEven([1, 2, 3, 4])

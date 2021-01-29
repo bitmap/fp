@@ -7,5 +7,5 @@ import { curry } from './curry'
  * `find :: (a -> boolean) -> [a] -> a | undefined`
  */
 export const find = curry(
-  <T>(predicate: (value: T) => boolean, list: T[]): T | undefined => list.find(predicate),
+  (predicate: (value: any) => boolean, list: any[]): any | undefined => list.find(predicate),
 )
