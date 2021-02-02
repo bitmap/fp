@@ -3,7 +3,6 @@ import { drop, dropRight, dropFirst, dropLast } from '../lib'
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 describe('drop', () => {
-
   const drop4 = drop(4)
   const dropMost = drop(arr.length - 1)
 
