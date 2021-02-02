@@ -15,7 +15,8 @@ export const indexOf = (fromRight: boolean) =>
 
     if (isFunction(predicate)) {
       if (fromRight) {
-        index = reverse(list).findIndex(predicate as ((value: T) => boolean))
+        const reversedList = reverse(list) as T[]
+        index = reversedList.findIndex(predicate as ((value: T) => boolean))
         index = index !== -1 ? (list.length - 1) - index : index
       } else {
         index = list.findIndex(predicate as ((value: T) => boolean))

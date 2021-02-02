@@ -8,5 +8,5 @@ import { reverse } from './reverse'
  * `findLast :: (a -> boolean) -> [a] -> a | undefined`
  */
 export const findLast = curry(
-  (predicate: (value: any) => boolean, list: any[]): any | undefined => reverse(list).find(predicate),
+  (predicate: (value: any) => boolean, list: any[]): any | undefined => (reverse(list) as any[]).find(predicate),
 )
