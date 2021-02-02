@@ -1,11 +1,11 @@
 import { rejectMap } from '../lib'
 
 describe('rejectMap', () => {
-  const isEven = n => n % 2 === 0
-  const isOdd = n => n % 2 !== 0
-  const isMoreThanTwo = n => n > 2
-  const isTwoOrLess = n => n <= 2
-  const double = x => x * 2
+  const isEven = (n: number): boolean => n % 2 === 0
+  const isOdd = (n: number): boolean => n % 2 !== 0
+  const isMoreThanTwo = (n: number): boolean => n > 2
+  const isTwoOrLess = (n: number): boolean => n <= 2
+  const double = (x: number): number => x * 2
   const a = [1, 2, 3, 4]
 
   const test1 = rejectMap(isOdd, double)

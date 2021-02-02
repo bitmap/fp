@@ -2,7 +2,7 @@ import { flatMap } from '../lib'
 
 describe('flatMap', () => {
   const a = [1, 2, 3, 4]
-  const test1 = flatMap(x => [x, x * 2])
+  const test1 = flatMap((x: number) => [x, x * 2])
 
   const b = ['it\'s Sunny in', '', 'California']
   const test2 = flatMap(str => str.split(' '))
