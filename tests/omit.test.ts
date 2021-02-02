@@ -1,17 +1,24 @@
 import { omit, map } from '../lib'
 
+interface User {
+  name: string
+  age?: number
+  city?: string
+  state?: string
+}
+
 describe('omit', () => {
 
   test('returns omit', () => {
 
-    const data = {
+    const data: User = {
       name: 'Tom',
       age: 32,
       city: 'New York',
       state: 'NY',
     }
 
-    expect(omit(['name', 'age'], data)).toEqual({
+    expect(omit(['name', 'age', 'donk'], data)).toEqual({
       city: 'New York',
       state: 'NY',
     })
@@ -19,7 +26,7 @@ describe('omit', () => {
 
   test('mappable', () => {
 
-    const data = [
+    const data: User[] = [
       {
         name: 'Tom',
         age: 32,
