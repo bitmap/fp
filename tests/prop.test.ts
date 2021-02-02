@@ -7,7 +7,7 @@ describe('prop', () => {
   }
 
   test('returns prop', () => {
-    expect(prop('fruits', obj)).toEqual(obj.fruits)
+    expect(prop('fruits', obj)).toEqual(['apple', 'orange', 'banana'])
   })
 
   const data = {
