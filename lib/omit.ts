@@ -1,12 +1,4 @@
-import { copy } from './copy'
+import { extract } from './utils/extract'
 import { curry } from './curry'
 
-export const omit = curry(
-  <T extends Record<string, unknown>, K extends Extract<keyof T, string>>(keys: K[], object: T): Omit<T, K> => {
-    const clone = copy(object)
-    for (const key of keys) {
-      delete clone[key]
-    }
-    return clone
-  },
-)
+export const omit = curry(extract(false))

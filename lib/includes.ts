@@ -1,7 +1,7 @@
 import { curry } from './curry'
 
 /**
- * Returns true if the item is in list. `include` args are curried.
+ * Returns true if the item is in list. `includes` args are curried.
  *
  * includes :: a -> [a] -> boolean
  */
