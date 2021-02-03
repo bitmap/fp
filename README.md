@@ -337,7 +337,7 @@ insert(1, 2, list) // -> [1, 2, 3]
 
 ## insertAll
 
-Insert itemm into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insertAll` args are curried.
+Insert items into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insertAll` args are curried.
 
 ```js
 insertAll(start, items, list)
