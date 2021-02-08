@@ -5,8 +5,9 @@ import { split } from './split'
 /**
  * Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
  *
- * reverse :: string -> string
- * reverse :: [a] -> [a]
+ * `reverse :: string -> string`
+ *
+ * `reverse :: [a] -> [a]`
  */
 export const reverse = (data: string | any[]): string | any[] => {
   const { reverse } = Array.prototype
