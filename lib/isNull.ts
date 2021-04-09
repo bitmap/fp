@@ -1,5 +1,5 @@
 /**
- * Returns true if value is null
+ * Returns true if value is `null`.
  *
  * `isNull :: a -> boolean`
  */
