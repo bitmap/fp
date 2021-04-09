@@ -1,7 +1,7 @@
 import { curry } from './curry'
 
 /**
- * Compares two items and returns true if equal
+ * Compares two items and returns true if equal. `isEqual` args are curried.
  *
  * `isEqual :: a -> b -> boolean`
  */

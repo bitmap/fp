@@ -8,8 +8,10 @@ Functional programming utilities for JavaScript.
 npm install @bitmap/fp
 ```
 
-## Utilities
 
+## Functions
+
+### Arrays
 - [reduce](#reduce)
 - [reduceRight](#reduceRight)
 - [map](#map)
@@ -40,20 +42,42 @@ npm install @bitmap/fp
 - [all](#all)
 - [find](#find)
 - [findLast](#findLast)
-- [findIndexOf](#findIndexOf)
-- [findIndexOfLast](#findIndexOfLast)
 - [includes](#includes)
-- [indexOf](#indexOf)
-- [indexOfLast](#indexOfLast)
-- [pipe](#pipe)
-- [compose](#compose)
-- [curry](#curry)
+- [excludes](#excludes)
+- [position](#position)
+- [positionLast](#positionLast)
+
+### Objects
+
 - [prop](#prop)
 - [pluck](#pluck)
 - [pick](#pick)
 - [omit](#omit)
+
+### Strings
 - [split](#split)
 - [join](#join)
+- [reverse](#reverse)
+
+### Utilities
+
+- [compose](#compose)
+- [pipe](#pipe)
+- [curry](#curry)
+- [identity](#identity)
+- [isEqual](#isEqual)
+- [isTypeOf](#isTypeOf)
+  - [isBigInt](#isTypeOf)
+  - [isBoolean](#isTypeOf)
+  - [isFunction](#isTypeOf)
+  - [isNumber](#isTypeOf)
+  - [isObject](#isTypeOf)
+  - [isString](#isTypeOf)
+  - [isSymbol](#isTypeOf)
+  - [isUndefined](#isTypeOf)
+- [isArray](#isArray)
+- [isNull](#isNull)
+
 
 ## reduce
 
@@ -63,7 +87,7 @@ Reduce values in a list according to a reducer function. `reduce` args are curri
 reduce(reducer, initialValue, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { reduce } from '@bitmap/fp'
@@ -74,6 +98,7 @@ const items = [1, 2, 3, 4]
 reduce(sum, 0, items) // -> 10
 ```
 
+
 ## reduceRight
 
 Reduce values in a list according to a reducer function in reverse order. `reduceRight` args are curried.
@@ -82,7 +107,7 @@ Reduce values in a list according to a reducer function in reverse order. `reduc
 reduceRight(reducer, initialValue, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { reduceRight } from '@bitmap/fp'
@@ -93,6 +118,7 @@ const items = [1, 2, 3, 4]
 reduceRight(sum, 0, items) // -> 10
 ```
 
+
 ## map
 
 Apply function to each items in a list, and return a new list. `map` args are curried.
@@ -101,7 +127,7 @@ Apply function to each items in a list, and return a new list. `map` args are cu
 map(mapFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { map } from '@bitmap/fp'
@@ -112,6 +138,7 @@ const doubleAll = map(double)
 doubleAll([1, 2, 3]) // -> [2, 4, 6]
 ```
 
+
 ## flat
 
 Return a flattened list.
@@ -120,7 +147,7 @@ Return a flattened list.
 flat(list, depth)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { flat } from '@bitmap/fp'
@@ -128,6 +155,7 @@ import { flat } from '@bitmap/fp'
 flat([0, [1, 2], [3, 4], [5]]) // -> [0, 1, 2, 3, 4, 5]
 flat([0, [1, 2, [3, 4, [5]]]], 3) // -> [0, 1, 2, 3, 4, 5]
 ```
+
 
 ## flatMap
 
@@ -137,7 +165,7 @@ Apply function to each items in a list, and return a flattened list. `flatMap` a
 flatMap(flatMapFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { flatMap } from '@bitmap/fp'
@@ -148,6 +176,7 @@ const indexUsers = flatMap((user, index) => [index, user])
 indexUsers(users) // -> [0, '@cabe', 1, '@bitmap']
 ```
 
+
 ## filter
 
 Filter items from a list, and return a new list. `filter` args are curried.
@@ -156,7 +185,7 @@ Filter items from a list, and return a new list. `filter` args are curried.
 filter(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { filter } from '@bitmap/fp'
@@ -167,6 +196,7 @@ const filterOdds = filter(isOdd)
 filterOdds([1, 2, 3, 4]) // -> [1, 3]
 ```
 
+
 ## filterMap
 
 Apply filter and map to a list, and return a new list. `filterMap` args are curried.
@@ -175,7 +205,7 @@ Apply filter and map to a list, and return a new list. `filterMap` args are curr
 filterMap(conditionFunction, mapFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { filterMap } from '@bitmap/fp'
@@ -187,6 +217,7 @@ const doubleOdds = filterMap(isOdd, double)
 doubleOdds([1, 2, 3, 4]) // -> [3, 6]
 ```
 
+
 ## reject
 
 Reject items from a list, and return a new list. The opposite of [filter](#filter). `reject` args are curried.
@@ -195,7 +226,7 @@ Reject items from a list, and return a new list. The opposite of [filter](#filte
 reject(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { reject } from '@bitmap/fp'
@@ -206,6 +237,7 @@ const rejectOdds = reject(isOdd)
 rejectOdds([1, 2, 3, 4]) // -> [2, 4]
 ```
 
+
 ## rejectMap
 
 Apply reject and map to a list, and return a new list. `rejectMap` args are curried.
@@ -214,7 +246,7 @@ Apply reject and map to a list, and return a new list. `rejectMap` args are curr
 rejectMap(conditionFunction, mapFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { rejectMap } from '@bitmap/fp'
@@ -226,6 +258,7 @@ const doubleEvens = rejectMap(isOdd, double)
 doubleEvens([1, 2, 3, 4]) // -> [4, 8]
 ```
 
+
 ## concat
 
 Concat `n` lists into one list.
@@ -234,7 +267,7 @@ Concat `n` lists into one list.
 concat(...lists)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { concat } from '@bitmap/fp'
@@ -245,6 +278,7 @@ const b = [4, 5, 6]
 concat(a, b) // -> [1, 2, 3, 4, 5, 6]
 ```
 
+
 ## copy
 
 Returns a new copy of the list
@@ -253,7 +287,7 @@ Returns a new copy of the list
 copy(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { copy } from '@bitmap/fp'
@@ -263,6 +297,7 @@ const list = [1, 2, 3]
 copy(list) // -> [1, 2, 3]
 ```
 
+
 ## slice
 
 Return a sliced list. `slice` args are curried.
@@ -271,7 +306,7 @@ Return a sliced list. `slice` args are curried.
 slice(start, end, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { slice } from '@bitmap/fp'
@@ -281,6 +316,7 @@ const list = [1, 2, 3, 4, 5, 6]
 slice(2, 5, list) // -> [3, 4, 5]
 ```
 
+
 ## append
 
 Appends item to the end of a list. Unlike `Array.prototype.push`, doesn't mutate target. `append` args are curried.
@@ -289,7 +325,7 @@ Appends item to the end of a list. Unlike `Array.prototype.push`, doesn't mutate
 append(item, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { append } from '@bitmap/fp'
@@ -299,6 +335,7 @@ const list = [1, 2]
 append(3, list) // -> [1, 2, 3]
 ```
 
+
 ## prepend
 
 Prepends item to the beginning of a list. Unlike `Array.prototype.unshift`, doesn't mutate target. `prepend` args are curried.
@@ -307,7 +344,7 @@ Prepends item to the beginning of a list. Unlike `Array.prototype.unshift`, does
 prepend(item, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { prepend } from '@bitmap/fp'
@@ -317,6 +354,7 @@ const list = [1, 2]
 prepend(0, list) // -> [0, 1, 2]
 ```
 
+
 ## insert
 
 Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insert` args are curried.
@@ -325,7 +363,7 @@ Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate target.
 insert(start, item, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { insert } from '@bitmap/fp'
@@ -335,6 +373,7 @@ const list = [1, 3]
 insert(1, 2, list) // -> [1, 2, 3]
 ```
 
+
 ## insertAll
 
 Insert items into a list. Unlike `Array.prototype.splice`, doesn't mutate target. `insertAll` args are curried.
@@ -343,7 +382,7 @@ Insert items into a list. Unlike `Array.prototype.splice`, doesn't mutate target
 insertAll(start, items, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { insertAll } from '@bitmap/fp'
@@ -353,6 +392,7 @@ const list = [1, 4]
 insertAll(1, [2, 3], list) // -> [1, 2, 3, 4]
 ```
 
+
 ## reverse
 
 Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
@@ -361,7 +401,7 @@ Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't m
 reverse(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { reverse } from '@bitmap/fp'
@@ -375,6 +415,7 @@ const string = 'functional'
 reverse(string) // -> 'lanoitcnuf'
 ```
 
+
 ## sort
 
 Sorts items in a list according to comparator function. Unlike `Array.prototype.sort`, doesn't mutate target.
@@ -383,7 +424,7 @@ Sorts items in a list according to comparator function. Unlike `Array.prototype.
 sort(compareFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { sort } from '@bitmap/fp'
@@ -394,6 +435,7 @@ const list = [40, 21, 32, 17]
 sort(sortAscending, list) // -> [17, 21, 32, 40]
 ```
 
+
 ## first
 
 Returns first item in a list.
@@ -402,7 +444,7 @@ Returns first item in a list.
 first(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { first } from '@bitmap/fp'
@@ -412,6 +454,7 @@ const list = [1, 2, 3, 4]
 first(list) // -> 1
 ```
 
+
 ## last
 
 Returns last item in a list.
@@ -420,7 +463,7 @@ Returns last item in a list.
 last(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { last } from '@bitmap/fp'
@@ -430,6 +473,7 @@ const list = [1, 2, 3, 4]
 last(list) // -> 4
 ```
 
+
 ## drop
 
 Drops `n` items from left. `drop` args are curried.
@@ -438,7 +482,7 @@ Drops `n` items from left. `drop` args are curried.
 drop(n, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { drop } from '@bitmap/fp'
@@ -448,6 +492,7 @@ const list = [1, 2, 3, 4]
 drop(2, list) // -> [3, 4]
 ```
 
+
 ## dropRight
 
 Drops `n` items from right. `dropRight` args are curried.
@@ -456,7 +501,7 @@ Drops `n` items from right. `dropRight` args are curried.
 dropRight(n, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { dropRight } from '@bitmap/fp'
@@ -466,6 +511,7 @@ const list = [1, 2, 3, 4]
 dropRight(2, list) // -> [1, 2]
 ```
 
+
 ## dropFirst
 
 Drops first item from list.
@@ -474,7 +520,7 @@ Drops first item from list.
 dropFirst(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { dropFirst } from '@bitmap/fp'
@@ -484,6 +530,7 @@ const list = [1, 2, 3, 4]
 dropFirst(2, list) // -> [2, 3, 4]
 ```
 
+
 ## dropLast
 
 Drops last item from list.
@@ -492,7 +539,7 @@ Drops last item from list.
 dropLast(list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { dropLast } from '@bitmap/fp'
@@ -502,6 +549,7 @@ const list = [1, 2, 3, 4]
 dropLast(2, list) // -> [1, 2, 3]
 ```
 
+
 ## take
 
 Takes `n` items from left. `take` args are curried.
@@ -510,7 +558,7 @@ Takes `n` items from left. `take` args are curried.
 take(n, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { take } from '@bitmap/fp'
@@ -520,6 +568,7 @@ const list = [1, 2, 3, 4]
 take(2, list) // -> [1, 2]
 ```
 
+
 ## takeRight
 
 Takes `n` items from right. `takeRight` args are curried.
@@ -528,7 +577,7 @@ Takes `n` items from right. `takeRight` args are curried.
 takeRight(n, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { takeRight } from '@bitmap/fp'
@@ -538,6 +587,7 @@ const list = [1, 2, 3, 4]
 takeRight(2, list) // -> [3, 4]
 ```
 
+
 ## any
 
 Returns true if any item in list meet the condition. `any` args are curried.
@@ -546,7 +596,7 @@ Returns true if any item in list meet the condition. `any` args are curried.
 any(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { any } from '@bitmap/fp'
@@ -558,6 +608,7 @@ anyGreaterThanTen([3, 5, 7, 9]) // -> false
 anyGreaterThanTen([5, 20, 100]) // -> true
 ```
 
+
 ## all
 
 Returns true if all item in list meet the condition. `all` args are curried.
@@ -566,7 +617,7 @@ Returns true if all item in list meet the condition. `all` args are curried.
 all(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { all } from '@bitmap/fp'
@@ -579,6 +630,7 @@ allGreaterThanTen([5, 20, 100]) // -> false
 allGreaterThanTen([50, 15, 99]) // -> true
 ```
 
+
 ## find
 
 Returns first item from list that meets predicate. `find` args are curried.
@@ -587,7 +639,7 @@ Returns first item from list that meets predicate. `find` args are curried.
 find(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { find } from '@bitmap/fp'
@@ -599,6 +651,7 @@ findGreaterThanTen([3, 5, 7, 9]) // -> undefined
 findGreaterThanTen([5, 20, 100]) // -> 20
 ```
 
+
 ## findLast
 
 Returns last item from list that meets predicate. `findLast` args are curried.
@@ -607,7 +660,7 @@ Returns last item from list that meets predicate. `findLast` args are curried.
 findLast(conditionFunction, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { findLast } from '@bitmap/fp'
@@ -619,45 +672,6 @@ findLastGreaterThanTen([3, 5, 7, 9]) // -> undefined
 findLastGreaterThanTen([5, 20, 100]) // -> 100
 ```
 
-## findIndexOf
-
-Returns index of first item from list that meets predicate. `findIndexOf` args are curried.
-
-```js
-findIndexOf(conditionFunction, list)
-```
-
-#### Example
-
-```js
-import { findIndexOf } from '@bitmap/fp'
-
-const greaterThanTen = x => x > 10
-const findIndexOfGreaterThanTen = findIndexOf(greaterThanTen)
-
-findIndexOfGreaterThanTen([3, 5, 7, 9]) // -> -1
-findIndexOfGreaterThanTen([5, 20, 100]) // -> 1
-```
-
-## findIndexOfLast
-
-Returns index of last item from list that meets predicate. `findIndexOfLast` args are curried.
-
-```js
-findIndexOfLast(conditionFunction, list)
-```
-
-#### Example
-
-```js
-import { findIndexOfLast } from '@bitmap/fp'
-
-const greaterThanTen = x => x > 10
-const findIndexOfLastGreaterThanTen = findIndexOfLast(greaterThanTen)
-
-findIndexOfLastGreaterThanTen([3, 5, 7, 9]) // -> -1
-findIndexOfLastGreaterThanTen([5, 20, 100]) // -> 2
-```
 
 ## includes
 
@@ -667,7 +681,7 @@ Returns true if item is in the list. `includes` args are curried.
 includes(value, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { includes } from '@bitmap/fp'
@@ -678,103 +692,72 @@ hasApple(['orange', 'banana', 'pear']) // -> false
 hasApple(['kiwi', 'apple', 'coconut']) // -> true
 ```
 
-## indexOf
 
-Returns first index of item in the list. `indexOf` args are curried.
+## excludes
+
+Returns true if item is not in the list. `excludes` args are curried.
 
 ```js
-indexOf(value, list)
+excludes(value, list)
 ```
 
-#### Example
+__Example__
 
 ```js
-import { indexOf } from '@bitmap/fp'
+import { excludes } from '@bitmap/fp'
 
-const firstAppleIndex = indexOf('apple')
+const hasApple = excludes('apple')
+
+hasApple(['orange', 'banana', 'pear']) // -> true
+hasApple(['kiwi', 'apple', 'coconut']) // -> false
+```
+
+
+## position
+
+Return index of first found item in list. If arg is a predicate function,
+returns index of the first item in a list that meets the condition. If no item
+meets the criteria, it returns -1. `position` args are curried.
+
+```js
+position(value, list)
+position(predicate, list)
+```
+
+__Example__
+
+```js
+import { position } from '@bitmap/fp'
+
+const firstAppleIndex = position('apple')
 
 firstAppleIndex(['orange', 'banana', 'pear', 'lemon']) // -> -1
 firstAppleIndex(['kiwi', 'apple', 'coconut', 'apple']) // -> 1
 ```
 
-## indexOfLast
 
-Returns last index of item in the list. `indexOfLast` args are curried.
+## positionLast
+
+Return index of last found item in list. If arg is a predicate function, returns
+index of the last item in a list that meets the condition. If no item meets the
+criteria, it returns -1. `positionLast` args are curried.
 
 ```js
-indexOfLast(value, list)
+positionLast(value, list)
+positionLast(predicate, list)
 ```
 
-#### Example
+__Example__
 
 ```js
-import { indexOfLast } from '@bitmap/fp'
+import { positionLast } from '@bitmap/fp'
 
-const lastAppleIndex = indexOfLast('apple')
+const lastAppleIndex = positionLast('apple')
 
 lastAppleIndex(['orange', 'banana', 'pear', 'lemon']) // -> -1
 lastAppleIndex(['kiwi', 'apple', 'coconut', 'apple']) // -> 3
 ```
 
-## pipe
-
-Compose functions from left to right.
-
-```js
-pipe(...functions)(value)
-```
-
-#### Example
-
-```js
-import { pipe } from '@bitmap/fp'
-
-const addOne = (n) => n + 1
-const double = (n) => n * 2
-
-const doubleThenAddOne = pipe(double, addOne)
-
-doubleThenAddOne(20) // 41
-```
-
-## compose
-
-Compose functions from right to left.
-
-```js
-compose(...functions)(value)
-```
-
-#### Example
-
-```js
-import { compose } from '@bitmap/fp'
-
-const addOne = (n) => n + 1
-const double = (n) => n * 2
-
-const addOneThenDouble = compose(double, addOne)
-
-addOneThenDouble(20) // 42
-```
-
-## curry
-
-Curry a function to allow it to be called partially.
-
-```js
-curry(function)
-```
-
-#### Example
-
-```js
-import { curry } from '@bitmap/fp'
-
-const sum = curry((a, b, c) => a + b + c)
-
-sum(1)(2)(3) // -> 6
-```
 
 ## prop
 
@@ -784,7 +767,7 @@ Returns the value of `key` in object. `prop` args are curried.
 prop(key, object)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { prop } from '@bitmap/fp'
@@ -798,6 +781,7 @@ const data = {
 prop('username', data) // -> 'bitmap'
 ```
 
+
 ## pluck
 
 Returns [map](#map) of `key` values from a list of objects. `pluck` args are curried.
@@ -806,7 +790,7 @@ Returns [map](#map) of `key` values from a list of objects. `pluck` args are cur
 pluck(key, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { pluck } from '@bitmap/fp'
@@ -829,6 +813,7 @@ const data = [
 pluck('state', data) // -> ['NY', 'CA', 'OR']
 ```
 
+
 ## pick
 
 Returns copy of object with supplied `keys` and all other properties omitted. `pick` args are curried.
@@ -837,7 +822,7 @@ Returns copy of object with supplied `keys` and all other properties omitted. `p
 pick(keys, object)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { pick } from '@bitmap/fp'
@@ -853,6 +838,7 @@ const data = {
 pick(['name', 'position'], data) // -> { name: 'Cabe', position: 'Developer' }
 ```
 
+
 ## omit
 
 Returns copy of object with supplied `keys` omitted. opposite of [pick](#pick). `omit` args are curried.
@@ -861,7 +847,7 @@ Returns copy of object with supplied `keys` omitted. opposite of [pick](#pick). 
 omit(keys, object)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { omit } from '@bitmap/fp'
@@ -886,13 +872,14 @@ Splits a string by delimiter into a list. `split` args are curried.
 split(delimiter, string)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { split } from '@bitmap/fp'
 
 split(':', 'name:Cabe') // -> ['name', 'Cabe']
 ```
+
 
 ## join
 
@@ -902,10 +889,170 @@ Joins a list into a string, seperating each item by specified delimiter. `join` 
 join(delimiter, list)
 ```
 
-#### Example
+__Example__
 
 ```js
 import { join } from '@bitmap/fp'
 
 join('|', [1, 2, 3, 4]) // -> '1|2|3|4'
+```
+
+
+## compose
+
+Compose functions from right to left.
+
+```js
+compose(...functions)(value)
+```
+
+__Example__
+
+```js
+import { compose } from '@bitmap/fp'
+
+const addOne = (n) => n + 1
+const double = (n) => n * 2
+
+const addOneThenDouble = compose(double, addOne)
+
+addOneThenDouble(20) // 42
+```
+
+
+## pipe
+
+Compose functions from left to right.
+
+```js
+pipe(...functions)(value)
+```
+
+__Example__
+
+```js
+import { pipe } from '@bitmap/fp'
+
+const addOne = (n) => n + 1
+const double = (n) => n * 2
+
+const doubleThenAddOne = pipe(double, addOne)
+
+doubleThenAddOne(20) // 41
+```
+
+
+## curry
+
+Curry a function to allow it to be called partially.
+
+```js
+curry(function)
+```
+
+__Example__
+
+```js
+import { curry } from '@bitmap/fp'
+
+const sum = curry((a, b, c) => a + b + c)
+
+sum(1)(2)(3) // -> 6
+```
+
+
+## identity
+
+Pass input as output.
+
+```js
+idendity(value)
+```
+
+__Example__
+
+```js
+import { idenity } from '@bitmap/fp'
+
+const id = idenity('hello, world') // -> 'hello, world'
+```
+
+
+## isEqual
+
+Compares two items and returns true if equal. `isEqual` args are curried.
+
+```js
+isEqual(a, b)
+```
+
+__Example__
+
+```js
+import { isEqual } from '@bitmap/fp'
+
+isEqual(2, 2) // -> true
+isEqual(2, 3) // -> false
+```
+
+
+## isTypeOf
+
+Evaluate the returned string from an operand.
+
+> Note: Additional helper functions `isUndefined`, `isFunction`, `isBoolean`, `isString`, `isNumber`, `isBigInt`, `isSymbol`, and `isObject` are also exported for convenience.
+
+```js
+isTypeOf('undefined' | 'function' | 'boolean' | 'string' | 'number' | 'bigint' | 'symbol' | 'object', value)
+```
+
+__Example__
+
+```js
+import { isTypeOf } from '@bitmap/fp'
+
+isTypeOf('number', 2) // -> true
+isTypeOf('object', []) // -> true
+
+```
+
+
+## isArray
+
+Returns true if value is of the `Array` class.
+
+```js
+isArray(value)
+```
+
+__Example__
+
+```js
+import { isArray } from '@bitmap/fp'
+
+isArray([1, 2, 3]) // -> true
+isArray({ length: 3, 0: 1, 1: 2, 2: 3 }) // -> false
+
+```
+
+
+## isNull
+
+Returns true if value is `null`
+
+```js
+isNull(value)
+```
+
+__Example__
+
+```js
+import { isNull } from '@bitmap/fp'
+
+let value = null
+isNull(value) // -> true
+
+value = 'hello, world'
+isNull(value) // -> false
+
 ```
