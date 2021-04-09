@@ -11,6 +11,9 @@ Initial conversion to TypeScript
 
 ### Added
 
+- position
+- positionLast
+- excludes
 - isUndefined
 - isNull
 - isObject
@@ -19,13 +22,17 @@ Initial conversion to TypeScript
 - isSymbol
 - isBigInt
 
+### Removed
+- findIndexOf (see below)
+- findIndexOfLast (see below)
+
 ### Changed
 
 - renamed `indexOf` -> `position`
 - renamed `indexOfLast` -> `positionLast`
 - consolidated `findIndexOf` and `findIndexOfLast` into `position` and
   `positionLast` by allowing first arg to be predicate
-- consolidated `pipe` and `compose` into `flow` utility
+- Internally consolidated `pipe` and `compose` into `flow` utility
 - Refactored `omit`
 
 ## [0.8.0]
