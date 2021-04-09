@@ -8,10 +8,9 @@ Functional programming utilities for JavaScript.
 npm install @bitmap/fp
 ```
 
-
 ## Functions
 
-### Arrays
+__Arrays__
 - [reduce](#reduce)
 - [reduceRight](#reduceRight)
 - [map](#map)
@@ -47,20 +46,18 @@ npm install @bitmap/fp
 - [position](#position)
 - [positionLast](#positionLast)
 
-### Objects
-
+__Objects__
 - [prop](#prop)
 - [pluck](#pluck)
 - [pick](#pick)
 - [omit](#omit)
 
-### Strings
+__Strings__
 - [split](#split)
 - [join](#join)
 - [reverse](#reverse)
 
-### Utilities
-
+__Utilities__
 - [compose](#compose)
 - [pipe](#pipe)
 - [curry](#curry)
