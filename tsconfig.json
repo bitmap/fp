@@ -11,6 +11,7 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
+    "downlevelIteration": true,
     "lib": [
       "es2020"
     ],
