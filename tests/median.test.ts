@@ -1,6 +1,6 @@
 import { median } from '../lib'
 
-describe('mean', () => {
+describe('median', () => {
   test('finds median', () => {
     expect(median(15, 30, 15, 20, 1.5, 9, -12)).toEqual(15)
   })
