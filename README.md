@@ -56,6 +56,23 @@ __Strings__
 - [split](#split)
 - [join](#join)
 - [reverse](#reverse)
+- [trim](#trim)
+
+__Math__
+- [add](#add)
+- [sum](#sum)
+- [multiply](#multiply)
+- [product](#product)
+- [subtract](#subtract)
+- [subtractBy](#subtractBy)
+- [divide](#divide)
+- [divideBy](#divideBy)
+- [clamp](#clamp)
+- [mean](#mean)
+- [median](#median)
+- [mode](#mode)
+- [remainder](#remainder)
+- [modulo](#modulo)
 
 __Utilities__
 - [compose](#compose)
@@ -892,6 +909,278 @@ __Example__
 import { join } from '@bitmap/fp'
 
 join('|', [1, 2, 3, 4]) // -> '1|2|3|4'
+
+```
+
+
+## trim
+
+Trims whitespace from both ends of a string.
+
+```js
+trim(string)
+```
+
+__Example__
+
+```js
+import { trim } from '@bitmap/fp'
+
+trim('    hello, world    ') // -> hello, world
+```
+
+## add
+
+Add two numbers together. `add` args are curried.
+
+```js
+add(a, b)
+```
+
+__Example__
+
+```js
+import { add } from '@bitmap/fp'
+
+add(1, 1) // -> 2
+
+const add5 = add(5)
+const nine = add5(4) // -> 9
+```
+
+## sum
+
+Returns sum of all arguments.
+
+```js
+sum(a, b, c, ...)
+```
+
+__Example__
+
+```js
+import { sum } from '@bitmap/fp'
+
+sum(1, 2, 3, 4) // -> 10
+
+const values = [17, 18, 11, -4]
+
+sum(...values) // -> 42
+```
+
+## multiply
+
+Multiples two numbers. `multiply` args are curried.
+
+```js
+multiply(a, b)
+```
+
+__Example__
+
+```js
+import { multiply } from '@bitmap/fp'
+
+multiply(12, 5) // -> 60
+
+const double = multiply(2)
+const triple = multiply(3)
+double(10) // -> 20
+triple(double(10)) // -> 60
+```
+
+## product
+
+Returns product of all arguments.
+
+```js
+product(a, b, c, ...)
+```
+
+__Example__
+
+```js
+import { product } from '@bitmap/fp'
+
+product(1, 2, 3, 4) // -> 24
+
+const values = [17, 18, 11, -4]
+
+product(...values) // -> -13464
+```
+
+## subtract
+
+Subracts second value from first. `subtract` args are curried.
+
+```js
+subtract(a, b)
+```
+
+__Example__
+
+```js
+import { subtract } from '@bitmap/fp'
+
+subtract(8, 5) // -> 3
+```
+
+## subtractBy
+
+Subracts first value from second. `subtractBy` args are curried.
+
+```js
+subtractBy(a, b)
+```
+
+__Example__
+
+```js
+import { subtractBy } from '@bitmap/fp'
+
+const minus5 = subtractBy(5)
+const value = minus5(10) // -> 5
+```
+
+## divide
+
+Divides first value by second value. `divide` args are curried.
+
+```js
+divide(a, b)
+```
+
+__Example__
+
+```js
+import { divide } from '@bitmap/fp'
+
+divide(12, 3) // -> 4
+```
+
+## divideBy
+
+Divides second value by first value. `divideBy` args are curried.
+
+```js
+divideBy(a, b)
+```
+
+__Example__
+
+```js
+import { divideBy } from '@bitmap/fp'
+
+const half = divideBy(2)
+const value = half(10) // -> 5
+```
+
+
+## clamp
+
+Clips value in mix/max range. `clamp` args are curried.
+
+```js
+clamp(min, max, value)
+```
+
+__Example__
+
+```js
+import { clamp } from '@bitmap/fp'
+
+const percent = clamp(0, 1)
+percent(-1) // -> 0
+percent(0.5) // -> 0.5
+percent(1.5) // -> 1
+```
+
+
+## mean
+
+Returns mean (average) of all arguments.
+
+```js
+mean(a, b, c, ...)
+```
+
+__Example__
+
+```js
+import { mean } from '@bitmap/fp'
+
+mean(6, 11, 7) // -> 8
+```
+
+
+## median
+
+Returns median of all arguments.
+
+```js
+median(a, b, c, ...)
+```
+
+__Example__
+
+```js
+import { median } from '@bitmap/fp'
+
+median(3, 5, 7) // -> 5
+median(19, 21, 23, 25) // -> 22
+```
+
+
+## mode
+
+Returns mode (most frequent occuring value) of all arguments.
+
+```js
+mode(a, b, c, ...)
+```
+
+__Example__
+
+```js
+import { mode } from '@bitmap/fp'
+
+mode(3, 1, 2, 1, 3, 2, 1, 1, 2) // -> 1
+```
+
+
+## remainder
+
+Returns remainder of two operands. `remainder` args are curried.
+
+```js
+remainder(a, n)
+```
+
+__Example__
+
+```js
+import { remainder } from '@bitmap/fp'
+
+remainder(6, 5) // -> 1
+```
+
+
+## modulo
+
+Returns modulo of two operands. Note that this is different than the remainder
+(`%`) operator is JavaScript, and behaves like the mathmatical definition of
+modulo or the `%` operator in Python. `modulo` args are curried.
+
+```js
+modulo(a, n)
+```
+
+__Example__
+
+```js
+import { modulo } from '@bitmap/fp'
+
+modulo(5, 2) // -> 1
 ```
 
 

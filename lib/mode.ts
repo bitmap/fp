@@ -1,5 +1,5 @@
 /**
- * Returns mode (most frequent occurance) of all arguments.
+ * Returns mode (most frequent occuring value) of all arguments.
  *
  * `mode :: [number] -> number
  */
