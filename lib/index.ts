@@ -1,3 +1,4 @@
+export { add } from './add'
 export { all } from './all'
 export { any } from './any'
 export { append } from './append'
