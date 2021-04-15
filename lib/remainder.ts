@@ -1,8 +1,7 @@
 import { curry } from './curry'
 
 /**
- * Returns remainder of two operands. `remainder` args are
- * curried.
+ * Returns remainder of two operands. `remainder` args are curried.
  *
  * `remainder :: number -> number -> number
  */
