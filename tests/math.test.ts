@@ -1,4 +1,4 @@
-import { add, subtract, subtractBy, multiply, divide, divideBy } from '../lib'
+import { add, subtract, subtractBy, multiply, divide, divideBy, remainder, modulo } from '../lib'
 
 describe('math', () => {
   test('add', () => {
@@ -40,7 +40,6 @@ describe('math', () => {
     const reciprocal = divide(1)
     expect(reciprocal(4)).toEqual(0.25)
     expect(reciprocal(0.5)).toEqual(2)
-
   })
 
   test('divideBy', () => {
@@ -50,6 +49,15 @@ describe('math', () => {
     const half = divideBy(2)
     expect(half(10)).toEqual(5)
     expect(toEm(18)).toEqual(1.125)
+  })
 
+  test('remainder', () => {
+    expect(remainder(4, 2)).toEqual(0)
+    expect(remainder(-3, 4)).toEqual(-3)
+  })
+
+  test('modulo', () => {
+    expect(modulo(4, 2)).toEqual(0)
+    expect(modulo(-3, 4)).toEqual(1)
   })
 })
