@@ -541,7 +541,7 @@ import { dropFirst } from '@bitmap/fp'
 
 const list = [1, 2, 3, 4]
 
-dropFirst(2, list) // -> [2, 3, 4]
+dropFirst(list) // -> [2, 3, 4]
 ```
 
 
@@ -560,7 +560,7 @@ import { dropLast } from '@bitmap/fp'
 
 const list = [1, 2, 3, 4]
 
-dropLast(2, list) // -> [1, 2, 3]
+dropLast(list) // -> [1, 2, 3]
 ```
 
 
