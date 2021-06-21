@@ -1,14 +1,14 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 type Type =
-  | 'undefined'
-  | 'function'
-  | 'boolean'
-  | 'string'
-  | 'number'
-  | 'bigint'
-  | 'symbol'
-  | 'object'
+  | "undefined"
+  | "function"
+  | "boolean"
+  | "string"
+  | "number"
+  | "bigint"
+  | "symbol"
+  | "object"
 
 
 /**
@@ -18,4 +18,4 @@ type Type =
  */
 export const isTypeOf = curry(
   <T>(type: Type, operand: T): operand is T => typeof operand === type,
-)
+);

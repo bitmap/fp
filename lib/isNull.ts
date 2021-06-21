@@ -3,4 +3,4 @@
  *
  * `isNull :: a -> boolean`
  */
-export const isNull = (data: unknown): data is null => data === null
+export const isNull = (data: unknown): data is null => data === null;

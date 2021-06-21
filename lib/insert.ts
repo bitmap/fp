@@ -1,5 +1,5 @@
-import { copy } from './copy'
-import { curry } from './curry'
+import { copy } from "./copy";
+import { curry } from "./curry";
 
 /**
  * Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate
@@ -8,9 +8,9 @@ import { curry } from './curry'
  * `insert :: number -> a -> [a] -> [a]`
  */
 export const insert = curry(
-  <T>(start: number, item: T, list: T[]): T[] => {
-    const newList = copy(list)
-    newList.splice(start, 0, item)
-    return newList
+  <T>(start: number, item: T, list: Array<T>): Array<T> => {
+    const newList = copy(list);
+    newList.splice(start, 0, item);
+    return newList;
   },
-)
+);

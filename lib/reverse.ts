@@ -1,6 +1,6 @@
-import { isString } from './isString'
-import { join } from './join'
-import { split } from './split'
+import { isString } from "./isString";
+import { join } from "./join";
+import { split } from "./split";
 
 /**
  * Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't mutate target.
@@ -9,13 +9,13 @@ import { split } from './split'
  *
  * `reverse :: [a] -> [a]`
  */
-export const reverse = (data: string | any[]): string | any[] => {
-  const { reverse } = Array.prototype
-  const delimiter = ''
+export const reverse = <T>(data: string | Array<T>): string | Array<T> => {
+  const { reverse } = Array.prototype;
+  const delimiter = "";
 
   if (isString(data)) {
-    return join(delimiter, reverse.call(split(delimiter, data as string)))
+    return join(delimiter, reverse.call(split(delimiter, data as string)));
   }
 
-  return reverse.call([...data])
-}
+  return reverse.call([...data]);
+};

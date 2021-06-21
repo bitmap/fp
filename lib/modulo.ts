@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns modulo of two operands. Note that this is different than the
@@ -8,4 +8,4 @@ import { curry } from './curry'
  *
  * `modulo :: number -> number -> number
  */
-export const modulo = curry((a: number, n: number): number => ((a % n) + n) % n)
+export const modulo = curry((a: number, n: number): number => ((a % n) + n) % n);

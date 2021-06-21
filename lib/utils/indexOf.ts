@@ -1,6 +1,6 @@
-import { isFunction } from '../isFunction'
-import { reverse } from '../reverse'
-import { undefinedIfNegativeOne } from './undefinedIfNegativeOne'
+import { isFunction } from "../isFunction";
+import { reverse } from "../reverse";
+import { undefinedIfNegativeOne } from "./undefinedIfNegativeOne";
 
 /**
  * Utility to scaffold position and positionLast. Returns a curried function
@@ -10,21 +10,21 @@ import { undefinedIfNegativeOne } from './undefinedIfNegativeOne'
  * `indexOf :: boolean -> a | (a -> boolean) -> [a] -> number | undefined`
  */
 export const indexOf = (fromRight: boolean) =>
-  <T>(predicate: T | ((value: T) => boolean), list: T[]): number | undefined => {
-    let index = -1
+  <T>(predicate: T | ((value: T) => boolean), list: Array<T>): number | undefined => {
+    let index = -1;
 
     if (isFunction(predicate)) {
       if (fromRight) {
-        const reversedList = reverse(list) as T[]
-        index = reversedList.findIndex(predicate as ((value: T) => boolean))
-        index = index !== -1 ? (list.length - 1) - index : index
+        const reversedList = reverse(list) as Array<T>;
+        index = reversedList.findIndex(predicate as ((value: T) => boolean));
+        index = index !== -1 ? (list.length - 1) - index : index;
       } else {
-        index = list.findIndex(predicate as ((value: T) => boolean))
+        index = list.findIndex(predicate as ((value: T) => boolean));
       }
     } else {
-      const searchFn = fromRight ? 'lastIndexOf' : 'indexOf'
-      index = list[searchFn](predicate as T)
+      const searchFn = fromRight ? "lastIndexOf" : "indexOf";
+      index = list[searchFn](predicate as T);
     }
 
-    return undefinedIfNegativeOne(index)
-  }
+    return undefinedIfNegativeOne(index);
+  };

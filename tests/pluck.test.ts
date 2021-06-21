@@ -1,22 +1,22 @@
-import { pluck } from '../lib'
+import { pluck } from "../lib";
 
-describe('pluck', () => {
+describe("pluck", () => {
   const data = [
     {
-      city: 'New York',
-      state: 'NY',
+      city: "New York",
+      state: "NY",
     },
     {
-      city: 'San Francisco',
-      state: 'CA',
+      city: "San Francisco",
+      state: "CA",
     },
     {
-      city: 'Portland',
-      state: 'OR',
+      city: "Portland",
+      state: "OR",
     },
-  ]
+  ];
 
-  test('returns pluck', () => {
-    expect(pluck('state', data)).toEqual(['NY', 'CA', 'OR'])
-  })
-})
+  test("returns pluck", () => {
+    expect(pluck("state", data)).toEqual(["NY", "CA", "OR"]);
+  });
+});

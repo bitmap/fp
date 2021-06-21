@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns first item in a list that meets the condition. If no item meets the
@@ -7,5 +7,5 @@ import { curry } from './curry'
  * `find :: (a -> boolean) -> [a] -> a | undefined`
  */
 export const find = curry(
-  (predicate: (value: any) => boolean, list: any[]): any | undefined => list.find(predicate),
-)
+  <T>(predicate: (value: T) => boolean, list: Array<T>): T | undefined => list.find(predicate),
+);

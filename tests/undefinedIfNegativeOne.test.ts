@@ -1,10 +1,10 @@
-import { undefinedIfNegativeOne } from '../lib/utils/undefinedIfNegativeOne'
+import { undefinedIfNegativeOne } from "../lib/utils/undefinedIfNegativeOne";
 
-describe('undefinedIfNegativeOne', () => {
-  test('returns undefined', () => {
-    expect(undefinedIfNegativeOne(-1)).toBeUndefined()
-  })
-  test('returns number', () => {
-    expect(undefinedIfNegativeOne(100)).toEqual(100)
-  })
-})
+describe("undefinedIfNegativeOne", () => {
+  test("returns undefined", () => {
+    expect(undefinedIfNegativeOne(-1)).toBeUndefined();
+  });
+  test("returns number", () => {
+    expect(undefinedIfNegativeOne(100)).toEqual(100);
+  });
+});

@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns the value of `key` in object. `prop` args are curried.
@@ -8,6 +8,6 @@ import { curry } from './curry'
 export const prop = curry(
   <P extends string, V>(
     key: P,
-    object: { [p in P]: V } & { [key: string]: any }): V =>
+    object: { [p in P]: V } & { [key: string]: unknown }): V =>
     object[key],
-)
+);

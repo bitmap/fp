@@ -1,5 +1,5 @@
-import { copy } from './copy'
-import { curry } from './curry'
+import { copy } from "./copy";
+import { curry } from "./curry";
 
 /**
  * Prepends an item to the beginning of a list. `prepend` args are curried.
@@ -7,7 +7,7 @@ import { curry } from './curry'
  * `prepend :: a -> [b] -> [a, b]`
  */
 export const prepend = curry((item, list) => {
-  const newList = copy(list)
-  newList.unshift(item)
-  return newList
-})
+  const newList = copy(list);
+  newList.unshift(item);
+  return newList;
+});

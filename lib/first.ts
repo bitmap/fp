@@ -3,4 +3,4 @@
  *
  * `first :: [a] -> a`
  */
-export const first = <T>(list: T[]): T => list[0]
+export const first = <T>(list: Array<T>): T => list[0];

@@ -1,8 +1,8 @@
-import { any } from '../lib'
+import { any } from "../lib";
 
-test('any', () => {
-  const anyGreaterThanTen = any(a => a > 10)
+test("any", () => {
+  const anyGreaterThanTen = any((a) => a > 10);
 
-  expect(anyGreaterThanTen([-25, 5, 10])).toEqual(false)
-  expect(anyGreaterThanTen([10, 20, 30])).toEqual(true)
-})
+  expect(anyGreaterThanTen([-25, 5, 10])).toEqual(false);
+  expect(anyGreaterThanTen([10, 20, 30])).toEqual(true);
+});

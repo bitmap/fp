@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Drops `n` items from the end of a list. `dropRight` args are curried.
@@ -6,5 +6,5 @@ import { curry } from './curry'
  * `dropRight :: number -> [a] -> [a]`
  */
 export const dropRight = curry(
-  <T>(n: number, list: T[]): T[] => list.slice(0, -n),
-)
+  <T>(n: number, list: Array<T>): Array<T> => list.slice(0, -n),
+);

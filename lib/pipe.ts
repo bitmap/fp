@@ -1,4 +1,4 @@
-import { flow } from './utils/flow'
+import { flow } from "./utils/flow";
 
 /**
  * Compose unary function output from left to right.
@@ -7,4 +7,4 @@ import { flow } from './utils/flow'
  *
  * `pipe :: [(a -> b)] -> a -> b`
  */
-export const pipe = flow(false)
+export const pipe = flow(false);

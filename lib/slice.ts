@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Return a sliced list. `slice` args are curried.
@@ -6,5 +6,5 @@ import { curry } from './curry'
  * `slice :: number -> number -> [a] -> [a]`
  */
 export const slice = curry(
-  <T>(start: number, end: number, list: T[]): T[] => list.slice(start, end),
-)
+  <T>(start: number, end: number, list: Array<T>): Array<T> => list.slice(start, end),
+);

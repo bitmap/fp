@@ -1,5 +1,5 @@
-import { indexOf } from './utils/indexOf'
-import { curry } from './curry'
+import { indexOf } from "./utils/indexOf";
+import { curry } from "./curry";
 
 /**
  * Return index of first found item in list. If arg is a predicate function,
@@ -8,4 +8,4 @@ import { curry } from './curry'
  *
  * `position :: a | (a -> boolean) -> [a] -> number | undefined`
  */
-export const position = curry(indexOf(false))
+export const position = curry(indexOf(false));

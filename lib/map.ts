@@ -1,18 +1,18 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
-type Mapper<T, U> = (fn: (value: T) => U, list: T[]) => U[];
+type Mapper<T, U> = (fn: (value: T) => U, list: Array<T>) => Array<U>;
 
 const mapper: Mapper<any, any> = (fn, list) => {
-  const { length } = list
-  const result = Array(length)
-  let index = 0
+  const { length } = list;
+  const result = Array(length);
+  let index = 0;
 
   while (index < length) {
-    result[index] = fn(list[index])
-    index += 1
+    result[index] = fn(list[index]);
+    index += 1;
   }
-  return result
-}
+  return result;
+};
 
 /**
  * Apply function to each items in a list, and return a new list. `map` args are
@@ -20,4 +20,4 @@ const mapper: Mapper<any, any> = (fn, list) => {
  *
  * `map :: (a -> b) -> [a] -> [b]`
  */
-export const map = curry(mapper)
+export const map = curry(mapper);

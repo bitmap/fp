@@ -1,8 +1,8 @@
-import { isTypeOf } from './isTypeOf'
+import { isTypeOf } from "./isTypeOf";
 
 /**
  * Returns true if value is an object
  *
  * `isObject :: a -> boolean`
  */
-export const isObject = isTypeOf('object')
+export const isObject = isTypeOf("object");

@@ -3,4 +3,4 @@
  *
  * `last :: [a] -> a`
  */
-export const last = <T>(list: T[]): T => list[list.length - 1]
+export const last = <T>(list: Array<T>): T => list[list.length - 1];

@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Clips value in mix/max range. `clamp` args are curried.
@@ -7,4 +7,4 @@ import { curry } from './curry'
  */
 export const clamp = curry(
   (min:number, max:number, value:number): number => Math.min(Math.max(value, min), max),
-)
+);

@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Sorts items in a list according to comparator function. Unlike
@@ -7,5 +7,6 @@ import { curry } from './curry'
  * `sort :: ((a, a) -> number) -> [a] -> [a]`
  */
 export const sort = curry(
-  <T>(compareFn: (a: any, b: any) => number, list: T[]): T[] => [...list].sort(compareFn),
-)
+  <T>(compareFn: (a: any, b: any) => number, list: Array<T>): Array<T> =>
+    [...list].sort(compareFn),
+);
