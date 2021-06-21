@@ -1,19 +1,19 @@
-import typescript from '@rollup/plugin-typescript'
-import cleanup from 'rollup-plugin-cleanup'
+import typescript from "@rollup/plugin-typescript";
+import cleanup from "rollup-plugin-cleanup";
 
 export default [
   // ES Module
   {
-    input: 'lib/index.ts',
+    input: "lib/index.ts",
     output: {
-      dir: 'dist',
-      format: 'es',
+      dir: "dist",
+      format: "es",
     },
     plugins: [
       typescript({
-        target: 'es6',
+        target: "es6",
         declaration: true,
-        declarationDir: 'dist/types',
+        declarationDir: "dist/types",
       }),
       cleanup(),
     ],
@@ -21,16 +21,16 @@ export default [
 
   // Common.js
   {
-    input: 'lib/index.ts',
+    input: "lib/index.ts",
     output: {
-      file: 'dist/index.cjs',
-      format: 'cjs',
+      file: "dist/index.cjs",
+      format: "cjs",
     },
     plugins: [
       typescript({
-        target: 'es5',
+        target: "es5",
       }),
       cleanup(),
     ],
   },
-]
+];
