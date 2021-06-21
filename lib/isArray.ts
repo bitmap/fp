@@ -1,5 +1,5 @@
 /**
- * Returns true if value is an array (list)
+ * Returns true if value is an array (list).
  *
  * `isArray :: a -> boolean`
  */

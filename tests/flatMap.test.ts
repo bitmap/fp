@@ -2,7 +2,7 @@ import { flatMap } from "../lib";
 
 describe("flatMap", () => {
   test("flattens and doubles", () => {
-    const a = [1, 2, 3, 4];
+    const a = [1, 2, [3, [4]]];
     const flatten = flatMap((x) => [x, x * 2]);
     expect(flatten(a)).toEqual([1, 2, 2, 4, 3, 6, 4, 8]);
   });

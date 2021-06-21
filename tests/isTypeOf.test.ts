@@ -1,47 +1,70 @@
-import { isTypeOf } from "../lib";
+import {
+  isBigInt,
+  isBoolean,
+  isFunction,
+  isNumber,
+  isObject,
+  isString,
+  isSymbol,
+  isTypeOf,
+} from "../lib";
 
-test("is string", () => {
+test("isTypeOf", () => {
+  let $: undefined;
+  expect(isTypeOf("undefined", $)).toEqual(true);
   expect(isTypeOf("string", "hello, world")).toEqual(true);
-  expect(isTypeOf("string", 123)).toEqual(false);
-});
-
-test("is boolean", () => {
-  expect(isTypeOf("boolean", true)).toEqual(true);
+  expect(isTypeOf("number", 0x8a)).toEqual(true);
   expect(isTypeOf("boolean", false)).toEqual(true);
-  expect(isTypeOf("boolean", 123)).toEqual(false);
-});
-
-test("is number", () => {
-  expect(isTypeOf("number", 123)).toEqual(true);
-  expect(isTypeOf("number", "123")).toEqual(false);
-  expect(isTypeOf("number", parseInt("123", 10))).toEqual(true);
-});
-
-test("is bigint", () => {
-  expect(isTypeOf("bigint", 42)).toEqual(false);
-  expect(isTypeOf("bigint", BigInt(42))).toEqual(true);
-  expect(isTypeOf("bigint", BigInt("0x1fffffffffffff"))).toEqual(true);
-});
-
-test("is object", () => {
-  expect(isTypeOf("object", {})).toEqual(true);
   expect(isTypeOf("object", [])).toEqual(true);
+  expect(isTypeOf("function", () => 0x8a)).toEqual(true);
+  expect(isTypeOf("symbol", Symbol("hello"))).toEqual(true);
+  expect(isTypeOf("bigint", BigInt(1))).toEqual(true);
 });
 
-test("is symbol", () => {
-  expect(isTypeOf("symbol", Symbol("symbol"))).toEqual(true);
-  expect(isTypeOf("symbol", "symbol")).toEqual(false);
+test("isString", () => {
+  expect(isString("hello, world")).toEqual(true);
+  expect(isString(0x8a)).toEqual(false);
 });
 
-test("is function", () => {
-  expect(isTypeOf("function", () => true)).toEqual(true);
-  expect(isTypeOf("function", (() => false))).toEqual(true);
-  // eslint-disable-next-line prefer-arrow-callback
-  expect(isTypeOf("function", function () { return 0; })).toEqual(true);
-  expect(isTypeOf("function", (() => 123)())).toEqual(false);
+test("isBoolean", () => {
+  expect(isBoolean(true)).toEqual(true);
+  expect(isBoolean(false)).toEqual(true);
+  expect(isBoolean(0x8a)).toEqual(false);
+  expect(isBoolean(0x8a > 0)).toEqual(true);
 });
 
-test("is null", () => {
-  expect(isTypeOf("object", null)).toEqual(true);
-  expect(isTypeOf("object", 0)).toEqual(false);
+test("isNumber", () => {
+  expect(isNumber(0x8a)).toEqual(true);
+  expect(isNumber("hello, world")).toEqual(false);
+});
+
+test("isBigInt", () => {
+  expect(isBigInt(BigInt(0x8a))).toEqual(true);
+  expect(isBigInt(0x8a)).toEqual(false);
+});
+
+test("isObject", () => {
+  expect(isObject({})).toEqual(true);
+  expect(isObject([])).toEqual(true);
+  expect(isObject(null)).toEqual(true);
+  expect(isObject(new Map())).toEqual(true);
+  expect(isObject(new Set())).toEqual(true);
+  expect(isObject(0)).toEqual(false);
+  expect(isObject("hello, world")).toEqual(false);
+  expect(isObject(() => "hello, world")).toEqual(false);
+});
+
+test("isSymbol", () => {
+  expect(isSymbol(Symbol("test"))).toEqual(true);
+  expect(isSymbol("test")).toEqual(false);
+});
+
+test("isFunction", () => {
+  function test(): number {
+    return 0;
+  }
+  expect(isFunction(test)).toEqual(true);
+  expect(isFunction(() => 0)).toEqual(true);
+  expect(isFunction((() => 0x8a)())).toEqual(false);
+  expect(isFunction({})).toEqual(false);
 });

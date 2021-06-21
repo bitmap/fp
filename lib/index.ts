@@ -29,6 +29,7 @@ export { insertAll } from "./insertAll";
 export { isArray } from "./isArray";
 export { isBigInt } from "./isBigInt";
 export { isBoolean } from "./isBoolean";
+export { isEmpty } from "./isEmpty";
 export { isEqual } from "./isEqual";
 export { isFunction } from "./isFunction";
 export { isNull } from "./isNull";

@@ -8,4 +8,4 @@ import { curry } from "./curry";
  *
  * `modulo :: number -> number -> number
  */
-export const modulo = curry((a: number, n: number): number => ((a % n) + n) % n);
+export const modulo = curry((m: number, n: number): number => ((m % n) + n) % n);

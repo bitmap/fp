@@ -12,7 +12,7 @@ type Type =
 
 
 /**
- * Evaluate the returned string from an operand
+ * Evaluate the returned string from an operand.
  *
  * `isTypeOf :: string -> a -> boolean`
  */
