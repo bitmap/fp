@@ -6,5 +6,5 @@ import { curry } from "./curry";
  * `clamp :: number -> number -> number -> number`
  */
 export const clamp = curry(
-  (min:number, max:number, value:number): number => Math.min(Math.max(value, min), max),
+  (min: number, max: number, value: number): number => Math.min(Math.max(value, min), max),
 );
