@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.1]
+
+### Added
+
+- isEmpty
+
+### Fixed
+
+- `flatMap` now uses internal `flat` for deeper flattening
+
+### Changed
+
+- Fix various typings
+- Fixed typos
+- Updated documentation
+
 ## [0.10.0]
 
 ### Added
@@ -43,6 +59,7 @@ Initial conversion to TypeScript
 - isBigInt
 
 ### Removed
+
 - findIndexOf (see below)
 - findIndexOfLast (see below)
 
@@ -141,6 +158,7 @@ Initial conversion to TypeScript
 ### Changed
 
 Refactored for performance:
+
 - map
 - filter
 - pipe
@@ -148,6 +166,7 @@ Refactored for performance:
 - concat
 
 ### Removed
+
 - splice
 - curryPipe
 - curryCompose
