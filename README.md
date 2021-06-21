@@ -162,7 +162,7 @@ doubleAll([1, 2, 3]); // -> [2, 4, 6]
 Return a flattened list.
 
 ```js
-flat(list, depth);
+flat(list);
 ```
 
 **Example**
@@ -171,7 +171,7 @@ flat(list, depth);
 import { flat } from "@bitmap/fp";
 
 flat([0, [1, 2], [3, 4], [5]]); // -> [0, 1, 2, 3, 4, 5]
-flat([0, [1, 2, [3, 4, [5]]]], 3); // -> [0, 1, 2, 3, 4, 5]
+flat([0, [1, 2, [3, 4, [5]]]]); // -> [0, 1, 2, 3, 4, 5]
 ```
 
 ## flatMap
@@ -199,7 +199,7 @@ indexUsers(users); // -> [0, '@cabe', 1, '@bitmap']
 Filter items from a list, and return a new list. `filter` args are curried.
 
 ```js
-filter(conditionFunction, list);
+filter(predicate, list);
 ```
 
 **Example**
@@ -219,7 +219,7 @@ Apply filter and map to a list, and return a new list. `filterMap` args are
 curried.
 
 ```js
-filterMap(conditionFunction, mapFunction, list);
+filterMap(predicate, mapFunction, list);
 ```
 
 **Example**
@@ -240,7 +240,7 @@ Reject items from a list, and return a new list. The opposite of
 [filter](#filter). `reject` args are curried.
 
 ```js
-reject(conditionFunction, list);
+reject(predicate, list);
 ```
 
 **Example**
@@ -260,7 +260,7 @@ Apply reject and map to a list, and return a new list. `rejectMap` args are
 curried.
 
 ```js
-rejectMap(conditionFunction, mapFunction, list);
+rejectMap(predicate, mapFunction, list);
 ```
 
 **Example**
@@ -598,7 +598,7 @@ takeRight(2, list); // -> [3, 4]
 Returns true if any item in list meet the condition. `any` args are curried.
 
 ```js
-any(conditionFunction, list);
+any(predicate, list);
 ```
 
 **Example**
@@ -618,7 +618,7 @@ anyGreaterThanTen([5, 20, 100]); // -> true
 Returns true if all item in list meet the condition. `all` args are curried.
 
 ```js
-all(conditionFunction, list);
+all(predicate, list);
 ```
 
 **Example**
@@ -639,7 +639,7 @@ allGreaterThanTen([50, 15, 99]); // -> true
 Returns first item from list that meets predicate. `find` args are curried.
 
 ```js
-find(conditionFunction, list);
+find(predicate, list);
 ```
 
 **Example**
@@ -659,7 +659,7 @@ findGreaterThanTen([5, 20, 100]); // -> 20
 Returns last item from list that meets predicate. `findLast` args are curried.
 
 ```js
-findLast(conditionFunction, list);
+findLast(predicate, list);
 ```
 
 **Example**
@@ -837,7 +837,7 @@ pick(["name", "position"], data); // -> { name: 'Cabe', position: 'Developer' }
 
 ## omit
 
-Returns copy of object with supplied `keys` omitted. opposite of [pick](#pick).
+Returns copy of object with supplied `keys` omitted. Opposite of [pick](#pick).
 `omit` args are curried.
 
 ```js

@@ -1,7 +1,7 @@
 import { isTypeOf } from "./isTypeOf";
 
 /**
- * Returns true if value is undefined
+ * Returns true if value is undefined.
  *
  * `isUndefined :: a -> boolean`
  */

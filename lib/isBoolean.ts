@@ -1,7 +1,7 @@
 import { isTypeOf } from "./isTypeOf";
 
 /**
- * Returns true if value is a boolean
+ * Returns true if value is a boolean.
  *
  * `isBoolean :: a -> boolean`
  */
