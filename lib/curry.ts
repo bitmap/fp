@@ -1,24 +1,21 @@
-export type Curried<A extends Array<any>, R> =
-  <P extends Partial<A>>(...args: P) => P extends A
-    ? R
-    : A extends [...SameLength<P>, ...infer S]
-      ? S extends Array<any>
-        ? Curried<S, R>
+export type Curried<Args extends Array<any>, ReturnType> =
+  <PartialArgs extends Partial<Args>>(...args: PartialArgs) => PartialArgs extends Args
+    ? ReturnType
+    : Args extends [...Extract<{ [Key in keyof PartialArgs]: any }, Array<any>>, ...infer Arg]
+      ? Arg extends Array<any>
+        ? Curried<Arg, ReturnType>
         : never
       : never;
-
-type SameLength<T extends Array<any>> = Extract<{ [K in keyof T]: any }, Array<any>>
 
 /**
  * Returns a curried version of a function to allow it to be called partially.
  *
  * `curry :: (* -> a) -> (* -> a)`
  */
-export const curry = <A extends Array<any>, R>(fn: (...args: A) => R): Curried<A, R> => {
-  const partialFn = (...args: Array<any>): any =>
-    args.length >= fn.length
-      ? fn.call(null, ...args as any)
+export function curry<A extends Array<any>, R>(curriedFn: (...args: A) => R): Curried<A, R> {
+   return function partialFn(...args) {
+    return args.length >= curriedFn.length
+      ? curriedFn.call(null, ...args)
       : partialFn.bind(null, ...args);
-
-  return partialFn;
-};
+  };
+}
