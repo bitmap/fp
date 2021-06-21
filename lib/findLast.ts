@@ -1,5 +1,5 @@
-import { curry } from './curry'
-import { reverse } from './reverse'
+import { curry } from "./curry";
+import { reverse } from "./reverse";
 
 /**
  * Returns last item in a list that meets the condition. If no item meets the
@@ -8,5 +8,6 @@ import { reverse } from './reverse'
  * `findLast :: (a -> boolean) -> [a] -> a | undefined`
  */
 export const findLast = curry(
-  (predicate: (value: any) => boolean, list: any[]): any | undefined => (reverse(list) as any[]).find(predicate),
-)
+  <T>(predicate: (value: T) => boolean, list: Array<T>): T | undefined =>
+    (reverse(list) as Array<T>).find(predicate),
+);

@@ -1,9 +1,9 @@
-import { isUndefined } from '../lib'
+import { isUndefined } from "../lib";
 
-test('isUndefined', () => {
-  let test: string | undefined
-  expect(isUndefined(test)).toEqual(true)
+test("isUndefined", () => {
+  let test: string | undefined;
+  expect(isUndefined(test)).toEqual(true);
 
-  test = 'test'
-  expect(isUndefined(test)).toEqual(false)
-})
+  test = "test";
+  expect(isUndefined(test)).toEqual(false);
+});

@@ -3,4 +3,4 @@
  *
  * `dropFirst :: number -> [a] -> [a]`
  */
-export const dropFirst = <T>(list: T[]): T[] => list.slice(1)
+export const dropFirst = <T>(list: Array<T>): Array<T> => list.slice(1);

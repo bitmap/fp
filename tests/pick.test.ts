@@ -1,4 +1,4 @@
-import { pick, map } from '../lib'
+import { pick, map } from "../lib";
 
 interface User {
   name: string
@@ -7,67 +7,67 @@ interface User {
   state?: string
 }
 
-describe('pick', () => {
+describe("pick", () => {
 
-  test('returns pick', () => {
+  test("returns pick", () => {
 
     const data: User = {
-      name: 'Tom',
+      name: "Tom",
       age: 32,
-      city: 'New York',
-      state: 'NY',
-    }
+      city: "New York",
+      state: "NY",
+    };
 
-    expect(pick(['name', 'age'], data)).toEqual({
-      name: 'Tom',
+    expect(pick(["name", "age"], data)).toEqual({
+      name: "Tom",
       age: 32,
-    })
-  })
+    });
+  });
 
-  test('mappable', () => {
+  test("mappable", () => {
 
-    const data: User[] = [
+    const data: Array<User> = [
       {
-        name: 'Tom',
+        name: "Tom",
         age: 32,
-        city: 'New York',
-        state: 'NY',
+        city: "New York",
+        state: "NY",
       },
       {
-        name: 'Dick',
+        name: "Dick",
         age: 41,
-        city: 'San Francisco',
-        state: 'CA',
+        city: "San Francisco",
+        state: "CA",
       },
       {
-        name: 'Harry',
+        name: "Harry",
         age: 27,
-        city: 'Portland',
-        state: 'OR',
+        city: "Portland",
+        state: "OR",
       },
       {
-        name: 'Jim',
+        name: "Jim",
       },
-    ]
+    ];
 
-    const pickFrom = map(pick(['name', 'city']), data)
+    const pickFrom = map(pick(["name", "city"]), data);
 
     expect(pickFrom).toEqual([
       {
-        name: 'Tom',
-        city: 'New York',
+        name: "Tom",
+        city: "New York",
       },
       {
-        name: 'Dick',
-        city: 'San Francisco',
+        name: "Dick",
+        city: "San Francisco",
       },
       {
-        name: 'Harry',
-        city: 'Portland',
+        name: "Harry",
+        city: "Portland",
       },
       {
-        name: 'Jim',
+        name: "Jim",
       },
-    ])
-  })
-})
+    ]);
+  });
+});

@@ -1,4 +1,4 @@
-import { resolveMap } from './utils/resolveMap'
-import { curry } from './curry'
+import { resolveMap } from "./utils/resolveMap";
+import { curry } from "./curry";
 
-export const rejectMap = curry(resolveMap(false))
+export const rejectMap = curry(resolveMap(false));

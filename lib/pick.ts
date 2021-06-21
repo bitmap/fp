@@ -1,4 +1,4 @@
-import { extract } from './utils/extract'
-import { curry } from './curry'
+import { extract } from "./utils/extract";
+import { curry } from "./curry";
 
-export const pick = curry(extract(true))
+export const pick = curry(extract(true));

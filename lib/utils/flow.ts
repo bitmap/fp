@@ -1,4 +1,4 @@
-import { fold } from './fold'
+import { fold } from "./fold";
 
 type Fn = (arg: any) => any
 type ArgT<T> = T extends (arg: infer A) => any ? A : never;
@@ -10,8 +10,8 @@ type ArgT<T> = T extends (arg: infer A) => any ? A : never;
  * `flow :: boolean -> [(a -> b)] -> a -> b`
  */
 export const flow = (fromRight: boolean) =>
-  <Fns extends Fn[]>(...fns: Fns) =>
+  <Fns extends Array<Fn>>(...fns: Fns) =>
     (value: ArgT<Fns[0]>): ArgT<Fns[0]> =>
       fold(fromRight)(
         (memo: Fn, fn: Fn) => fn(memo), value, fns,
-      )
+      );

@@ -1,4 +1,4 @@
-import { isTypeOf } from './isTypeOf'
+import { isTypeOf } from "./isTypeOf";
 
 
 /**
@@ -6,4 +6,4 @@ import { isTypeOf } from './isTypeOf'
  *
  * `isNumber :: a -> boolean`
  */
-export const isNumber = isTypeOf('number')
+export const isNumber = isTypeOf("number");

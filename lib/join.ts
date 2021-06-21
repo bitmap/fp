@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns a new string by concatenating a list seperated by the
@@ -7,5 +7,5 @@ import { curry } from './curry'
  * `join :: string -> [a] -> string`
  */
 export const join = curry(
-  <T>(separator: string, list: T[]): string => list.join(separator),
-)
+  <T>(separator: string, list: Array<T>): string => list.join(separator),
+);

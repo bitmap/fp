@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Starts searching from specified index, and returns true if the item is in
@@ -7,5 +7,5 @@ import { curry } from './curry'
  * `includesFrom :: number -> a -> [a] -> boolean`
  */
 export const includesFrom = curry(
-  <T>(fromIndex: number, item: T, list: T[]): item is T => list.includes(item, fromIndex),
-)
+  <T>(fromIndex: number, item: T, list: Array<T>): item is T => list.includes(item, fromIndex),
+);

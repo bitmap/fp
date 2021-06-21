@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns true if the item is in list. `includes` args are curried.
@@ -6,5 +6,5 @@ import { curry } from './curry'
  * `includes :: a -> [a] -> boolean`
  */
 export const includes = curry(
-  <T>(item: T, list: T[]): item is T => list.includes(item),
-)
+  <T>(item: T, list: Array<T>): item is T => list.includes(item),
+);

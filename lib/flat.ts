@@ -1,15 +1,15 @@
-import { copy } from './copy'
-import { isArray } from './isArray'
-import { isUndefined } from './isUndefined'
+import { copy } from "./copy";
+import { isArray } from "./isArray";
+import { isUndefined } from "./isUndefined";
 
-export const flat = <T>([first, ...rest]: T[]): T[] => {
-  if (isUndefined(first)) return []
+export const flat = <T>([first, ...rest]: Array<T>): Array<T> => {
+  if (isUndefined(first)) return [];
 
-  let head = [copy(first)]
-  const tail = flat(rest)
+  let head = [copy(first)];
+  const tail = flat(rest);
 
   if (isArray(first)) {
-    head = flat(first)
+    head = flat(first);
   }
-  return [...head, ...tail]
-}
+  return [...head, ...tail];
+};

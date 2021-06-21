@@ -4,4 +4,4 @@
  * `trim :: string -> string`
  */
 
-export const trim = (string: string): string => string.trim()
+export const trim = (string: string): string => string.trim();

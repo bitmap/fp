@@ -1,17 +1,17 @@
-import { reduce } from '../reduce'
+import { reduce } from "../reduce";
 
 type Predicate = (value: any) => boolean
 type Mapper = (value: any) => any
 
 export const resolveMap = (bool: boolean) =>
-  (predicate: Predicate, mapper: Mapper, list: any[]): any[] =>
+  (predicate: Predicate, mapper: Mapper, list: Array<any>): Array<any> =>
     reduce(
       (acc, item) => {
         if (predicate(item) === bool) {
-          acc.push(mapper(item))
+          acc.push(mapper(item));
         }
-        return acc
+        return acc;
       },
       [],
       list,
-    )
+    );

@@ -3,4 +3,4 @@
  *
  * `identity :: a -> a`
  */
-export const identity = <T>(item: T): T => item
+export const identity = <T>(item: T): T => item;

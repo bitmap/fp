@@ -1,4 +1,4 @@
-import { curry } from './curry'
+import { curry } from "./curry";
 
 /**
  * Returns true if any items in list meet the condition. `any` args are curried.
@@ -6,5 +6,5 @@ import { curry } from './curry'
  * `any :: (a -> boolean) -> [a] -> boolean`
  */
 export const any = curry(
-  (predicate: (value: any) => boolean, list: any[]): boolean => list.some(predicate),
-)
+  <T>(predicate: (value: T) => boolean, list: Array<T>): boolean => list.some(predicate),
+);

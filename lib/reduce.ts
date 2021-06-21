@@ -1,5 +1,5 @@
-import { fold } from './utils/fold'
-import { curry } from './curry'
+import { fold } from "./utils/fold";
+import { curry } from "./curry";
 
 /**
  * Reduce values in a list to a single value according to a reducer function.
@@ -7,4 +7,4 @@ import { curry } from './curry'
  *
  * `reduce :: ((a, b) -> a) -> a -> [b] -> a`
  */
-export const reduce = curry(fold(false))
+export const reduce = curry(fold(false));

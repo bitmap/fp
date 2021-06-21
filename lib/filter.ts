@@ -1,4 +1,4 @@
-import { resolve } from './utils/resolve'
-import { curry } from './curry'
+import { resolve } from "./utils/resolve";
+import { curry } from "./curry";
 
-export const filter = curry(resolve(true))
+export const filter = curry(resolve(true));
