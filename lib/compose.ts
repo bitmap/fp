@@ -1,4 +1,9 @@
-import { flow } from "./utils/flow";
+import { Curried } from "./curry";
+import { reduceRight } from "./reduceRight";
+
+type Fn = (arg: any) => any
+type ArgT<T> = T extends (arg: infer A) => any ? A : never;
+type Reducer<T> = Curried<[], ArgT<T>>
 
 /**
  * Compose unary function output from right to left.
@@ -7,4 +12,6 @@ import { flow } from "./utils/flow";
  *
  * `compose :: [(a -> b)] -> a -> b`
  */
-export const compose = flow(true);
+ export const compose = <Fns extends Array<Fn>>(...fns: Fns) =>
+ (value: ArgT<Fns[0]>): Reducer<Fns[0]> =>
+    reduceRight((memo: Fn, fn: Fn) => fn(memo), value, fns);
