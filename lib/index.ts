@@ -47,6 +47,7 @@ export { median } from "./median";
 export { mode } from "./mode";
 export { modulo } from "./modulo";
 export { multiply } from "./multiply";
+export { not } from "./not";
 export { omit } from "./omit";
 export { pick } from "./pick";
 export { pipe } from "./pipe";
