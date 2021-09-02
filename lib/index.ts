@@ -62,6 +62,7 @@ export { reject } from "./reject";
 export { rejectMap } from "./rejectMap";
 export { remainder } from "./remainder";
 export { reverse } from "./reverse";
+export { reverseArgs } from "./reverseArgs";
 export { slice } from "./slice";
 export { sort } from "./sort";
 export { split } from "./split";
