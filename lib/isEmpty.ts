@@ -9,17 +9,21 @@ import { isString } from "./isString";
  * `isEmpty :: a -> boolean`
  */
 export function isEmpty(value: unknown): boolean {
-  if (isNull(value)) {
-    return true;
+  if (isArray(value)) {
+    return value.length === 0;
   }
 
-  if (isArray(value) || isString(value)) {
-    return !(value as []).length;
+  if (value instanceof Map || value instanceof Set) {
+    return value.size === 0;
   }
 
-  if (isObject(value)) {
-    return !Object.getOwnPropertyNames(value).length;
+  if (!isNull(value) && isObject(value)) {
+    return Object.getOwnPropertyNames(value).length === 0;
   }
 
-  return true;
+  if (isString(value)) {
+    return value === "";
+  }
+
+  return false;
 }
