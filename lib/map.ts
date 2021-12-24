@@ -1,6 +1,6 @@
 import { curry } from "./curry";
 
-type Mapper<T, U> = (fn: (value: T) => U, list: Array<T>) => Array<U>;
+type Mapper<T, U> = (fn: (value?: T, index?: number) => U, list: Array<T>) => Array<U>;
 
 const mapper: Mapper<any, any> = (fn, list) => {
   const { length } = list;
@@ -8,7 +8,7 @@ const mapper: Mapper<any, any> = (fn, list) => {
   let index = 0;
 
   while (index < length) {
-    result[index] = fn(list[index]);
+    result[index] = fn(list[index], index);
     index += 1;
   }
   return result;
