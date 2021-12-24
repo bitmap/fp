@@ -1,6 +1,7 @@
 export { add } from "./add";
 export { all } from "./all";
 export { any } from "./any";
+export { aperture } from "./aperture";
 export { append } from "./append";
 export { chunk } from "./chunk";
 export { clamp } from "./clamp";
