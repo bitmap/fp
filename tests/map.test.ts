@@ -1,4 +1,4 @@
-import { map } from "../lib";
+import { map, take } from "../lib";
 
 describe("map", () => {
   const arr = [1, 2, 3];
@@ -12,5 +12,15 @@ describe("map", () => {
 
   test("converts type", () => {
     expect(map((x) => `${x}!`)([1, 2, 3])).toEqual(["1!", "2!", "3!"]);
+  });
+
+  test("other lib functions", () => {
+    const first2 = map(take(2));
+    expect(first2([[1, 2, 3], [4, 5, 6]])).toEqual([[1, 2], [4, 5]]);
+  });
+
+  test("with index", () => {
+    const multiplyByIndex = map((x, i) => x * i);
+    expect(multiplyByIndex([1, 2, 3, 4, 5, 6])).toEqual([0, 2, 6, 12, 20, 30]);
   });
 });
