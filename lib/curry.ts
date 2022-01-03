@@ -1,11 +1,11 @@
-export type Curried<Args extends Array<any>, ReturnType> =
+export type Curried<Args extends unknown[], ReturnType> =
   <PartialArgs extends Partial<Args>>(...args: PartialArgs) => PartialArgs extends Args
     ? ReturnType
-    : Args extends [...Extract<{ [Key in keyof PartialArgs]: any }, Array<any>>, ...infer Arg]
-      ? Arg extends Array<any>
+    : Args extends [...Extract<{ [Key in keyof PartialArgs]: unknown }, unknown[]>, ...infer Arg]
+      ? Arg extends unknown[]
         ? Curried<Arg, ReturnType>
-        : never
-      : never;
+        : ReturnType
+      : ReturnType;
 
 /**
  * Returns a curried version of a function to allow it to be called partially.

@@ -20,7 +20,7 @@ describe("map", () => {
   });
 
   test("with index", () => {
-    const multiplyByIndex = map((x, i) => x * i);
+    const multiplyByIndex = map((x: number, i) => x * i);
     expect(multiplyByIndex([1, 2, 3, 4, 5, 6])).toEqual([0, 2, 6, 12, 20, 30]);
   });
 });

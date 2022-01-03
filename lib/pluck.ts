@@ -9,5 +9,5 @@ import { prop } from "./prop";
  */
 export const pluck = curry(
   <P extends string, V>(key: P, list: Array<{ [p in P]: V }>) =>
-    map((item) => prop(key, item), list),
+    map(prop(key), list),
 );
