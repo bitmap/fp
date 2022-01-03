@@ -21,6 +21,7 @@ export { findLast } from "./findLast";
 export { first } from "./first";
 export { flat } from "./flat";
 export { flatMap } from "./flatMap";
+export { groupBy } from "./groupBy";
 export { identity } from "./identity";
 export { includes } from "./includes";
 export { includesFrom } from "./includesFrom";
