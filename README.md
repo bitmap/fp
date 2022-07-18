@@ -21,6 +21,7 @@ npm install @bitmap/fp
 - [filterMap](#filterMap)
 - [reject](#reject)
 - [rejectMap](#rejectMap)
+- [compact](#compact)
 - [concat](#concat)
 - [copy](#copy)
 - [slice](#slice)
@@ -273,6 +274,23 @@ const double = (n) => n * 2;
 const doubleEvens = rejectMap(isOdd, double);
 
 doubleEvens([1, 2, 3, 4]); // -> [4, 8]
+```
+
+## compact
+
+Returns list with all falsey values removed.
+
+```js
+compact(list);
+```
+
+**Example**
+
+```js
+import { compact } from "@bitmap/fp";
+
+compact(0, 1, 2); // -> [1, 2]
+compact("", "hello", "", "world", "") // -> ["hello", "world"]
 ```
 
 ## concat

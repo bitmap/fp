@@ -3,6 +3,7 @@ export { all } from "./all";
 export { any } from "./any";
 export { append } from "./append";
 export { clamp } from "./clamp";
+export { compact } from "./compact";
 export { compose } from "./compose";
 export { concat } from "./concat";
 export { copy } from "./copy";
