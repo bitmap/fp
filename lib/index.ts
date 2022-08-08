@@ -2,6 +2,7 @@ export { add } from "./add";
 export { all } from "./all";
 export { any } from "./any";
 export { append } from "./append";
+export { chunk } from "./chunk";
 export { clamp } from "./clamp";
 export { compact } from "./compact";
 export { compose } from "./compose";
