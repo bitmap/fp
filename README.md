@@ -29,6 +29,7 @@ npm install @bitmap/fp
 - [prepend](#prepend)
 - [insert](#insert)
 - [insertAll](#insertAll)
+- [chunk](#chunk)
 - [reverse](#reverse)
 - [sort](#sort)
 - [first](#first)
@@ -423,6 +424,26 @@ import { insertAll } from "@bitmap/fp";
 const list = [1, 4];
 
 insertAll(1, [2, 3], list); // -> [1, 2, 3, 4]
+```
+
+## chunk
+
+Splits a collection into slices of the specified length. `chunk` args are
+curried.
+
+```js
+chunk(size, list);
+```
+
+**Example**
+
+```js
+import { chunk } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4, 5];
+
+chunk(2, list); // -> [[1, 2], [3, 4], [5]]
+chunk(3, list); // -> [[1, 2, 3], [4, 5]]
 ```
 
 ## reverse
