@@ -1252,18 +1252,16 @@ isEqual(2, 3); // -> false
 
 ## isTypeOf
 
-Evaluate the returned string from an operand.
+Evaluate the returned string from an operand. The first arguement `type` must be
+a valid value of JavaScript's `typeof` function: `undefined`, `function`,
+`boolean`, `string`, `number`, `bigint`, `symbol`, or `object`.
 
 > Note: Additional helper functions `isUndefined`, `isFunction`, `isBoolean`,
 > `isString`, `isNumber`, `isBigInt`, `isSymbol`, and `isObject` are also
 > exported for convenience.
 
 ```js
-isTypeOf(
-  "undefined" | "function" | "boolean" | "string" | "number" | "bigint" |
-    "symbol" | "object",
-  value,
-);
+isTypeOf(type, value);
 ```
 
 **Example**
@@ -1271,8 +1269,13 @@ isTypeOf(
 ```js
 import { isTypeOf } from "@bitmap/fp";
 
-isTypeOf("number", 2); // -> true
+isTypeOf("string", "hello world"); // -> true
 isTypeOf("object", []); // -> true
+isTypeOf("object", {}); // -> true
+isTypeOf("object", null); // -> true
+isTypeOf("number", 138); // -> true
+isTypeOf("number", "2"); // -> false
+isTypeOf("function", (x) => x * x); // -> true
 ```
 
 ## isArray
