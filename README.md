@@ -46,6 +46,7 @@ npm install @bitmap/fp
 - [excludes](#excludes)
 - [position](#position)
 - [positionLast](#positionLast)
+- [groupBy](#groupBy)
 
 **Objects**
 
@@ -754,6 +755,56 @@ const lastAppleIndex = positionLast("apple");
 
 lastAppleIndex(["orange", "banana", "pear", "lemon"]); // -> -1
 lastAppleIndex(["kiwi", "apple", "coconut", "apple"]); // -> 3
+```
+
+## groupBy
+
+Returns an object with keys being the result of the given function and values
+being arrays of the items in the original array that produced the key.
+
+```js
+groupBy(selector, list);
+```
+
+**Example**
+
+```js
+import { groupBy } from "@bitmap/fp";
+
+const foods = const foods = [
+    {
+      category: "fruits",
+      value: "apple",
+    },
+    {
+      category: "fruits",
+      value: "banana",
+    },
+    {
+      category: "vegetable",
+      value: "spinach",
+    },
+    {
+      category: "fruits",
+      value: "orange",
+    },
+    {
+      category: "vegetable",
+      value: "broccoli",
+    },
+  ];
+
+const foodsByCategory = groupBy(obj => obj.category); /* -> {
+  fruits: [
+    { category: "fruits", value: "apple" },
+    { category: "fruits", value: "banana" },
+    { category: "fruits", value: "orange" },
+  ],
+  vegetable: [
+    { category: "vegetable", value: "spinach" },
+    { category: "vegetable", value: "broccoli" },
+  ],
+} */
 ```
 
 ## prop
