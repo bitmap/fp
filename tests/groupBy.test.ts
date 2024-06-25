@@ -1,7 +1,11 @@
 import { groupBy } from "../lib";
 
+interface Food {
+  category: string;
+  value: string;
+}
 describe("groupBy", () => {
-  const foods = [
+  const foods: Food[] = [
     {
       category: "fruits",
       value: "apple",
@@ -43,15 +47,7 @@ describe("groupBy", () => {
   test("advanced grouping", () => {
     const byGrade = groupBy((student) => {
       const { score } = student;
-      return score < 65
-        ? "F"
-        : score < 70
-        ? "D"
-        : score < 80
-        ? "C"
-        : score < 90
-        ? "B"
-        : "A";
+      return score < 65 ? "F" : score < 70 ? "D" : score < 80 ? "C" : score < 90 ? "B" : "A";
     });
     const students = [
       { name: "Cabe", score: 99 },
@@ -62,7 +58,10 @@ describe("groupBy", () => {
     ];
 
     expect(byGrade(students)).toEqual({
-      A: [{ name: "Cabe", score: 99 }, { name: "Saki", score: 100 }],
+      A: [
+        { name: "Cabe", score: 99 },
+        { name: "Saki", score: 100 },
+      ],
       B: [{ name: "Abby", score: 84 }],
       D: [{ name: "Jake", score: 69 }],
       F: [{ name: "Eddy", score: 58 }],

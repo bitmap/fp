@@ -3,7 +3,7 @@
  *
  * `mode :: [number] -> number
  */
-export const mode = (...args: Array<number>): number => {
+export const mode = (...args: number[]): number => {
   const dict: Record<string, number> = {};
   let comparator = 0;
   let mode = null;

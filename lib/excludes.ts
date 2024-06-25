@@ -5,6 +5,4 @@ import { curry } from "./curry";
  *
  * excludes :: a -> [a] -> boolean
  */
-export const excludes = curry(
-  <T>(item: T, list: Array<T>): item is T => !list.includes(item),
-);
+export const excludes = curry(<T>(item: T, list: T[]): item is T => !list.includes(item));

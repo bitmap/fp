@@ -5,16 +5,19 @@ import { curry, reduce } from "../lib";
  *
  * `juxt :: [(a, b) -> c] -> ((a, b) -> [c])
  */
-const juxt = curry(
-  (funcs: ((value: any) => any)[], list: Array<any>): Array<any> => reduce(
-    (acc, func) => acc.concat([func(list)]), [], funcs,
+const juxt = curry((funcs: ((value: any) => any)[], list: any[]): any[] =>
+  reduce(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    (acc, func) => acc.concat([func(list)]),
+    [],
+    funcs,
   ),
 );
 
 describe("juxt", () => {
-  const min = (nums: Array<number>): number => Math.min(...nums);
-  const max = (nums: Array<number>): number => Math.max(...nums);
-  const avg = (nums: Array<number>): number => nums.reduce((a, b) => a + b, 0) / nums.length;
+  const min = (nums: number[]): number => Math.min(...nums);
+  const max = (nums: number[]): number => Math.max(...nums);
+  const avg = (nums: number[]): number => nums.reduce((a, b) => a + b, 0) / nums.length;
 
   const getRange = juxt([min, max, avg]);
 

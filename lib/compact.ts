@@ -5,4 +5,4 @@ import { filter } from "./filter";
  *
  * `compact :: [a] -> [a]`
  */
-export const compact = <T>(list: T[]): T[] => filter(Boolean, list);
+export const compact = filter(Boolean);

@@ -1,11 +1,10 @@
 import { isNull, isArray, isEqual, isEmpty, not } from "../lib";
-import type { Predicate } from "../lib/not";
 
 describe("not", () => {
   const isNotNull = not(isNull);
   const isNotArray = not(isArray);
   const isNotEmpty = not(isEmpty);
-  const isNot10 = not(isEqual(10) as Predicate);
+  const isNot10 = not<number>((n) => isEqual(10, n));
 
   test("negates predicates", () => {
     expect(isNotNull(null)).toEqual(false);

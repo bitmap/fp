@@ -3,4 +3,4 @@
  *
  * `isArray :: a -> boolean`
  */
-export const isArray = (data: unknown): data is Array<never> => Array.isArray(data);
+export const isArray = Array.isArray;

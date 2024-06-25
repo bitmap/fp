@@ -4,7 +4,7 @@
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",
-    "allowJs": true,
+    "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
@@ -12,17 +12,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "downlevelIteration": true,
-    "lib": [
-      "es2020"
-    ],
-    "target": "es6"
+    "strictNullChecks": false,
+    "lib": ["esnext"],
+    "target": "esnext"
   },
-  "include": [
-    "lib"
-  ],
-  "exclude": [
-    "tests",
-    "dist",
-    "node_modules"
-  ]
+  "include": ["lib"],
+  "exclude": ["tests", "dist", "node_modules"]
 }

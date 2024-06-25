@@ -7,10 +7,8 @@ import { curry } from "./curry";
  *
  * `insterAll :: number -> [a] -> [a] -> [a]`
  */
-export const insertAll = curry(
-  <T>(start: number, items: Array<T>, list: Array<T>): Array<T> => {
-    const newList = copy(list);
-    newList.splice(start, 0, ...items);
-    return newList;
-  },
-);
+export const insertAll = curry(<T>(start: number, items: T[], list: T[]): T[] => {
+  const newList = copy(list);
+  newList.splice(start, 0, ...items);
+  return newList;
+});

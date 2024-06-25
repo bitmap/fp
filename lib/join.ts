@@ -6,6 +6,4 @@ import { curry } from "./curry";
  *
  * `join :: string -> [a] -> string`
  */
-export const join = curry(
-  <T>(separator: string, list: Array<T>): string => list.join(separator),
-);
+export const join = curry(<T>(separator: string, list: T[]): string => list.join(separator));

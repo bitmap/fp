@@ -1,16 +1,14 @@
 import { pick, map } from "../lib";
 
 interface User {
-  name: string
-  age?: number
-  city?: string
-  state?: string
+  name: string;
+  age?: number;
+  city?: string;
+  state?: string;
 }
 
 describe("pick", () => {
-
   test("returns pick", () => {
-
     const data: User = {
       name: "Tom",
       age: 32,
@@ -25,8 +23,7 @@ describe("pick", () => {
   });
 
   test("mappable", () => {
-
-    const data: Array<User> = [
+    const data: User[] = [
       {
         name: "Tom",
         age: 32,

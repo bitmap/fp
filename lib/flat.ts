@@ -8,7 +8,7 @@ import { isUndefined } from "./isUndefined";
  *
  * `flat :: [...a, [...b, [...c]]] -> [a, b, c]`
  */
-export const flat = <T>([first, ...rest]: Array<T>): Array<T> => {
+export const flat = <T>([first, ...rest]: T[]): T[] => {
   if (isUndefined(first)) return [];
 
   let head = [copy(first)];

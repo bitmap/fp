@@ -10,11 +10,15 @@ import { reduce } from "./reduce";
 export const copy = <T>(source: T): T => {
   if (isObject(source)) {
     const clone = isArray(source) ? [] : {};
-    return reduce((memo: T, key: Extract<keyof T, string>) => {
-      memo[key] = copy(source[key]);
-      return memo;
-    }, clone, Object.keys(source));
+    return reduce(
+      (memo: T, key: Extract<keyof T, string>) => {
+        memo[key] = copy(source[key]);
+        return memo;
+      },
+      clone,
+      Object.keys(source),
+    );
   }
 
-  return source as T;
+  return source;
 };

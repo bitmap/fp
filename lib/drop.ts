@@ -5,6 +5,4 @@ import { curry } from "./curry";
  *
  * `drop :: number -> [a] -> [a]`
  */
-export const drop = curry(
-  <T>(n: number, list: Array<T>): Array<T> => list.slice(n),
-);
+export const drop = curry(<T>(n: number, list: T[]): T[] => list.slice(n));

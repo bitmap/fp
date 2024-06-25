@@ -5,6 +5,6 @@ import { curry } from "./curry";
  *
  * `all :: (a -> boolean) -> [a] -> boolean`
  */
-export const all = curry(
-  <T>(predicate: (value: T) => boolean, list: Array<T>): boolean => list.every(predicate),
+export const all = curry(<T, P extends (value: T) => boolean>(predicate: P, list: T[]): boolean =>
+  list.every(predicate)
 );

@@ -1,5 +1,4 @@
 import { resolve } from "./utils/resolve";
-import { curry } from "./curry";
 
 /**
  * Rejects items from a list according to predicate. Opposite of {@link `filter`}.
@@ -7,4 +6,4 @@ import { curry } from "./curry";
  *
  * `reject :: (a -> boolean) -> [a] -> [b]`
  */
-export const reject = curry(resolve(false));
+export const reject = resolve(false);

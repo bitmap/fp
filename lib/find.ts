@@ -6,6 +6,6 @@ import { curry } from "./curry";
  *
  * `find :: (a -> boolean) -> [a] -> a | undefined`
  */
-export const find = curry(
-  <T>(predicate: (value: T) => boolean, list: Array<T>): T | undefined => list.find(predicate),
+export const find = curry(<T>(predicate: (value: T) => boolean, list: T[]): T | undefined =>
+  list.find(predicate),
 );

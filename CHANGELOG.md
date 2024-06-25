@@ -87,7 +87,7 @@ Initial conversion to TypeScript
 - renamed findIndex -> findIndexOf
 - renamed findLastIndex -> findIndexOfLast
 - removed all default exports
-- moved ./lib/\_\_tests__ => ./test
+- moved ./lib/\_\_tests\_\_ => ./test
 - fixed commonjs support
 
 ## [0.7.0]

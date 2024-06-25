@@ -1,16 +1,14 @@
 import { omit, map } from "../lib";
 
 interface User {
-  name: string
-  age?: number
-  city?: string
-  state?: string
+  name: string;
+  age?: number;
+  city?: string;
+  state?: string;
 }
 
 describe("omit", () => {
-
   test("returns omit", () => {
-
     const data: User = {
       name: "Tom",
       age: 32,
@@ -25,8 +23,7 @@ describe("omit", () => {
   });
 
   test("mappable", () => {
-
-    const data: Array<User> = [
+    const data: User[] = [
       {
         name: "Tom",
         age: 32,

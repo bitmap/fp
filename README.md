@@ -292,7 +292,7 @@ compact(list);
 import { compact } from "@bitmap/fp";
 
 compact(0, 1, 2); // -> [1, 2]
-compact("", "hello", "", "world", "") // -> ["hello", "world"]
+compact("", "hello", "", "world", ""); // -> ["hello", "world"]
 ```
 
 ## concat

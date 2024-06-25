@@ -1,6 +1,6 @@
 import { curry } from "./curry";
 
-type Mapper<T, U> = (fn: (value?: T, index?: number) => U, list: Array<T>) => Array<U>;
+type Mapper<T, U> = (fn: (value?: T, index?: number) => U, list: T[]) => U[];
 
 const mapper: Mapper<any, any> = (fn, list) => {
   const { length } = list;

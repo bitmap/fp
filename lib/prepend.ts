@@ -6,7 +6,7 @@ import { curry } from "./curry";
  *
  * `prepend :: a -> [b] -> [a, b]`
  */
-export const prepend = curry((item, list) => {
+export const prepend = curry(<T>(item: T, list: T[]) => {
   const newList = copy(list);
   newList.unshift(item);
   return newList;

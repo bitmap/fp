@@ -9,13 +9,12 @@ import { split } from "./split";
  *
  * `reverse :: [a] -> [a]`
  */
-export const reverse = <T>(data: string | Array<T>): string | Array<T> => {
-  const { reverse } = Array.prototype;
+export const reverse = <T>(data: string | T[]): string | T[] => {
   const delimiter = "";
 
   if (isString(data)) {
-    return join(delimiter, reverse.call(split(delimiter, data as string)));
+    return join(delimiter, Array.prototype.reverse.call(split(delimiter, data as string)));
   }
 
-  return reverse.call([...data]);
+  return Array.prototype.reverse.call([...data]);
 };

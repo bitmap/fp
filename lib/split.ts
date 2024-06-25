@@ -5,6 +5,6 @@ import { curry } from "./curry";
  *
  * `split :: string -> string -> [string]`
  */
-export const split = curry(
-  (delimiter: string, string: string): Array<string> => string.split(delimiter),
+export const split = curry((delimiter: string, string: string): string[] =>
+  string.split(delimiter),
 );

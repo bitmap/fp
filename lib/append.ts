@@ -6,10 +6,8 @@ import { curry } from "./curry";
  *
  * `append :: a -> [b] -> [b, a]`
  */
-export const append = curry(
-  <T>(item: T, list: Array<T>): Array<T> => {
-    const newList = copy(list);
-    newList.push(item);
-    return newList;
-  },
-);
+export const append = curry(<T>(item: T, list: T[]): T[] => {
+  const newList = copy(list);
+  newList.push(item);
+  return newList;
+});

@@ -1,7 +1,6 @@
 import { clamp, reduce, reverseArgs } from "../lib";
 
 describe("reverse", () => {
-
   test("reverses function", () => {
     expect(reverseArgs(clamp)(10, 5, 0)).toEqual(5);
   });

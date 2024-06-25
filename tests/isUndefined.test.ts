@@ -1,7 +1,7 @@
 import { isUndefined } from "../lib";
 
 test("isUndefined", () => {
-  let test: string | undefined;
+  let test: string | undefined = void 0;
   expect(isUndefined(test)).toEqual(true);
 
   test = "test";

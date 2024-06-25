@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false
+  },
+  "include": ["lib", "tests"],
+  "exclude": ["dist", "node_modules", "eslint.config.js"]
+}

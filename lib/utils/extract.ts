@@ -3,10 +3,10 @@ import { includes } from "../includes";
 import { excludes } from "../excludes";
 
 export function extract(keep: boolean) {
-  return <
-    T extends Record<string, unknown>,
-    K extends Extract<keyof T, string>,
-  >(keys: Array<K>, object: T): Record<string, unknown> => {
+  return <T, R extends Record<string, T>, K extends Extract<keyof R, string>>(
+    keys: K[],
+    object: R,
+  ): Record<string, T> => {
     function keysFilter([key]: K): boolean {
       const pick = includes(key);
       const omit = excludes(key);
@@ -15,6 +15,6 @@ export function extract(keep: boolean) {
 
     const filtered = filter(keysFilter, Object.entries(object));
 
-    return Object.fromEntries(filtered);
+    return Object.fromEntries(filtered as Iterable<readonly T[]>);
   };
 }

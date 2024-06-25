@@ -7,6 +7,6 @@ import { map } from "./map";
  *
  * `flatMap :: (x -> y) -> [...a, [...b, [...c]]] -> [d, e, f]`
  */
-export const flatMap = curry(
-  (func: (value: any) => any, list: Array<any>): Array<any> => flat(map(func, flat(list))),
+export const flatMap = curry((func: (value: any) => any, list: any[]): any[] =>
+  flat(map(func, flat(list))),
 );

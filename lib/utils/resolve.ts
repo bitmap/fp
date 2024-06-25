@@ -1,5 +1,7 @@
+import { curry } from "../curry";
+
 export const resolve = (bool: boolean) =>
-  (predicate: (value: any) => boolean, list: Array<any>): Array<any> => {
+  curry(<T, P extends (value: T) => typeof bool>(predicate: P, list: T[]): T[] => {
     const { length } = list;
     const result = [];
     let index = 0;
@@ -11,4 +13,4 @@ export const resolve = (bool: boolean) =>
       index += 1;
     }
     return result;
-  };
+  });

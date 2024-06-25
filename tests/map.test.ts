@@ -16,7 +16,15 @@ describe("map", () => {
 
   test("other lib functions", () => {
     const first2 = map(take(2));
-    expect(first2([[1, 2, 3], [4, 5, 6]])).toEqual([[1, 2], [4, 5]]);
+    expect(
+      first2([
+        [1, 2, 3],
+        [4, 5, 6],
+      ]),
+    ).toEqual([
+      [1, 2],
+      [4, 5],
+    ]);
   });
 
   test("with index", () => {

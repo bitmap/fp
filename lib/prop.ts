@@ -6,8 +6,6 @@ import { curry } from "./curry";
  * prop :: a -> {a:b} -> b
  */
 export const prop = curry(
-  <P extends string, V>(
-    key: P,
-    object: { [p in P]: V } & { [key: string]: unknown }): V =>
+  <P extends string, V>(key: P, object: { [p in P]: V } & Record<string, unknown>): V =>
     object[key],
 );

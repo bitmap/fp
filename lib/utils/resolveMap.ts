@@ -1,17 +1,19 @@
-import { reduce } from "../reduce";
+export const resolveMap =
+  (bool: boolean) =>
+  <T, V, P extends (value: T) => boolean, M extends (value: T) => V>(
+    predicate: P,
+    mapper: M,
+    list: T[],
+  ): any[] => {
+    const { length } = list;
+    const result = [];
+    let index = 0;
 
-type Predicate = (value: any) => boolean
-type Mapper = (value: any) => any
-
-export const resolveMap = (bool: boolean) =>
-  (predicate: Predicate, mapper: Mapper, list: Array<any>): Array<any> =>
-    reduce(
-      (acc, item) => {
-        if (predicate(item) === bool) {
-          acc.push(mapper(item));
-        }
-        return acc;
-      },
-      [],
-      list,
-    );
+    while (index < length) {
+      if (predicate(list[index]) === bool) {
+        result[result.length] = mapper(list[index]);
+      }
+      index += 1;
+    }
+    return result;
+  };

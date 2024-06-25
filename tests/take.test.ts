@@ -3,7 +3,6 @@ import { take, takeRight } from "../lib";
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 describe("take", () => {
-
   const take4 = take(4);
   const takeMost = take(arr.length - 1);
 

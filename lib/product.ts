@@ -6,4 +6,4 @@ import { reduce } from "./reduce";
  *
  * `product :: [number] -> number`
  */
-export const product = (...args: Array<number>): number => reduce(multiply, 1, args);
+export const product = (...args: number[]): number => reduce(multiply, 1, args);

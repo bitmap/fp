@@ -6,6 +6,6 @@ import { curry } from "./curry";
  *
  * `includesFrom :: number -> a -> [a] -> boolean`
  */
-export const includesFrom = curry(
-  <T>(fromIndex: number, item: T, list: Array<T>): item is T => list.includes(item, fromIndex),
+export const includesFrom = curry(<T>(fromIndex: number, item: T, list: T[]): item is T =>
+  list.includes(item, fromIndex),
 );
