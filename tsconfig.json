@@ -14,7 +14,7 @@
     "downlevelIteration": true,
     "strictNullChecks": false,
     "lib": ["esnext"],
-    "target": "esnext"
+    "target": "es6"
   },
   "include": ["lib"],
   "exclude": ["tests", "dist", "node_modules"]
