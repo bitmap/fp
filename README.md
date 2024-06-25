@@ -49,6 +49,7 @@ npm install @bitmap/fp
 - [position](#position)
 - [positionLast](#positionLast)
 - [groupBy](#groupBy)
+- [aperture](#aperture)
 
 **Objects**
 
@@ -844,6 +845,26 @@ const foodsByCategory = groupBy(obj => obj.category); /* -> {
     { category: "vegetable", value: "broccoli" },
   ],
 } */
+```
+
+## aperture
+
+Returns a new list, composed of n-tuples of consecutive elements. `aperture` args are curried.
+
+```js
+apeture(size, list);
+```
+
+**Example**
+
+```js
+import { aperture } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4, 5]
+
+const aperture2 = aperture(2, list) // -> [[1, 2], [2, 3], [3, 4], [4, 5]]
+const aperture2 = aperture(3, list) // -> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+
 ```
 
 ## prop
