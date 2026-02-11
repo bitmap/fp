@@ -6,18 +6,6 @@ import { curry } from "./curry";
  *
  * groupBy :: (a -> string) -> [a] -> { [string]: [a] }
  */
-export const __groupBy = curry(
-  <T extends Record<string, any>, K extends keyof T>(getKey: (item: T) => K, data: T[]) => {
-    return data.reduce<Partial<Record<K, T[]>>>((acc, item) => {
-      const key = getKey(item);
-      console.log(key, acc[key]);
-      acc[key] = acc[key] ?? [];
-      acc[key]?.push(item);
-      return acc;
-    }, {});
-  },
-);
-
 export const groupBy = curry(
   <K extends PropertyKey, T extends Record<K, any>>(
     keySelector: (item: T) => K,
