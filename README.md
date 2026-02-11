@@ -292,8 +292,8 @@ compact(list);
 ```js
 import { compact } from "@bitmap/fp";
 
-compact(0, 1, 2); // -> [1, 2]
-compact("", "hello", "", "world", ""); // -> ["hello", "world"]
+compact([0, 1, 2]); // -> [1, 2]
+compact(["", "hello", "", "world", ""]); // -> ["hello", "world"]
 ```
 
 ## concat
