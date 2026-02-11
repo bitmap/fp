@@ -87,6 +87,7 @@ npm install @bitmap/fp
 
 - [compose](#compose)
 - [pipe](#pipe)
+- [reverseArgs](#reverseArgs)
 - [curry](#curry)
 - [identity](#identity)
 - [isEqual](#isEqual)
@@ -1331,6 +1332,26 @@ const double = (n) => n * 2;
 const doubleThenAddOne = pipe(double, addOne);
 
 doubleThenAddOne(20); // 41
+```
+
+## reverseArgs
+
+Returns a function that calls the original function with reversed argument order.
+
+```js
+reverseArgs(function);
+```
+
+**Example**
+
+```js
+import { reverseArgs, clamp } from "@bitmap/fp";
+
+// clamp normally takes (min, max, value)
+const clampReversed = reverseArgs(clamp);
+
+// Now it takes (value, max, min)
+clampReversed(10, 5, 0); // -> 5
 ```
 
 ## curry
