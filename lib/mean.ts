@@ -5,4 +5,10 @@ import { sum } from "./sum";
  *
  * `mean :: [number] -> number`
  */
-export const mean = (...args: number[]): number => sum(...args) / args.length;
+export const mean = (...args: number[]): number => {
+  if (args.length === 0) {
+    throw new Error("mean requires at least one argument");
+  }
+
+  return sum(...args) / args.length;
+};
