@@ -45,6 +45,7 @@ npm install @bitmap/fp
 - [find](#find)
 - [findLast](#findLast)
 - [includes](#includes)
+- [includesFrom](#includesFrom)
 - [excludes](#excludes)
 - [position](#position)
 - [positionLast](#positionLast)
@@ -732,6 +733,26 @@ const hasApple = includes("apple");
 
 hasApple(["orange", "banana", "pear"]); // -> false
 hasApple(["kiwi", "apple", "coconut"]); // -> true
+```
+
+## includesFrom
+
+Starts searching from specified index, and returns true if the item is in
+list. `includesFrom` args are curried.
+
+```js
+includesFrom(fromIndex, value, list);
+```
+
+**Example**
+
+```js
+import { includesFrom } from "@bitmap/fp";
+
+const hasApple = includesFrom(2, "apple");
+
+hasApple(["grape", "kiwi", "banana", "apple"]); // -> true
+hasApple(["apple", "kiwi", "banana", "grape"]); // -> false
 ```
 
 ## excludes
