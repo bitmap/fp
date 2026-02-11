@@ -90,6 +90,7 @@ npm install @bitmap/fp
 - [curry](#curry)
 - [identity](#identity)
 - [isEqual](#isEqual)
+- [isEmpty](#isEmpty)
 - [isTypeOf](#isTypeOf)
   - [isBigInt](#isTypeOf)
   - [isBoolean](#isTypeOf)
@@ -1380,6 +1381,33 @@ import { isEqual } from "@bitmap/fp";
 
 isEqual(2, 2); // -> true
 isEqual(2, 3); // -> false
+```
+
+## isEmpty
+
+Checks if supplied value is its type's empty value and returns a boolean.
+Supports arrays, objects, strings, Maps, and Sets.
+
+```js
+isEmpty(value);
+```
+
+**Example**
+
+```js
+import { isEmpty } from "@bitmap/fp";
+
+isEmpty(""); // -> true
+isEmpty("hello"); // -> false
+
+isEmpty([]); // -> true
+isEmpty([1, 2, 3]); // -> false
+
+isEmpty({}); // -> true
+isEmpty({ a: 1 }); // -> false
+
+isEmpty(new Map()); // -> true
+isEmpty(new Set()); // -> true
 ```
 
 ## isTypeOf
