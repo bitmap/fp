@@ -852,7 +852,7 @@ const foodsByCategory = groupBy(obj => obj.category); /* -> {
 Returns a new list, composed of n-tuples of consecutive elements. `aperture` args are curried.
 
 ```js
-apeture(size, list);
+aperture(size, list);
 ```
 
 **Example**
