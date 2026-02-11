@@ -102,6 +102,7 @@ npm install @bitmap/fp
   - [isUndefined](#isTypeOf)
 - [isArray](#isArray)
 - [isNull](#isNull)
+- [not](#not)
 
 ## reduce
 
@@ -1473,4 +1474,27 @@ isNull(value); // -> true
 
 value = "hello, world";
 isNull(value); // -> false
+```
+
+## not
+
+Returns a negated version of a predicate function.
+
+```js
+not(predicate);
+```
+
+**Example**
+
+```js
+import { not, isNull, isEmpty } from "@bitmap/fp";
+
+const isNotNull = not(isNull);
+const isNotEmpty = not(isEmpty);
+
+isNotNull(null); // -> false
+isNotNull("hello"); // -> true
+
+isNotEmpty([]); // -> false
+isNotEmpty([1, 2, 3]); // -> true
 ```
