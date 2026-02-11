@@ -4,9 +4,9 @@ export const resolveMap =
     predicate: P,
     mapper: M,
     list: T[],
-  ): any[] => {
+  ): V[] => {
     const { length } = list;
-    const result = [];
+    const result: V[] = [];
     let index = 0;
 
     while (index < length) {
