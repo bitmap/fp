@@ -1,8 +1,8 @@
 import type { Curried } from "./curry";
 import { reduceRight } from "./reduceRight";
 
-type Fn = (arg: any) => any;
-type ArgT<T> = T extends (arg: infer A) => any ? A : never;
+type Fn = (arg: unknown) => unknown;
+type ArgT<T> = T extends (arg: infer A) => unknown ? A : never;
 type Reducer<T> = Curried<[], ArgT<T>>;
 
 /**
