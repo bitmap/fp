@@ -7,7 +7,7 @@ import { curry } from "./curry";
  * groupBy :: (a -> string) -> [a] -> { [string]: [a] }
  */
 export const groupBy = curry(
-  <K extends PropertyKey, T extends Record<K, any>>(
+  <K extends PropertyKey, T extends Record<K, unknown>>(
     keySelector: (item: T) => K,
     items: Iterable<T>,
   ): Partial<Record<K, T[]>> => Object.groupBy(items, keySelector),
