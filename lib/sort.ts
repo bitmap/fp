@@ -6,6 +6,6 @@ import { curry } from "./curry";
  *
  * `sort :: ((a, a) -> number) -> [a] -> [a]`
  */
-export const sort = curry(<T>(compareFn: (a: any, b: any) => number, list: T[]): T[] =>
+export const sort = curry(<T>(compareFn: (a: T, b: T) => number, list: T[]): T[] =>
   [...list].sort(compareFn),
 );
