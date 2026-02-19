@@ -1,4 +1,5 @@
 import { filterMap } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("filterMap", () => {
   const isEven = (n: number): boolean => n % 2 === 0;

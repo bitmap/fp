@@ -1,4 +1,5 @@
 import { insertAll } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("insertAll", () => {
   const months = ["Jan", "June"];

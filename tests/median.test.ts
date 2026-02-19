@@ -1,4 +1,5 @@
 import { median } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("median", () => {
   test("finds median", () => {

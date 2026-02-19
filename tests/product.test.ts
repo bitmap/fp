@@ -1,4 +1,5 @@
 import { product } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("product", () => {
   test("multiplies all numbers", () => {

@@ -1,4 +1,5 @@
 import { zip } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("zip", () => {
   test("combine multiple arrays into tuples", () => {

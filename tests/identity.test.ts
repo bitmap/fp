@@ -1,4 +1,5 @@
 import { identity } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("identity", () => {
   test("return identity", () => {

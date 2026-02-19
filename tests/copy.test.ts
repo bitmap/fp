@@ -1,4 +1,5 @@
 import { copy } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("copy", () => {
   test("copies list", () => {

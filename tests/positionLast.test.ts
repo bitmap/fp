@@ -1,4 +1,5 @@
 import { positionLast } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("positionLast", () => {
   test("finds last index", () => {

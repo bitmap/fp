@@ -1,4 +1,5 @@
 import { aperture } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("aperture", () => {
   test("creates n-tuples of consecutive elements", () => {

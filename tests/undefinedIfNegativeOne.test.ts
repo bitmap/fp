@@ -1,4 +1,5 @@
 import { undefinedIfNegativeOne } from "../lib/utils/undefinedIfNegativeOne";
+import { describe, test, expect } from "vitest";
 
 describe("undefinedIfNegativeOne", () => {
   test("returns undefined", () => {

@@ -1,4 +1,5 @@
 import { concat, curry } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("concat", () => {
   const arr1 = [1, 2, 3, 4];

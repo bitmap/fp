@@ -1,4 +1,5 @@
 import { prepend } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("prepend", () => {
   const arr = [1, 2, 3, 4];

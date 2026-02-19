@@ -1,4 +1,5 @@
 import { flat } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("flat", () => {
   test("flattens", () => {

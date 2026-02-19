@@ -1,4 +1,5 @@
 import { clamp } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("clamp", () => {
   test("clamps value", () => {

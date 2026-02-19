@@ -1,4 +1,5 @@
 import { chunk } from "../lib";
+import { describe, test, expect } from "vitest";
 
 const data = [0, 1, 2, 3, 4];
 
