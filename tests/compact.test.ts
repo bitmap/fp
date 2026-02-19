@@ -1,4 +1,5 @@
 import { compact } from "../lib";
+import { describe, test, expect } from "vitest";
 
 const flag1 = true;
 const flag2 = true;

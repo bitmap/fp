@@ -1,4 +1,5 @@
 import { compose } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("compose", () => {
   test("composes unary number arg", () => {

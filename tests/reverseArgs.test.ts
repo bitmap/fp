@@ -1,4 +1,5 @@
 import { clamp, reduce, reverseArgs } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("reverse", () => {
   test("reverses function", () => {

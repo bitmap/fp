@@ -1,4 +1,5 @@
 import { reduce } from "../lib";
+import { describe, test, expect } from "vitest";
 
 const arr = [...Array(100).keys()];
 const reducer = (acc: number, n: number): number => acc + n;

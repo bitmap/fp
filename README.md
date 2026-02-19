@@ -45,11 +45,13 @@ npm install @bitmap/fp
 - [find](#find)
 - [findLast](#findLast)
 - [includes](#includes)
+- [includesFrom](#includesFrom)
 - [excludes](#excludes)
 - [position](#position)
 - [positionLast](#positionLast)
 - [groupBy](#groupBy)
 - [aperture](#aperture)
+- [zip](#zip)
 
 **Objects**
 
@@ -86,9 +88,11 @@ npm install @bitmap/fp
 
 - [compose](#compose)
 - [pipe](#pipe)
+- [reverseArgs](#reverseArgs)
 - [curry](#curry)
 - [identity](#identity)
 - [isEqual](#isEqual)
+- [isEmpty](#isEmpty)
 - [isTypeOf](#isTypeOf)
   - [isBigInt](#isTypeOf)
   - [isBoolean](#isTypeOf)
@@ -100,6 +104,7 @@ npm install @bitmap/fp
   - [isUndefined](#isTypeOf)
 - [isArray](#isArray)
 - [isNull](#isNull)
+- [not](#not)
 
 ## reduce
 
@@ -292,8 +297,8 @@ compact(list);
 ```js
 import { compact } from "@bitmap/fp";
 
-compact(0, 1, 2); // -> [1, 2]
-compact("", "hello", "", "world", ""); // -> ["hello", "world"]
+compact([0, 1, 2]); // -> [1, 2]
+compact(["", "hello", "", "world", ""]); // -> ["hello", "world"]
 ```
 
 ## concat
@@ -734,6 +739,26 @@ hasApple(["orange", "banana", "pear"]); // -> false
 hasApple(["kiwi", "apple", "coconut"]); // -> true
 ```
 
+## includesFrom
+
+Starts searching from specified index, and returns true if the item is in
+list. `includesFrom` args are curried.
+
+```js
+includesFrom(fromIndex, value, list);
+```
+
+**Example**
+
+```js
+import { includesFrom } from "@bitmap/fp";
+
+const hasApple = includesFrom(2, "apple");
+
+hasApple(["grape", "kiwi", "banana", "apple"]); // -> true
+hasApple(["apple", "kiwi", "banana", "grape"]); // -> false
+```
+
 ## excludes
 
 Returns true if item is not in the list. `excludes` args are curried.
@@ -852,7 +877,7 @@ const foodsByCategory = groupBy(obj => obj.category); /* -> {
 Returns a new list, composed of n-tuples of consecutive elements. `aperture` args are curried.
 
 ```js
-apeture(size, list);
+aperture(size, list);
 ```
 
 **Example**
@@ -865,6 +890,23 @@ const list = [1, 2, 3, 4, 5]
 const aperture2 = aperture(2, list) // -> [[1, 2], [2, 3], [3, 4], [4, 5]]
 const aperture2 = aperture(3, list) // -> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
 
+```
+
+## zip
+
+Combine multiple arrays into tuples. The length of the result is the minimum length of the input arrays. `zip` args are curried.
+
+```js
+zip(listA, listB);
+```
+
+**Example**
+
+```js
+import { zip } from "@bitmap/fp";
+
+zip([1, 2, 3], ['a', 'b', 'c']); // -> [[1, 'a'], [2, 'b'], [3, 'c']]
+zip([1, 2, 3], ['a', 'b']); // -> [[1, 'a'], [2, 'b']]
 ```
 
 ## prop
@@ -1310,6 +1352,26 @@ const doubleThenAddOne = pipe(double, addOne);
 doubleThenAddOne(20); // 41
 ```
 
+## reverseArgs
+
+Returns a function that calls the original function with reversed argument order.
+
+```js
+reverseArgs(function);
+```
+
+**Example**
+
+```js
+import { reverseArgs, clamp } from "@bitmap/fp";
+
+// clamp normally takes (min, max, value)
+const clampReversed = reverseArgs(clamp);
+
+// Now it takes (value, max, min)
+clampReversed(10, 5, 0); // -> 5
+```
+
 ## curry
 
 Curry a function to allow it to be called partially.
@@ -1359,6 +1421,33 @@ import { isEqual } from "@bitmap/fp";
 
 isEqual(2, 2); // -> true
 isEqual(2, 3); // -> false
+```
+
+## isEmpty
+
+Checks if supplied value is its type's empty value and returns a boolean.
+Supports arrays, objects, strings, Maps, and Sets.
+
+```js
+isEmpty(value);
+```
+
+**Example**
+
+```js
+import { isEmpty } from "@bitmap/fp";
+
+isEmpty(""); // -> true
+isEmpty("hello"); // -> false
+
+isEmpty([]); // -> true
+isEmpty([1, 2, 3]); // -> false
+
+isEmpty({}); // -> true
+isEmpty({ a: 1 }); // -> false
+
+isEmpty(new Map()); // -> true
+isEmpty(new Set()); // -> true
 ```
 
 ## isTypeOf
@@ -1424,4 +1513,27 @@ isNull(value); // -> true
 
 value = "hello, world";
 isNull(value); // -> false
+```
+
+## not
+
+Returns a negated version of a predicate function.
+
+```js
+not(predicate);
+```
+
+**Example**
+
+```js
+import { not, isNull, isEmpty } from "@bitmap/fp";
+
+const isNotNull = not(isNull);
+const isNotEmpty = not(isEmpty);
+
+isNotNull(null); // -> false
+isNotNull("hello"); // -> true
+
+isNotEmpty([]); // -> false
+isNotEmpty([1, 2, 3]); // -> true
 ```

@@ -2,9 +2,9 @@ import { curry } from "./curry";
 
 type Mapper<T, U> = (fn: (value?: T, index?: number) => U, list: T[]) => U[];
 
-const mapper: Mapper<any, any> = (fn, list) => {
+const mapper = <T, U>(fn: (value?: T, index?: number) => U, list: T[]): U[] => {
   const { length } = list;
-  const result = Array(length);
+  const result = Array<U>(length);
   let index = 0;
 
   while (index < length) {

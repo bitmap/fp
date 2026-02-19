@@ -1,4 +1,5 @@
 import { last } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("last", () => {
   const arr = [1, 2, 3, 4];

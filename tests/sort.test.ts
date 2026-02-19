@@ -1,9 +1,10 @@
 import { sort } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("sort", () => {
   const arr = [4, 2, 3, 1, 5];
 
-  const sortAscending = sort((a, b) => a - b);
+  const sortAscending = sort((a: number, b: number) => a - b);
 
   test("returns sorted array", () => {
     expect(sortAscending(arr)).toEqual([1, 2, 3, 4, 5]);

@@ -1,4 +1,5 @@
 import { split } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("split", () => {
   const string = "I am a string";
