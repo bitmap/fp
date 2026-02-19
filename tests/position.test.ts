@@ -1,4 +1,5 @@
 import { position } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("position", () => {
   test("finds index", () => {

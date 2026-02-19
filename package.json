@@ -16,8 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "test": "vitest run --globals",
-    "test:watch": "vitest watch --globals",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "lint": "eslint lib tests",
     "clean": "rm -rf dist",
     "build": "npm run clean && rollup --config",

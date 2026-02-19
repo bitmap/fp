@@ -1,4 +1,5 @@
 import { pipe } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("pipe", () => {
   test("pipes unary number arg", () => {

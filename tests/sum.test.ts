@@ -1,4 +1,5 @@
 import { sum } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("sum", () => {
   test("sums all numbers", () => {

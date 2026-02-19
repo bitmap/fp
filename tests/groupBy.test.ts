@@ -1,4 +1,5 @@
 import { groupBy } from "../lib";
+import { describe, test, expect } from "vitest";
 
 interface Food {
   category: string;

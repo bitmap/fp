@@ -1,4 +1,5 @@
 import { flatMap } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("flatMap", () => {
   test("flattens and doubles", () => {

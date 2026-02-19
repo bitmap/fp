@@ -1,4 +1,5 @@
 import { pluck } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("pluck", () => {
   const data = [

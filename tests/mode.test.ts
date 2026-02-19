@@ -1,4 +1,5 @@
 import { mode } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("mode", () => {
   test("finds mode", () => {

@@ -1,4 +1,5 @@
 import { curry, reduce } from "../lib";
+import { describe, test, expect } from "vitest";
 
 /**
  * Applies list of functions to a list of values. `juxt` args are curried.

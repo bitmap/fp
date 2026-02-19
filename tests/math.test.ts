@@ -1,4 +1,5 @@
 import { add, subtract, subtractBy, multiply, divide, divideBy, remainder, modulo } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("math", () => {
   test("add", () => {

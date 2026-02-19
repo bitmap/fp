@@ -1,4 +1,5 @@
 import { mean } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("mean", () => {
   test("finds mean (average)", () => {

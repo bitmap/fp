@@ -1,4 +1,5 @@
 import { map, take } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("map", () => {
   const arr = [1, 2, 3];

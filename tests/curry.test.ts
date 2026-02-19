@@ -1,4 +1,5 @@
 import { curry } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("curry", () => {
   const sum = curry((a: number, b: number, c: number) => a + b + c);

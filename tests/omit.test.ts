@@ -1,4 +1,5 @@
 import { omit, map } from "../lib";
+import { describe, test, expect } from "vitest";
 
 interface User {
   name: string;

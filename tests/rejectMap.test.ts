@@ -1,4 +1,5 @@
 import { rejectMap } from "../lib";
+import { describe, test, expect } from "vitest";
 
 describe("rejectMap", () => {
   const isEven = (n: number): boolean => n % 2 === 0;
