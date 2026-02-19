@@ -51,6 +51,7 @@ npm install @bitmap/fp
 - [positionLast](#positionLast)
 - [groupBy](#groupBy)
 - [aperture](#aperture)
+- [zip](#zip)
 
 **Objects**
 
@@ -889,6 +890,23 @@ const list = [1, 2, 3, 4, 5]
 const aperture2 = aperture(2, list) // -> [[1, 2], [2, 3], [3, 4], [4, 5]]
 const aperture2 = aperture(3, list) // -> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
 
+```
+
+## zip
+
+Combine multiple arrays into tuples. The length of the result is the minimum length of the input arrays. `zip` args are curried.
+
+```js
+zip(listA, listB);
+```
+
+**Example**
+
+```js
+import { zip } from "@bitmap/fp";
+
+zip([1, 2, 3], ['a', 'b', 'c']); // -> [[1, 'a'], [2, 'b'], [3, 'c']]
+zip([1, 2, 3], ['a', 'b']); // -> [[1, 'a'], [2, 'b']]
 ```
 
 ## prop
