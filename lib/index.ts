@@ -77,4 +77,5 @@ export { sum } from "./sum";
 export { take } from "./take";
 export { takeRight } from "./takeRight";
 export { trim } from "./trim";
+export { unique } from "./unique";
 export { zip } from "./zip";
