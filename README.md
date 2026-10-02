@@ -21,6 +21,7 @@ npm install @bitmap/fp
 - [filterMap](#filterMap)
 - [reject](#reject)
 - [rejectMap](#rejectMap)
+- [unique](#unique)
 - [compact](#compact)
 - [concat](#concat)
 - [copy](#copy)
@@ -284,12 +285,25 @@ const doubleEvens = rejectMap(isOdd, double);
 doubleEvens([1, 2, 3, 4]); // -> [4, 8]
 ```
 
-## compact
+## unique
 
-Returns list with all falsey values removed.
+Returns a new array with duplicate values removed, keeping the first occurrence.
+`unique` args are curried.
 
 ```js
-compact(list);
+unique(array);
+```
+
+**Example**
+
+```js
+import { unique } from "@bitmap/fp";
+
+const arr = [1, 2, 2, 3, 1, 4];
+const result = unique(arr); // -> [1, 2, 3, 4]
+```
+
+## compact
 ```
 
 **Example**
