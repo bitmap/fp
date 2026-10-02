@@ -12,7 +12,8 @@ describe("map", () => {
   });
 
   test("converts type", () => {
-    expect(map((x) => `${x}!`)([1, 2, 3])).toEqual(["1!", "2!", "3!"]);
+    const convertToString = (x: string | number): string => `${x}!`;
+    expect(map(convertToString)([1, 2, 3])).toEqual(["1!", "2!", "3!"]);
   });
 
   test("other lib functions", () => {

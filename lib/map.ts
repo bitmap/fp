@@ -1,7 +1,5 @@
 import { curry } from "./curry";
 
-type Mapper<T, U> = (fn: (value?: T, index?: number) => U, list: T[]) => U[];
-
 const mapper = <T, U>(fn: (value?: T, index?: number) => U, list: T[]): U[] => {
   const { length } = list;
   const result = Array<U>(length);
@@ -15,7 +13,7 @@ const mapper = <T, U>(fn: (value?: T, index?: number) => U, list: T[]): U[] => {
 };
 
 /**
- * Apply function to each items in a list, and return a new list. `map` args are
+ * Apply function to each item in a list and return a new list. `map` args are
  * curried.
  *
  * `map :: (a -> b) -> [a] -> [b]`
