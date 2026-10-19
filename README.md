@@ -53,6 +53,7 @@ npm install @bitmap/fp
 - [groupBy](#groupBy)
 - [aperture](#aperture)
 - [zip](#zip)
+- [range](#range)
 
 **Objects**
 
@@ -82,6 +83,8 @@ npm install @bitmap/fp
 - [mean](#mean)
 - [median](#median)
 - [mode](#mode)
+- [min](#min)
+- [max](#max)
 - [remainder](#remainder)
 - [modulo](#modulo)
 
@@ -1290,6 +1293,40 @@ import { mode } from "@bitmap/fp";
 mode(3, 1, 2, 1, 3, 2, 1, 1, 2); // -> 1
 ```
 
+## min
+
+Returns minimum value of all arguments. Throws if called with no arguments.
+
+```js
+min(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { min } from "@bitmap/fp";
+
+min(5, 3, 9); // -> 3
+min(...[0, 1, 1, 2, 3, 5, 8]); // -> 0
+```
+
+## max
+
+Returns maximum value of all arguments. Throws if called with no arguments.
+
+```js
+max(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { max } from "@bitmap/fp";
+
+max(5, 3, 9); // -> 9
+max(...[0, 1, 1, 2, 3, 5, 8]); // -> 8
+```
+
 ## remainder
 
 Returns remainder of two operands. `remainder` args are curried.
@@ -1322,6 +1359,28 @@ modulo(a, n);
 import { modulo } from "@bitmap/fp";
 
 modulo(5, 2); // -> 1
+```
+
+## range
+
+Returns a sequence of integers from `start` (inclusive) to `end` (exclusive). Counts down when `start` is greater than `end`, and returns an empty array when they are equal. Throws if either value is not an integer.
+
+```js
+range(start, end);
+```
+
+**Example**
+
+```js
+import { range } from "@bitmap/fp";
+
+range(1, 6); // -> [1, 2, 3, 4, 5]
+range(5, 0); // -> [5, 4, 3, 2, 1]
+range(3, 3); // -> []
+
+for (const i of range(0, 4)) {
+  // 0, 1, 2, 3
+}
 ```
 
 ## compose
