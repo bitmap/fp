@@ -15,6 +15,12 @@ describe("aperture", () => {
     expect(size7).toEqual([]);
   });
 
+  test("supports partial application", () => {
+    const pairs = aperture(2);
+
+    expect(pairs([1, 2, 3])).toEqual([[1, 2], [2, 3]]);
+  });
+
   test("throws error when size is 0", () => {
     expect(() => aperture(0, [1, 2, 3])).toThrow("aperture size must be at least 1");
   });

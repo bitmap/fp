@@ -12,91 +12,91 @@ npm install @bitmap/fp
 
 **Arrays**
 
-- [reduce](#reduce)
-- [reduceRight](#reduceRight)
-- [map](#map)
-- [flat](#flat)
-- [flatMap](#flatMap)
-- [filter](#filter)
-- [filterMap](#filterMap)
-- [reject](#reject)
-- [rejectMap](#rejectMap)
-- [unique](#unique)
+- [all](#all)
+- [any](#any)
+- [aperture](#aperture)
+- [append](#append)
+- [chunk](#chunk)
 - [compact](#compact)
 - [concat](#concat)
 - [copy](#copy)
-- [slice](#slice)
-- [append](#append)
-- [prepend](#prepend)
-- [insert](#insert)
-- [insertAll](#insertAll)
-- [chunk](#chunk)
-- [reverse](#reverse)
-- [sort](#sort)
-- [first](#first)
-- [last](#last)
 - [drop](#drop)
-- [dropRight](#dropRight)
 - [dropFirst](#dropFirst)
 - [dropLast](#dropLast)
-- [take](#take)
-- [takeRight](#takeRight)
-- [any](#any)
-- [all](#all)
+- [dropRight](#dropRight)
+- [excludes](#excludes)
+- [filter](#filter)
+- [filterMap](#filterMap)
 - [find](#find)
 - [findLast](#findLast)
+- [first](#first)
+- [flat](#flat)
+- [flatMap](#flatMap)
+- [groupBy](#groupBy)
 - [includes](#includes)
 - [includesFrom](#includesFrom)
-- [excludes](#excludes)
+- [insert](#insert)
+- [insertAll](#insertAll)
+- [last](#last)
+- [map](#map)
 - [position](#position)
 - [positionLast](#positionLast)
-- [groupBy](#groupBy)
-- [aperture](#aperture)
-- [zip](#zip)
+- [prepend](#prepend)
 - [range](#range)
+- [reduce](#reduce)
+- [reduceRight](#reduceRight)
+- [reject](#reject)
+- [rejectMap](#rejectMap)
+- [reverse](#reverse)
+- [slice](#slice)
+- [sort](#sort)
+- [take](#take)
+- [takeRight](#takeRight)
+- [unique](#unique)
+- [zip](#zip)
 
 **Objects**
 
-- [prop](#prop)
-- [pluck](#pluck)
-- [pick](#pick)
 - [omit](#omit)
+- [pick](#pick)
+- [pluck](#pluck)
+- [prop](#prop)
 
 **Strings**
 
-- [split](#split)
 - [join](#join)
 - [reverse](#reverse)
+- [split](#split)
 - [trim](#trim)
 
 **Math**
 
 - [add](#add)
-- [sum](#sum)
-- [multiply](#multiply)
-- [product](#product)
-- [subtract](#subtract)
-- [subtractBy](#subtractBy)
+- [clamp](#clamp)
 - [divide](#divide)
 - [divideBy](#divideBy)
-- [clamp](#clamp)
+- [max](#max)
 - [mean](#mean)
 - [median](#median)
-- [mode](#mode)
 - [min](#min)
-- [max](#max)
-- [remainder](#remainder)
+- [mode](#mode)
 - [modulo](#modulo)
+- [multiply](#multiply)
+- [product](#product)
+- [remainder](#remainder)
+- [subtract](#subtract)
+- [subtractBy](#subtractBy)
+- [sum](#sum)
 
 **Utilities**
 
 - [compose](#compose)
-- [pipe](#pipe)
-- [reverseArgs](#reverseArgs)
 - [curry](#curry)
 - [identity](#identity)
-- [isEqual](#isEqual)
+- [isArray](#isArray)
 - [isEmpty](#isEmpty)
+- [isEqual](#isEqual)
+- [isNull](#isNull)
 - [isTypeOf](#isTypeOf)
   - [isBigInt](#isTypeOf)
   - [isBoolean](#isTypeOf)
@@ -106,207 +106,115 @@ npm install @bitmap/fp
   - [isString](#isTypeOf)
   - [isSymbol](#isTypeOf)
   - [isUndefined](#isTypeOf)
-- [isArray](#isArray)
-- [isNull](#isNull)
 - [not](#not)
+- [pipe](#pipe)
+- [reverseArgs](#reverseArgs)
 
-## reduce
+## all
 
-Reduce values in a list according to a reducer function. `reduce` args are
+Returns true if all item in list meet the condition. `all` args are curried.
+
+```js
+all(predicate, list);
+```
+
+**Example**
+
+```js
+import { all } from "@bitmap/fp";
+
+const greaterThanTen = (x) => x > 10;
+const allGreaterThanTen = all(greaterThanTen);
+
+allGreaterThanTen([3, 5, 7, 9]); // -> false
+allGreaterThanTen([5, 20, 100]); // -> false
+allGreaterThanTen([50, 15, 99]); // -> true
+```
+
+## any
+
+Returns true if any item in list meet the condition. `any` args are curried.
+
+```js
+any(predicate, list);
+```
+
+**Example**
+
+```js
+import { any } from "@bitmap/fp";
+
+const greaterThanTen = (x) => x > 10;
+const anyGreaterThanTen = any(greaterThanTen);
+
+anyGreaterThanTen([3, 5, 7, 9]); // -> false
+anyGreaterThanTen([5, 20, 100]); // -> true
+```
+
+## aperture
+
+Returns a new list, composed of n-tuples of consecutive elements. `aperture` args are curried.
+
+```js
+aperture(size, list);
+```
+
+**Example**
+
+```js
+import { aperture } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4, 5];
+
+aperture(2, list); // -> [[1, 2], [2, 3], [3, 4], [4, 5]]
+aperture(3, list); // -> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+```
+
+## append
+
+Appends item to the end of a list. Unlike `Array.prototype.push`, doesn't mutate
+target. `append` args are curried.
+
+```js
+append(item, list);
+```
+
+**Example**
+
+```js
+import { append } from "@bitmap/fp";
+
+const list = [1, 2];
+
+append(3, list); // -> [1, 2, 3]
+```
+
+## chunk
+
+Splits a collection into slices of the specified length. `chunk` args are
 curried.
 
 ```js
-reduce(reducer, initialValue, list);
+chunk(size, list);
 ```
 
 **Example**
 
 ```js
-import { reduce } from "@bitmap/fp";
+import { chunk } from "@bitmap/fp";
 
-const sum = (a, b) => a + b;
-const items = [1, 2, 3, 4];
+const list = [1, 2, 3, 4, 5];
 
-reduce(sum, 0, items); // -> 10
-```
-
-## reduceRight
-
-Reduce values in a list according to a reducer function in reverse order.
-`reduceRight` args are curried.
-
-```js
-reduceRight(reducer, initialValue, list);
-```
-
-**Example**
-
-```js
-import { reduceRight } from "@bitmap/fp";
-
-const sum = (a, b) => a + b;
-const items = [1, 2, 3, 4];
-
-reduceRight(sum, 0, items); // -> 10
-```
-
-## map
-
-Apply function to each items in a list, and return a new list. `map` args are
-curried.
-
-```js
-map(mapFunction, list);
-```
-
-**Example**
-
-```js
-import { map } from "@bitmap/fp";
-
-const double = (n) => n * 2;
-const doubleAll = map(double);
-
-doubleAll([1, 2, 3]); // -> [2, 4, 6]
-```
-
-## flat
-
-Return a flattened list.
-
-```js
-flat(list);
-```
-
-**Example**
-
-```js
-import { flat } from "@bitmap/fp";
-
-flat([0, [1, 2], [3, 4], [5]]); // -> [0, 1, 2, 3, 4, 5]
-flat([0, [1, 2, [3, 4, [5]]]]); // -> [0, 1, 2, 3, 4, 5]
-```
-
-## flatMap
-
-Apply function to each items in a list, and return a flattened list. `flatMap`
-args are curried.
-
-```js
-flatMap(flatMapFunction, list);
-```
-
-**Example**
-
-```js
-import { flatMap } from "@bitmap/fp";
-
-const users = ["@cabe", "@bitmap"];
-const indexUsers = flatMap((user, index) => [index, user]);
-
-indexUsers(users); // -> [0, '@cabe', 1, '@bitmap']
-```
-
-## filter
-
-Filter items from a list, and return a new list. `filter` args are curried.
-
-```js
-filter(predicate, list);
-```
-
-**Example**
-
-```js
-import { filter } from "@bitmap/fp";
-
-const isOdd = (n) => n % 2 !== 0;
-const filterOdds = filter(isOdd);
-
-filterOdds([1, 2, 3, 4]); // -> [1, 3]
-```
-
-## filterMap
-
-Apply filter and map to a list, and return a new list. `filterMap` args are
-curried.
-
-```js
-filterMap(predicate, mapFunction, list);
-```
-
-**Example**
-
-```js
-import { filterMap } from "@bitmap/fp";
-
-const isOdd = (n) => n % 2 !== 0;
-const double = (n) => n * 2;
-const doubleOdds = filterMap(isOdd, double);
-
-doubleOdds([1, 2, 3, 4]); // -> [3, 6]
-```
-
-## reject
-
-Reject items from a list, and return a new list. The opposite of
-[filter](#filter). `reject` args are curried.
-
-```js
-reject(predicate, list);
-```
-
-**Example**
-
-```js
-import { reject } from "@bitmap/fp";
-
-const isOdd = (n) => n % 2 !== 0;
-const rejectOdds = reject(isOdd);
-
-rejectOdds([1, 2, 3, 4]); // -> [2, 4]
-```
-
-## rejectMap
-
-Apply reject and map to a list, and return a new list. `rejectMap` args are
-curried.
-
-```js
-rejectMap(predicate, mapFunction, list);
-```
-
-**Example**
-
-```js
-import { rejectMap } from "@bitmap/fp";
-
-const isOdd = (n) => n % 2 !== 0;
-const double = (n) => n * 2;
-const doubleEvens = rejectMap(isOdd, double);
-
-doubleEvens([1, 2, 3, 4]); // -> [4, 8]
-```
-
-## unique
-
-Returns a new array with duplicate values removed, keeping the first occurrence.
-`unique` args are curried.
-
-```js
-unique(array);
-```
-
-**Example**
-
-```js
-import { unique } from "@bitmap/fp";
-
-const arr = [1, 2, 2, 3, 1, 4];
-const result = unique(arr); // -> [1, 2, 3, 4]
+chunk(2, list); // -> [[1, 2], [3, 4], [5]]
+chunk(3, list); // -> [[1, 2, 3], [4, 5]]
 ```
 
 ## compact
+
+Returns list with all falsey values removed.
+
+```js
+compact(list);
 ```
 
 **Example**
@@ -355,199 +263,6 @@ const list = [1, 2, 3];
 copy(list); // -> [1, 2, 3]
 ```
 
-## slice
-
-Return a sliced list. `slice` args are curried.
-
-```js
-slice(start, end, list);
-```
-
-**Example**
-
-```js
-import { slice } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4, 5, 6];
-
-slice(2, 5, list); // -> [3, 4, 5]
-```
-
-## append
-
-Appends item to the end of a list. Unlike `Array.prototype.push`, doesn't mutate
-target. `append` args are curried.
-
-```js
-append(item, list);
-```
-
-**Example**
-
-```js
-import { append } from "@bitmap/fp";
-
-const list = [1, 2];
-
-append(3, list); // -> [1, 2, 3]
-```
-
-## prepend
-
-Prepends item to the beginning of a list. Unlike `Array.prototype.unshift`,
-doesn't mutate target. `prepend` args are curried.
-
-```js
-prepend(item, list);
-```
-
-**Example**
-
-```js
-import { prepend } from "@bitmap/fp";
-
-const list = [1, 2];
-
-prepend(0, list); // -> [0, 1, 2]
-```
-
-## insert
-
-Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate target.
-`insert` args are curried.
-
-```js
-insert(start, item, list);
-```
-
-**Example**
-
-```js
-import { insert } from "@bitmap/fp";
-
-const list = [1, 3];
-
-insert(1, 2, list); // -> [1, 2, 3]
-```
-
-## insertAll
-
-Insert items into a list. Unlike `Array.prototype.splice`, doesn't mutate
-target. `insertAll` args are curried.
-
-```js
-insertAll(start, items, list);
-```
-
-**Example**
-
-```js
-import { insertAll } from "@bitmap/fp";
-
-const list = [1, 4];
-
-insertAll(1, [2, 3], list); // -> [1, 2, 3, 4]
-```
-
-## chunk
-
-Splits a collection into slices of the specified length. `chunk` args are
-curried.
-
-```js
-chunk(size, list);
-```
-
-**Example**
-
-```js
-import { chunk } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4, 5];
-
-chunk(2, list); // -> [[1, 2], [3, 4], [5]]
-chunk(3, list); // -> [[1, 2, 3], [4, 5]]
-```
-
-## reverse
-
-Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't
-mutate target.
-
-```js
-reverse(list);
-```
-
-**Example**
-
-```js
-import { reverse } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4];
-
-reverse(list); // -> [4, 3, 2, 1]
-
-const string = "functional";
-
-reverse(string); // -> 'lanoitcnuf'
-```
-
-## sort
-
-Sorts items in a list according to comparator function. Unlike
-`Array.prototype.sort`, doesn't mutate target.
-
-```js
-sort(compareFunction, list);
-```
-
-**Example**
-
-```js
-import { sort } from "@bitmap/fp";
-
-const sortAscending = (a, b) => a - b;
-const list = [40, 21, 32, 17];
-
-sort(sortAscending, list); // -> [17, 21, 32, 40]
-```
-
-## first
-
-Returns first item in a list.
-
-```js
-first(list);
-```
-
-**Example**
-
-```js
-import { first } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4];
-
-first(list); // -> 1
-```
-
-## last
-
-Returns last item in a list.
-
-```js
-last(list);
-```
-
-**Example**
-
-```js
-import { last } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4];
-
-last(list); // -> 4
-```
-
 ## drop
 
 Drops `n` items from left. `drop` args are curried.
@@ -564,24 +279,6 @@ import { drop } from "@bitmap/fp";
 const list = [1, 2, 3, 4];
 
 drop(2, list); // -> [3, 4]
-```
-
-## dropRight
-
-Drops `n` items from right. `dropRight` args are curried.
-
-```js
-dropRight(n, list);
-```
-
-**Example**
-
-```js
-import { dropRight } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4];
-
-dropRight(2, list); // -> [1, 2]
 ```
 
 ## dropFirst
@@ -620,81 +317,81 @@ const list = [1, 2, 3, 4];
 dropLast(list); // -> [1, 2, 3]
 ```
 
-## take
+## dropRight
 
-Takes `n` items from left. `take` args are curried.
+Drops `n` items from right. `dropRight` args are curried.
 
 ```js
-take(n, list);
+dropRight(n, list);
 ```
 
 **Example**
 
 ```js
-import { take } from "@bitmap/fp";
+import { dropRight } from "@bitmap/fp";
 
 const list = [1, 2, 3, 4];
 
-take(2, list); // -> [1, 2]
+dropRight(2, list); // -> [1, 2]
 ```
 
-## takeRight
+## excludes
 
-Takes `n` items from right. `takeRight` args are curried.
-
-```js
-takeRight(n, list);
-```
-
-**Example**
+Returns true if item is not in the list. `excludes` args are curried.
 
 ```js
-import { takeRight } from "@bitmap/fp";
-
-const list = [1, 2, 3, 4];
-
-takeRight(2, list); // -> [3, 4]
-```
-
-## any
-
-Returns true if any item in list meet the condition. `any` args are curried.
-
-```js
-any(predicate, list);
+excludes(value, list);
 ```
 
 **Example**
 
 ```js
-import { any } from "@bitmap/fp";
+import { excludes } from "@bitmap/fp";
 
-const greaterThanTen = (x) => x > 10;
-const anyGreaterThanTen = any(greaterThanTen);
+const hasApple = excludes("apple");
 
-anyGreaterThanTen([3, 5, 7, 9]); // -> false
-anyGreaterThanTen([5, 20, 100]); // -> true
+hasApple(["orange", "banana", "pear"]); // -> true
+hasApple(["kiwi", "apple", "coconut"]); // -> false
 ```
 
-## all
+## filter
 
-Returns true if all item in list meet the condition. `all` args are curried.
+Filter items from a list, and return a new list. `filter` args are curried.
 
 ```js
-all(predicate, list);
+filter(predicate, list);
 ```
 
 **Example**
 
 ```js
-import { all } from "@bitmap/fp";
+import { filter } from "@bitmap/fp";
 
-const greaterThanTen = (x) => x > 10;
-const allGreaterThanTen = all(greaterThanTen);
+const isOdd = (n) => n % 2 !== 0;
+const filterOdds = filter(isOdd);
 
-allGreaterThanTen([3, 5, 7, 9]); // -> false
-allGreaterThanTen([5, 20, 100]); // -> false
-allGreaterThanTen([50, 15, 99]); // -> true
+filterOdds([1, 2, 3, 4]); // -> [1, 3]
+```
+
+## filterMap
+
+Apply filter and map to a list, and return a new list. `filterMap` args are
+curried.
+
+```js
+filterMap(predicate, mapFunction, list);
+```
+
+**Example**
+
+```js
+import { filterMap } from "@bitmap/fp";
+
+const isOdd = (n) => n % 2 !== 0;
+const double = (n) => n * 2;
+const doubleOdds = filterMap(isOdd, double);
+
+doubleOdds([1, 2, 3, 4]); // -> [3, 6]
 ```
 
 ## find
@@ -737,6 +434,96 @@ findLastGreaterThanTen([3, 5, 7, 9]); // -> undefined
 findLastGreaterThanTen([5, 20, 100]); // -> 100
 ```
 
+## first
+
+Returns first item in a list.
+
+```js
+first(list);
+```
+
+**Example**
+
+```js
+import { first } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4];
+
+first(list); // -> 1
+```
+
+## flat
+
+Return a flattened list.
+
+```js
+flat(list);
+```
+
+**Example**
+
+```js
+import { flat } from "@bitmap/fp";
+
+flat([0, [1, 2], [3, 4], [5]]); // -> [0, 1, 2, 3, 4, 5]
+flat([0, [1, 2, [3, 4, [5]]]]); // -> [0, 1, 2, 3, 4, 5]
+```
+
+## flatMap
+
+Apply function to each items in a list, and return a flattened list. `flatMap`
+args are curried.
+
+```js
+flatMap(flatMapFunction, list);
+```
+
+**Example**
+
+```js
+import { flatMap } from "@bitmap/fp";
+
+const users = ["@cabe", "@bitmap"];
+const indexUsers = flatMap((user, index) => [index, user]);
+
+indexUsers(users); // -> [0, '@cabe', 1, '@bitmap']
+```
+
+## groupBy
+
+Returns an object with keys being the result of the given function and values
+being arrays of the items in the original array that produced the key.
+
+```js
+groupBy(selector, list);
+```
+
+**Example**
+
+```js
+import { groupBy } from "@bitmap/fp";
+
+const foods = [
+  { category: "fruits", value: "apple" },
+  { category: "fruits", value: "banana" },
+  { category: "vegetable", value: "spinach" },
+  { category: "fruits", value: "orange" },
+  { category: "vegetable", value: "broccoli" },
+];
+
+groupBy((obj) => obj.category, foods); /* -> {
+  fruits: [
+    { category: "fruits", value: "apple" },
+    { category: "fruits", value: "banana" },
+    { category: "fruits", value: "orange" },
+  ],
+  vegetable: [
+    { category: "vegetable", value: "spinach" },
+    { category: "vegetable", value: "broccoli" },
+  ],
+} */
+```
+
 ## includes
 
 Returns true if item is in the list. `includes` args are curried.
@@ -776,23 +563,80 @@ hasApple(["grape", "kiwi", "banana", "apple"]); // -> true
 hasApple(["apple", "kiwi", "banana", "grape"]); // -> false
 ```
 
-## excludes
+## insert
 
-Returns true if item is not in the list. `excludes` args are curried.
+Insert item into a list. Unlike `Array.prototype.splice`, doesn't mutate target.
+`insert` args are curried.
 
 ```js
-excludes(value, list);
+insert(start, item, list);
 ```
 
 **Example**
 
 ```js
-import { excludes } from "@bitmap/fp";
+import { insert } from "@bitmap/fp";
 
-const hasApple = excludes("apple");
+const list = [1, 3];
 
-hasApple(["orange", "banana", "pear"]); // -> true
-hasApple(["kiwi", "apple", "coconut"]); // -> false
+insert(1, 2, list); // -> [1, 2, 3]
+```
+
+## insertAll
+
+Insert items into a list. Unlike `Array.prototype.splice`, doesn't mutate
+target. `insertAll` args are curried.
+
+```js
+insertAll(start, items, list);
+```
+
+**Example**
+
+```js
+import { insertAll } from "@bitmap/fp";
+
+const list = [1, 4];
+
+insertAll(1, [2, 3], list); // -> [1, 2, 3, 4]
+```
+
+## last
+
+Returns last item in a list.
+
+```js
+last(list);
+```
+
+**Example**
+
+```js
+import { last } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4];
+
+last(list); // -> 4
+```
+
+## map
+
+Apply function to each items in a list, and return a new list. `map` args are
+curried.
+
+```js
+map(mapFunction, list);
+```
+
+**Example**
+
+```js
+import { map } from "@bitmap/fp";
+
+const double = (n) => n * 2;
+const doubleAll = map(double);
+
+doubleAll([1, 2, 3]); // -> [2, 4, 6]
 ```
 
 ## position
@@ -839,74 +683,241 @@ lastAppleIndex(["orange", "banana", "pear", "lemon"]); // -> -1
 lastAppleIndex(["kiwi", "apple", "coconut", "apple"]); // -> 3
 ```
 
-## groupBy
+## prepend
 
-Returns an object with keys being the result of the given function and values
-being arrays of the items in the original array that produced the key.
+Prepends item to the beginning of a list. Unlike `Array.prototype.unshift`,
+doesn't mutate target. `prepend` args are curried.
 
 ```js
-groupBy(selector, list);
+prepend(item, list);
 ```
 
 **Example**
 
 ```js
-import { groupBy } from "@bitmap/fp";
+import { prepend } from "@bitmap/fp";
 
-const foods = const foods = [
-    {
-      category: "fruits",
-      value: "apple",
-    },
-    {
-      category: "fruits",
-      value: "banana",
-    },
-    {
-      category: "vegetable",
-      value: "spinach",
-    },
-    {
-      category: "fruits",
-      value: "orange",
-    },
-    {
-      category: "vegetable",
-      value: "broccoli",
-    },
-  ];
+const list = [1, 2];
 
-const foodsByCategory = groupBy(obj => obj.category); /* -> {
-  fruits: [
-    { category: "fruits", value: "apple" },
-    { category: "fruits", value: "banana" },
-    { category: "fruits", value: "orange" },
-  ],
-  vegetable: [
-    { category: "vegetable", value: "spinach" },
-    { category: "vegetable", value: "broccoli" },
-  ],
-} */
+prepend(0, list); // -> [0, 1, 2]
 ```
 
-## aperture
+## range
 
-Returns a new list, composed of n-tuples of consecutive elements. `aperture` args are curried.
+Returns a sequence of integers from `start` (inclusive) to `end` (exclusive). Counts down when `start` is greater than `end`, and returns an empty array when they are equal. Throws if either value is not an integer.
 
 ```js
-aperture(size, list);
+range(start, end);
 ```
 
 **Example**
 
 ```js
-import { aperture } from "@bitmap/fp";
+import { range } from "@bitmap/fp";
 
-const list = [1, 2, 3, 4, 5]
+range(1, 6); // -> [1, 2, 3, 4, 5]
+range(5, 0); // -> [5, 4, 3, 2, 1]
+range(3, 3); // -> []
 
-const aperture2 = aperture(2, list) // -> [[1, 2], [2, 3], [3, 4], [4, 5]]
-const aperture2 = aperture(3, list) // -> [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+for (const i of range(0, 4)) {
+  // 0, 1, 2, 3
+}
+```
 
+## reduce
+
+Reduce values in a list according to a reducer function. `reduce` args are
+curried.
+
+```js
+reduce(reducer, initialValue, list);
+```
+
+**Example**
+
+```js
+import { reduce } from "@bitmap/fp";
+
+const sum = (a, b) => a + b;
+const items = [1, 2, 3, 4];
+
+reduce(sum, 0, items); // -> 10
+```
+
+## reduceRight
+
+Reduce values in a list according to a reducer function in reverse order.
+`reduceRight` args are curried.
+
+```js
+reduceRight(reducer, initialValue, list);
+```
+
+**Example**
+
+```js
+import { reduceRight } from "@bitmap/fp";
+
+const sum = (a, b) => a + b;
+const items = [1, 2, 3, 4];
+
+reduceRight(sum, 0, items); // -> 10
+```
+
+## reject
+
+Reject items from a list, and return a new list. The opposite of
+[filter](#filter). `reject` args are curried.
+
+```js
+reject(predicate, list);
+```
+
+**Example**
+
+```js
+import { reject } from "@bitmap/fp";
+
+const isOdd = (n) => n % 2 !== 0;
+const rejectOdds = reject(isOdd);
+
+rejectOdds([1, 2, 3, 4]); // -> [2, 4]
+```
+
+## rejectMap
+
+Apply reject and map to a list, and return a new list. `rejectMap` args are
+curried.
+
+```js
+rejectMap(predicate, mapFunction, list);
+```
+
+**Example**
+
+```js
+import { rejectMap } from "@bitmap/fp";
+
+const isOdd = (n) => n % 2 !== 0;
+const double = (n) => n * 2;
+const doubleEvens = rejectMap(isOdd, double);
+
+doubleEvens([1, 2, 3, 4]); // -> [4, 8]
+```
+
+## reverse
+
+Reverse a string or items in a list. Unlike `Array.prototype.reverse`, doesn't
+mutate target.
+
+```js
+reverse(list);
+```
+
+**Example**
+
+```js
+import { reverse } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4];
+
+reverse(list); // -> [4, 3, 2, 1]
+
+const string = "functional";
+
+reverse(string); // -> 'lanoitcnuf'
+```
+
+## slice
+
+Return a sliced list. `slice` args are curried.
+
+```js
+slice(start, end, list);
+```
+
+**Example**
+
+```js
+import { slice } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4, 5, 6];
+
+slice(2, 5, list); // -> [3, 4, 5]
+```
+
+## sort
+
+Sorts items in a list according to comparator function. Unlike
+`Array.prototype.sort`, doesn't mutate target.
+
+```js
+sort(compareFunction, list);
+```
+
+**Example**
+
+```js
+import { sort } from "@bitmap/fp";
+
+const sortAscending = (a, b) => a - b;
+const list = [40, 21, 32, 17];
+
+sort(sortAscending, list); // -> [17, 21, 32, 40]
+```
+
+## take
+
+Takes `n` items from left. `take` args are curried.
+
+```js
+take(n, list);
+```
+
+**Example**
+
+```js
+import { take } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4];
+
+take(2, list); // -> [1, 2]
+```
+
+## takeRight
+
+Takes `n` items from right. `takeRight` args are curried.
+
+```js
+takeRight(n, list);
+```
+
+**Example**
+
+```js
+import { takeRight } from "@bitmap/fp";
+
+const list = [1, 2, 3, 4];
+
+takeRight(2, list); // -> [3, 4]
+```
+
+## unique
+
+Returns a new array with duplicate values removed, keeping the first occurrence.
+`unique` args are curried.
+
+```js
+unique(array);
+```
+
+**Example**
+
+```js
+import { unique } from "@bitmap/fp";
+
+const arr = [1, 2, 2, 3, 1, 4];
+const result = unique(arr); // -> [1, 2, 3, 4]
 ```
 
 ## zip
@@ -926,26 +937,54 @@ zip([1, 2, 3], ['a', 'b', 'c']); // -> [[1, 'a'], [2, 'b'], [3, 'c']]
 zip([1, 2, 3], ['a', 'b']); // -> [[1, 'a'], [2, 'b']]
 ```
 
-## prop
+## omit
 
-Returns the value of `key` in object. `prop` args are curried.
+Returns copy of object with supplied `keys` omitted. Opposite of [pick](#pick).
+`omit` args are curried.
 
 ```js
-prop(key, object);
+omit(keys, object);
 ```
 
 **Example**
 
 ```js
-import { prop } from "@bitmap/fp";
+import { omit } from "@bitmap/fp";
 
 const data = {
   name: "Cabe",
-  username: "bitmap",
-  title: "Developer",
+  age: 32,
+  position: "Developer",
+  state: "NY",
+  city: "New York",
 };
 
-prop("username", data); // -> 'bitmap'
+omit(["age", "state", "city"], data); // -> { name: 'Cabe', position: 'Developer' }
+```
+
+## pick
+
+Returns copy of object with supplied `keys` and all other properties omitted.
+`pick` args are curried.
+
+```js
+pick(keys, object);
+```
+
+**Example**
+
+```js
+import { pick } from "@bitmap/fp";
+
+const data = {
+  name: "Cabe",
+  age: 32,
+  position: "Developer",
+  state: "NY",
+  city: "New York",
+};
+
+pick(["name", "position"], data); // -> { name: 'Cabe', position: 'Developer' }
 ```
 
 ## pluck
@@ -980,70 +1019,26 @@ const data = [
 pluck("state", data); // -> ['NY', 'CA', 'OR']
 ```
 
-## pick
+## prop
 
-Returns copy of object with supplied `keys` and all other properties omitted.
-`pick` args are curried.
+Returns the value of `key` in object. `prop` args are curried.
 
 ```js
-pick(keys, object);
+prop(key, object);
 ```
 
 **Example**
 
 ```js
-import { pick } from "@bitmap/fp";
+import { prop } from "@bitmap/fp";
 
 const data = {
   name: "Cabe",
-  age: 32,
-  position: "Developer",
-  state: "NY",
-  city: "New York",
+  username: "bitmap",
+  title: "Developer",
 };
 
-pick(["name", "position"], data); // -> { name: 'Cabe', position: 'Developer' }
-```
-
-## omit
-
-Returns copy of object with supplied `keys` omitted. Opposite of [pick](#pick).
-`omit` args are curried.
-
-```js
-omit(keys, object);
-```
-
-**Example**
-
-```js
-import { omit } from "@bitmap/fp";
-
-const data = {
-  name: "Cabe",
-  age: 32,
-  position: "Developer",
-  state: "NY",
-  city: "New York",
-};
-
-omit(["age", "state", "city"], data); // -> { name: 'Cabe', position: 'Developer' }
-```
-
-## split
-
-Splits a string by delimiter into a list. `split` args are curried.
-
-```js
-split(delimiter, string);
-```
-
-**Example**
-
-```js
-import { split } from "@bitmap/fp";
-
-split(":", "name:Cabe"); // -> ['name', 'Cabe']
+prop("username", data); // -> 'bitmap'
 ```
 
 ## join
@@ -1061,6 +1056,22 @@ join(delimiter, list);
 import { join } from "@bitmap/fp";
 
 join("|", [1, 2, 3, 4]); // -> '1|2|3|4'
+```
+
+## split
+
+Splits a string by delimiter into a list. `split` args are curried.
+
+```js
+split(delimiter, string);
+```
+
+**Example**
+
+```js
+import { split } from "@bitmap/fp";
+
+split(":", "name:Cabe"); // -> ['name', 'Cabe']
 ```
 
 ## trim
@@ -1098,24 +1109,157 @@ const add5 = add(5);
 const nine = add5(4); // -> 9
 ```
 
-## sum
+## clamp
 
-Returns sum of all arguments.
+Clips value in mix/max range. `clamp` args are curried.
 
 ```js
-sum(a, b, c, ...)
+clamp(min, max, value);
 ```
 
 **Example**
 
 ```js
-import { sum } from "@bitmap/fp";
+import { clamp } from "@bitmap/fp";
 
-sum(1, 2, 3, 4); // -> 10
+const percent = clamp(0, 1);
+percent(-1); // -> 0
+percent(0.5); // -> 0.5
+percent(1.5); // -> 1
+```
 
-const values = [17, 18, 11, -4];
+## divide
 
-sum(...values); // -> 42
+Divides first value by second value. `divide` args are curried.
+
+```js
+divide(a, b);
+```
+
+**Example**
+
+```js
+import { divide } from "@bitmap/fp";
+
+divide(12, 3); // -> 4
+```
+
+## divideBy
+
+Divides second value by first value. `divideBy` args are curried.
+
+```js
+divideBy(a, b);
+```
+
+**Example**
+
+```js
+import { divideBy } from "@bitmap/fp";
+
+const half = divideBy(2);
+const value = half(10); // -> 5
+```
+
+## max
+
+Returns maximum value of all arguments. Throws if called with no arguments.
+
+```js
+max(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { max } from "@bitmap/fp";
+
+max(5, 3, 9); // -> 9
+max(...[0, 1, 1, 2, 3, 5, 8]); // -> 8
+```
+
+## mean
+
+Returns mean (average) of all arguments.
+
+```js
+mean(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { mean } from "@bitmap/fp";
+
+mean(6, 11, 7); // -> 8
+```
+
+## median
+
+Returns median of all arguments.
+
+```js
+median(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { median } from "@bitmap/fp";
+
+median(3, 5, 7); // -> 5
+median(19, 21, 23, 25); // -> 22
+```
+
+## min
+
+Returns minimum value of all arguments. Throws if called with no arguments.
+
+```js
+min(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { min } from "@bitmap/fp";
+
+min(5, 3, 9); // -> 3
+min(...[0, 1, 1, 2, 3, 5, 8]); // -> 0
+```
+
+## mode
+
+Returns mode (most frequent occuring value) of all arguments.
+
+```js
+mode(a, b, c, ...)
+```
+
+**Example**
+
+```js
+import { mode } from "@bitmap/fp";
+
+mode(3, 1, 2, 1, 3, 2, 1, 1, 2); // -> 1
+```
+
+## modulo
+
+Returns modulo of two operands. Note that this is different than the remainder
+(`%`) operator is JavaScript, and behaves like the mathmatical definition of
+modulo or the `%` operator in Python. `modulo` args are curried.
+
+```js
+modulo(a, n);
+```
+
+**Example**
+
+```js
+import { modulo } from "@bitmap/fp";
+
+modulo(5, 2); // -> 1
 ```
 
 ## multiply
@@ -1159,6 +1303,22 @@ const values = [17, 18, 11, -4];
 product(...values); // -> -13464
 ```
 
+## remainder
+
+Returns remainder of two operands. `remainder` args are curried.
+
+```js
+remainder(a, n);
+```
+
+**Example**
+
+```js
+import { remainder } from "@bitmap/fp";
+
+remainder(6, 5); // -> 1
+```
+
 ## subtract
 
 Subracts second value from first. `subtract` args are curried.
@@ -1192,195 +1352,24 @@ const minus5 = subtractBy(5);
 const value = minus5(10); // -> 5
 ```
 
-## divide
+## sum
 
-Divides first value by second value. `divide` args are curried.
+Returns sum of all arguments.
 
 ```js
-divide(a, b);
+sum(a, b, c, ...)
 ```
 
 **Example**
 
 ```js
-import { divide } from "@bitmap/fp";
+import { sum } from "@bitmap/fp";
 
-divide(12, 3); // -> 4
-```
+sum(1, 2, 3, 4); // -> 10
 
-## divideBy
+const values = [17, 18, 11, -4];
 
-Divides second value by first value. `divideBy` args are curried.
-
-```js
-divideBy(a, b);
-```
-
-**Example**
-
-```js
-import { divideBy } from "@bitmap/fp";
-
-const half = divideBy(2);
-const value = half(10); // -> 5
-```
-
-## clamp
-
-Clips value in mix/max range. `clamp` args are curried.
-
-```js
-clamp(min, max, value);
-```
-
-**Example**
-
-```js
-import { clamp } from "@bitmap/fp";
-
-const percent = clamp(0, 1);
-percent(-1); // -> 0
-percent(0.5); // -> 0.5
-percent(1.5); // -> 1
-```
-
-## mean
-
-Returns mean (average) of all arguments.
-
-```js
-mean(a, b, c, ...)
-```
-
-**Example**
-
-```js
-import { mean } from "@bitmap/fp";
-
-mean(6, 11, 7); // -> 8
-```
-
-## median
-
-Returns median of all arguments.
-
-```js
-median(a, b, c, ...)
-```
-
-**Example**
-
-```js
-import { median } from "@bitmap/fp";
-
-median(3, 5, 7); // -> 5
-median(19, 21, 23, 25); // -> 22
-```
-
-## mode
-
-Returns mode (most frequent occuring value) of all arguments.
-
-```js
-mode(a, b, c, ...)
-```
-
-**Example**
-
-```js
-import { mode } from "@bitmap/fp";
-
-mode(3, 1, 2, 1, 3, 2, 1, 1, 2); // -> 1
-```
-
-## min
-
-Returns minimum value of all arguments. Throws if called with no arguments.
-
-```js
-min(a, b, c, ...)
-```
-
-**Example**
-
-```js
-import { min } from "@bitmap/fp";
-
-min(5, 3, 9); // -> 3
-min(...[0, 1, 1, 2, 3, 5, 8]); // -> 0
-```
-
-## max
-
-Returns maximum value of all arguments. Throws if called with no arguments.
-
-```js
-max(a, b, c, ...)
-```
-
-**Example**
-
-```js
-import { max } from "@bitmap/fp";
-
-max(5, 3, 9); // -> 9
-max(...[0, 1, 1, 2, 3, 5, 8]); // -> 8
-```
-
-## remainder
-
-Returns remainder of two operands. `remainder` args are curried.
-
-```js
-remainder(a, n);
-```
-
-**Example**
-
-```js
-import { remainder } from "@bitmap/fp";
-
-remainder(6, 5); // -> 1
-```
-
-## modulo
-
-Returns modulo of two operands. Note that this is different than the remainder
-(`%`) operator is JavaScript, and behaves like the mathmatical definition of
-modulo or the `%` operator in Python. `modulo` args are curried.
-
-```js
-modulo(a, n);
-```
-
-**Example**
-
-```js
-import { modulo } from "@bitmap/fp";
-
-modulo(5, 2); // -> 1
-```
-
-## range
-
-Returns a sequence of integers from `start` (inclusive) to `end` (exclusive). Counts down when `start` is greater than `end`, and returns an empty array when they are equal. Throws if either value is not an integer.
-
-```js
-range(start, end);
-```
-
-**Example**
-
-```js
-import { range } from "@bitmap/fp";
-
-range(1, 6); // -> [1, 2, 3, 4, 5]
-range(5, 0); // -> [5, 4, 3, 2, 1]
-range(3, 3); // -> []
-
-for (const i of range(0, 4)) {
-  // 0, 1, 2, 3
-}
+sum(...values); // -> 42
 ```
 
 ## compose
@@ -1402,6 +1391,172 @@ const double = (n) => n * 2;
 const addOneThenDouble = compose(double, addOne);
 
 addOneThenDouble(20); // 42
+```
+
+## curry
+
+Curry a function to allow it to be called partially.
+
+```js
+curry(function)
+```
+
+**Example**
+
+```js
+import { curry } from "@bitmap/fp";
+
+const sum = curry((a, b, c) => a + b + c);
+
+sum(1)(2)(3); // -> 6
+```
+
+## identity
+
+Pass input as output.
+
+```js
+identity(value);
+```
+
+**Example**
+
+```js
+import { identity } from "@bitmap/fp";
+
+identity("hello, world"); // -> 'hello, world'
+```
+
+## isArray
+
+Returns true if value is of the `Array` class.
+
+```js
+isArray(value);
+```
+
+**Example**
+
+```js
+import { isArray } from "@bitmap/fp";
+
+isArray([1, 2, 3]); // -> true
+isArray({ length: 3, 0: 1, 1: 2, 2: 3 }); // -> false
+```
+
+## isEmpty
+
+Checks if supplied value is its type's empty value and returns a boolean.
+Supports arrays, objects, strings, Maps, and Sets.
+
+```js
+isEmpty(value);
+```
+
+**Example**
+
+```js
+import { isEmpty } from "@bitmap/fp";
+
+isEmpty(""); // -> true
+isEmpty("hello"); // -> false
+
+isEmpty([]); // -> true
+isEmpty([1, 2, 3]); // -> false
+
+isEmpty({}); // -> true
+isEmpty({ a: 1 }); // -> false
+
+isEmpty(new Map()); // -> true
+isEmpty(new Set()); // -> true
+```
+
+## isEqual
+
+Compares two items and returns true if equal. `isEqual` args are curried.
+
+```js
+isEqual(a, b);
+```
+
+**Example**
+
+```js
+import { isEqual } from "@bitmap/fp";
+
+isEqual(2, 2); // -> true
+isEqual(2, 3); // -> false
+```
+
+## isNull
+
+Returns true if value is `null`
+
+```js
+isNull(value);
+```
+
+**Example**
+
+```js
+import { isNull } from "@bitmap/fp";
+
+let value = null;
+isNull(value); // -> true
+
+value = "hello, world";
+isNull(value); // -> false
+```
+
+## isTypeOf
+
+Evaluate the returned string from an operand. The first arguement `type` must be
+a valid value of JavaScript's `typeof` function: `undefined`, `function`,
+`boolean`, `string`, `number`, `bigint`, `symbol`, or `object`.
+
+> Note: Additional helper functions `isUndefined`, `isFunction`, `isBoolean`,
+> `isString`, `isNumber`, `isBigInt`, `isSymbol`, and `isObject` are also
+> exported for convenience.
+
+```js
+isTypeOf(type, value);
+```
+
+**Example**
+
+```js
+import { isTypeOf } from "@bitmap/fp";
+
+isTypeOf("string", "hello world"); // -> true
+isTypeOf("object", []); // -> true
+isTypeOf("object", {}); // -> true
+isTypeOf("object", null); // -> true
+isTypeOf("number", 138); // -> true
+isTypeOf("number", "2"); // -> false
+isTypeOf("function", (x) => x * x); // -> true
+```
+
+## not
+
+Returns a negated version of a predicate function.
+
+```js
+not(predicate);
+```
+
+**Example**
+
+```js
+import { not, isNull, isEmpty } from "@bitmap/fp";
+
+const isNotNull = not(isNull);
+const isNotEmpty = not(isEmpty);
+
+isNotNull(null); // -> false
+isNotNull("hello"); // -> true
+
+isNotEmpty([]); // -> false
+isNotEmpty([1, 2, 3]); // -> true
 ```
 
 ## pipe
@@ -1443,170 +1598,4 @@ const clampReversed = reverseArgs(clamp);
 
 // Now it takes (value, max, min)
 clampReversed(10, 5, 0); // -> 5
-```
-
-## curry
-
-Curry a function to allow it to be called partially.
-
-```js
-curry(function)
-```
-
-**Example**
-
-```js
-import { curry } from "@bitmap/fp";
-
-const sum = curry((a, b, c) => a + b + c);
-
-sum(1)(2)(3); // -> 6
-```
-
-## identity
-
-Pass input as output.
-
-```js
-idendity(value);
-```
-
-**Example**
-
-```js
-import { idenity } from "@bitmap/fp";
-
-const id = idenity("hello, world"); // -> 'hello, world'
-```
-
-## isEqual
-
-Compares two items and returns true if equal. `isEqual` args are curried.
-
-```js
-isEqual(a, b);
-```
-
-**Example**
-
-```js
-import { isEqual } from "@bitmap/fp";
-
-isEqual(2, 2); // -> true
-isEqual(2, 3); // -> false
-```
-
-## isEmpty
-
-Checks if supplied value is its type's empty value and returns a boolean.
-Supports arrays, objects, strings, Maps, and Sets.
-
-```js
-isEmpty(value);
-```
-
-**Example**
-
-```js
-import { isEmpty } from "@bitmap/fp";
-
-isEmpty(""); // -> true
-isEmpty("hello"); // -> false
-
-isEmpty([]); // -> true
-isEmpty([1, 2, 3]); // -> false
-
-isEmpty({}); // -> true
-isEmpty({ a: 1 }); // -> false
-
-isEmpty(new Map()); // -> true
-isEmpty(new Set()); // -> true
-```
-
-## isTypeOf
-
-Evaluate the returned string from an operand. The first arguement `type` must be
-a valid value of JavaScript's `typeof` function: `undefined`, `function`,
-`boolean`, `string`, `number`, `bigint`, `symbol`, or `object`.
-
-> Note: Additional helper functions `isUndefined`, `isFunction`, `isBoolean`,
-> `isString`, `isNumber`, `isBigInt`, `isSymbol`, and `isObject` are also
-> exported for convenience.
-
-```js
-isTypeOf(type, value);
-```
-
-**Example**
-
-```js
-import { isTypeOf } from "@bitmap/fp";
-
-isTypeOf("string", "hello world"); // -> true
-isTypeOf("object", []); // -> true
-isTypeOf("object", {}); // -> true
-isTypeOf("object", null); // -> true
-isTypeOf("number", 138); // -> true
-isTypeOf("number", "2"); // -> false
-isTypeOf("function", (x) => x * x); // -> true
-```
-
-## isArray
-
-Returns true if value is of the `Array` class.
-
-```js
-isArray(value);
-```
-
-**Example**
-
-```js
-import { isArray } from "@bitmap/fp";
-
-isArray([1, 2, 3]); // -> true
-isArray({ length: 3, 0: 1, 1: 2, 2: 3 }); // -> false
-```
-
-## isNull
-
-Returns true if value is `null`
-
-```js
-isNull(value);
-```
-
-**Example**
-
-```js
-import { isNull } from "@bitmap/fp";
-
-let value = null;
-isNull(value); // -> true
-
-value = "hello, world";
-isNull(value); // -> false
-```
-
-## not
-
-Returns a negated version of a predicate function.
-
-```js
-not(predicate);
-```
-
-**Example**
-
-```js
-import { not, isNull, isEmpty } from "@bitmap/fp";
-
-const isNotNull = not(isNull);
-const isNotEmpty = not(isEmpty);
-
-isNotNull(null); // -> false
-isNotNull("hello"); // -> true
-
-isNotEmpty([]); // -> false
-isNotEmpty([1, 2, 3]); // -> true
 ```
