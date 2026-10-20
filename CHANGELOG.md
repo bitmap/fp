@@ -5,6 +5,75 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.0]
+
+### Added
+
+- min
+- max
+- range
+- unique
+- zip
+
+### Fixed
+
+- `mode` now throws when called with no arguments
+- `mean` now throws when called with no arguments
+- `aperture` now throws when size is less than 1
+- `pluck` typing is now compatible with `prop`
+- Removed dead code and a stray `console.log` from `groupBy`
+
+### Changed
+
+- Improved type safety of `map`, `flatMap`, `sort`, `reverseArgs`, `compose`,
+  `groupBy` and internal `resolveMap` (replaced `any` with proper generics or
+  `unknown`)
+- Documented `includesFrom`, `isEmpty`, `not` and `reverseArgs` in README
+- Reorganized README function list by category
+- Fixed `compact` and `aperture` documentation
+- Added test coverage reporting (`@vitest/coverage-v8`)
+- Tests no longer rely on Vitest globals
+
+## [0.11.2]
+
+### Changed
+
+- Bumped `setup-node` version in CI
+
+## [0.11.1]
+
+### Changed
+
+- Updated Node version
+
+## [0.11.0]
+
+### Added
+
+- groupBy
+- compact
+- chunk
+- aperture
+
+### Changed
+
+- `map` now passes the index as the second argument to the mapper
+- Switched test runner from Jest to Vitest
+- Updated dependencies and improved types
+
+## [0.10.2]
+
+### Added
+
+- reverseArgs
+- not
+
+### Changed
+
+- Reworked `compose`/`pipe` and removed internal `flow` utility
+- Improved typing of `curry`
+- Fixed `isEmpty`
+
 ## [0.10.1]
 
 ### Added
