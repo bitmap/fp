@@ -4,7 +4,10 @@
   "description": "Functional programming utilities",
   "license": "ISC",
   "author": "Cabe Branson <cabe@bitmap.dev> (https://bitmap.dev)",
-  "repository": "github:bitmap/fp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitmap/fp.git"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
