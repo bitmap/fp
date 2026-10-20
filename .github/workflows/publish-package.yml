@@ -20,8 +20,9 @@ jobs:
       # Trusted Publishing requires npm >= 11.5.1
       - run: npm install -g npm@latest
       - run: npm ci
-      # Publish to npm (authenticated via OIDC, no token needed)
-      - run: npm publish --access public
+      # Stage publish to npm (authenticated via OIDC, no token needed).
+      # Approve the staged version on npmjs.com with 2FA to release it.
+      - run: npm stage publish --access public
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v4
         with:
